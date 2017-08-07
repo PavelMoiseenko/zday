@@ -189,3 +189,36 @@ if(!class_exists('acf') && !is_admin()) {
 	function the_flexible_field($field_name, $post_id = false) {return false;}
 	function acf_filter_post_id( $post_id ) {return $post_id;}
 }
+
+/**
+ * Register custom post-type EVENTS
+ */
+function create_event_type()
+{
+    register_post_type('event', array(
+            'labels' => array(
+                'name' => esc_html__('Events', 'base'),
+                'singular_name' => esc_html__('Event', 'base'),
+                'add_new' => esc_html__('Add New Event', 'base'),
+                'add_new_item' => esc_html__('Add Event', 'base'),
+                'edit' => esc_html__('Edit', 'base'),
+                'edit_item' => esc_html__('Edit Event', 'base'),
+                'new_item' => esc_html__('New Event', 'base'),
+                'view' => esc_html__('View', 'base'),
+                'view_item' => esc_html__('View Event', 'base'),
+                'search_items' => esc_html__('Search Event', 'base'),
+                'not_found' => esc_html__('No Events found', 'base'),
+                'not_found_in_trash' => esc_html__('No Events found in Trash', 'base')
+            ),
+            'public' => true,
+            'has_archive' => true,
+            //'rewrite' => array('slug' => 'events'),
+            'supports' => array('title', 'editor', 'thumbnail', 'comments', 'excerpt'),
+            'can_export' => true,
+            'menu_icon' => 'dashicons-calendar-alt',
+            'menu_position' => 3
+        )
+    );
+}
+
+add_action('init', 'create_event_type');
