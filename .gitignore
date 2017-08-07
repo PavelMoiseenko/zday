@@ -1,0 +1,5 @@
+/wp-content/uploads/*
+*.orig
+/nbproject
+/nbproject/private/
+wp-config.local.php
