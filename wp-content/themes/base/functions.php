@@ -191,7 +191,7 @@ if(!class_exists('acf') && !is_admin()) {
 }
 
 /**
- * Register custom post-type EVENTS
+ * Register custom post-type EVENT
  */
 function create_event_type()
 {
@@ -216,9 +216,43 @@ function create_event_type()
             'supports' => array('title', 'editor', 'thumbnail', 'comments', 'excerpt'),
             'can_export' => true,
             'menu_icon' => 'dashicons-calendar-alt',
-            'menu_position' => 3
+            'menu_position' => 5
         )
     );
 }
 
 add_action('init', 'create_event_type');
+
+
+/**
+ * Register custom post-type SPEAKER
+ */
+function create_speaker_type()
+{
+    register_post_type('speaker', array(
+            'labels' => array(
+                'name' => esc_html__('Speakers', 'base'),
+                'singular_name' => esc_html__('Speaker', 'base'),
+                'add_new' => esc_html__('Add New Speaker', 'base'),
+                'add_new_item' => esc_html__('Add Speaker', 'base'),
+                'edit' => esc_html__('Edit', 'base'),
+                'edit_item' => esc_html__('Edit Speaker', 'base'),
+                'new_item' => esc_html__('New Speaker', 'base'),
+                'view' => esc_html__('View', 'base'),
+                'view_item' => esc_html__('View Speaker', 'base'),
+                'search_items' => esc_html__('Search Speaker', 'base'),
+                'not_found' => esc_html__('No Speakers found', 'base'),
+                'not_found_in_trash' => esc_html__('No Speakers found in Trash', 'base')
+            ),
+            'public' => true,
+            'has_archive' => true,
+            //'rewrite' => array('slug' => 'speakers'),
+            'supports' => array('title', 'editor', 'thumbnail', 'comments', 'excerpt'),
+            'can_export' => true,
+            'menu_icon' => 'dashicons-businessman',
+            'menu_position' => 6
+        )
+    );
+}
+
+add_action('init', 'create_speaker_type');
