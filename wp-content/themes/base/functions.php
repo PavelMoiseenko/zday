@@ -1,4 +1,105 @@
 <?php
+
+/*
+ * Added google-api-php-client library */
+require_once (get_template_directory() .'/lib/google-api-php-client-2.2.0/vendor/autoload.php' );
+
+
+//define('STDIN',fopen("php://stdin","r"));
+
+define('APPLICATION_NAME', 'Google Sheets API PHP Quickstart');
+define('CREDENTIALS_PATH', '~/.credentials/sheets.googleapis.com-php-quickstart.json');
+define('CLIENT_SECRET_PATH', __DIR__ . '/client_secret.json');
+// If modifying these scopes, delete your previously saved credentials
+// at ~/.credentials/sheets.googleapis.com-php-quickstart.json
+define('SCOPES', implode(' ', array(
+        Google_Service_Sheets::SPREADSHEETS_READONLY)
+));
+
+//if (php_sapi_name() != 'cli') {
+//    throw new Exception('This application must be run on the command line.');
+//}
+
+/**
+ * Returns an authorized API client.
+ * @return Google_Client the authorized client object
+ */
+function getClient() {
+    $client = new Google_Client();
+    $client->setApplicationName(APPLICATION_NAME);
+    $client->setScopes(SCOPES);
+    $client->setAuthConfig(CLIENT_SECRET_PATH);
+    $client->setAccessType('offline');
+
+    // Load previously authorized credentials from a file.
+    $credentialsPath = expandHomeDirectory(CREDENTIALS_PATH);
+    if (file_exists($credentialsPath)) {
+        $accessToken = json_decode(file_get_contents($credentialsPath), true);
+    } else {
+        // Request authorization from the user.
+        $authUrl = $client->createAuthUrl();
+        printf("Open the following link in your browser:\n%s\n", $authUrl);
+        print 'Enter verification code: ';
+        $authCode = trim(fgets(STDIN))/*'4/02yp9Msj0Sjt3et2pjphXcuribOhjZRDucrgvrIMab4'*/;
+
+        // Exchange authorization code for an access token.
+        $accessToken = $client->fetchAccessTokenWithAuthCode($authCode);
+
+        // Store the credentials to disk.
+        if(!file_exists(dirname($credentialsPath))) {
+            mkdir(dirname($credentialsPath), 0700, true);
+        }
+        file_put_contents($credentialsPath, json_encode($accessToken));
+        printf("Credentials saved to %s\n", $credentialsPath);
+    }
+    $client->setAccessToken($accessToken);
+
+    // Refresh the token if it's expired.
+    if ($client->isAccessTokenExpired()) {
+        $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
+        file_put_contents($credentialsPath, json_encode($client->getAccessToken()));
+    }
+    return $client;
+}
+
+/**
+ * Expands the home directory alias '~' to the full path.
+ * @param string $path the path to expand.
+ * @return string the expanded path.
+ */
+function expandHomeDirectory($path) {
+    $homeDirectory = getenv('HOME');
+    if (empty($homeDirectory)) {
+        $homeDirectory = getenv('HOMEDRIVE') . getenv('HOMEPATH');
+    }
+    return str_replace('~', realpath($homeDirectory), $path);
+}
+
+
+// Get the API client and construct the service object.
+//$client = getClient();
+//$service = new Google_Service_Sheets($client);
+//
+////// Prints the names and majors of students in a sample spreadsheet:
+////// https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+//$spreadsheetId = /*'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'*/'135RS03FkjkQsyJHV7AxWX6j1of2tcCO9036Vyp093rU';
+//$range = 'B1:B2';
+//$response = $service->spreadsheets_values->get($spreadsheetId, $range);
+//$values = $response->getValues();
+//
+//if (count($values) == 0) {
+//    print "No data found.\n";
+//} else {
+//    var_dump($values);
+//    /*foreach ($values as $row) {
+//        // Print columns A and E, which correspond to indices 0 and 4.
+//        printf("%s, %s\n", $row[0], $row[4]);
+//    }*/
+//}
+
+
+
+
 require_once( get_template_directory() . '/classes/CustomWalkerNavMenu.php');
 
 define( 'TEMPLATE_DIRECTORY', get_template_directory());
@@ -102,6 +203,7 @@ if ( ! function_exists( 'base_scripts' ) ) {
 			wp_register_style('child-stylesheet', STYLESHEET_URI . '/style.css');
 		}
 
+
 		// Enqueue Styles
 		wp_enqueue_style('main-stylesheet');
 		wp_enqueue_style('all');
@@ -117,9 +219,13 @@ if ( ! function_exists( 'base_scripts' ) ) {
 			wp_enqueue_script('comment-reply');
 		}
 
-		//Localizate Scripts
+		;
+
+       	//Localizate Scripts
 		wp_localize_script('main', 'objectName', array(
-			'someTextForTranslate' => '<span class="screen-reader-text">' . __('localization text', 'base') . '</span>',
+            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		    'nonce' => wp_create_nonce('ajax-nonce'),
+		    'someTextForTranslate' => '<span class="screen-reader-text">' . __('localization text', 'base') . '</span>',
 		));
 	}
 
@@ -256,3 +362,48 @@ function create_speaker_type()
 }
 
 add_action('init', 'create_speaker_type');
+
+/**
+ * AJAX Registration*/
+
+add_action('wp_ajax_ajaxregister', 'my_action_callback');
+add_action('wp_ajax_nopriv_ajaxregister', 'my_action_callback');
+
+function my_action_callback() {
+    check_ajax_referer( 'ajax-nonce', 'nonce' );
+    $name = $_POST['name'];
+    $surname = $_POST['surname'];
+    $email = $_POST['email'];
+    $event_id = $_POST['event_id'];
+
+
+////// Prints the names and majors of students in a sample spreadsheet:
+////// https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+//    $spreadsheetId = /*'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'*/'135RS03FkjkQsyJHV7AxWX6j1of2tcCO9036Vyp093rU';
+//    $range = 'B1:B2';
+//    $response = $service->spreadsheets_values->get($spreadsheetId, $range);
+//    $values = $response->getValues();
+//
+//    if (count($values) == 0) {
+//        print "No data found.\n";
+//    } else {
+//        var_dump($values);
+//        /*foreach ($values as $row) {
+//            // Print columns A and E, which correspond to indices 0 and 4.
+//            printf("%s, %s\n", $row[0], $row[4]);
+//        }*/
+//    }
+    $participant_row = array(
+        'participant_name'	=> $name,
+        'participant_surname'	=> $surname,
+        'participant_email'	=> $email
+    );
+
+    add_row('participants', $participant_row, $event_id);
+
+    $response = array(
+        "message"   => $event_id . " " .$name . " " .$surname . " ". "You are succesfully registered.",
+        "email" => $email
+    );
+    wp_send_json($response);
+}
