@@ -41,8 +41,7 @@ function getClient()
         $authUrl = $client->createAuthUrl();
         printf("Open the following link in your browser:\n%s\n", $authUrl);
         print 'Enter verification code: ';
-        $authCode = trim(fgets(STDIN))/*'4/02yp9Msj0Sjt3et2pjphXcuribOhjZRDucrgvrIMab4'*/
-        ;
+        $authCode = trim(fgets(STDIN))/*'4/02yp9Msj0Sjt3et2pjphXcuribOhjZRDucrgvrIMab4'*/;
 
         // Exchange authorization code for an access token.
         $accessToken = $client->fetchAccessTokenWithAuthCode($authCode);
@@ -79,26 +78,8 @@ function expandHomeDirectory($path)
 }
 
 
-// Get the API client and construct the service object.
-//$client = getClient();
-//$service = new Google_Service_Sheets($client);
-//
-////// Prints the names and majors of students in a sample spreadsheet:
-////// https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
-//$spreadsheetId = /*'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'*/'135RS03FkjkQsyJHV7AxWX6j1of2tcCO9036Vyp093rU';
-//$range = 'B1:B2';
-//$response = $service->spreadsheets_values->get($spreadsheetId, $range);
-//$values = $response->getValues();
-//
-//if (count($values) == 0) {
-//    print "No data found.\n";
-//} else {
-//    var_dump($values);
-//    /*foreach ($values as $row) {
-//        // Print columns A and E, which correspond to indices 0 and 4.
-//        printf("%s, %s\n", $row[0], $row[4]);
-//    }*/
-//}
+
+
 
 
 require_once(get_template_directory() . '/classes/CustomWalkerNavMenu.php');
@@ -479,25 +460,6 @@ function my_action_callback()
     $email = $_POST['email'];
     $event_id = $_POST['event_id'];
 
-
-////// Prints the names and majors of students in a sample spreadsheet:
-////// https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
-//    $spreadsheetId = /*'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'*/'135RS03FkjkQsyJHV7AxWX6j1of2tcCO9036Vyp093rU';
-//    $range = 'B1:B2';
-//    $response = $service->spreadsheets_values->get($spreadsheetId, $range);
-//    $values = $response->getValues();
-//
-//    if (count($values) == 0) {
-//        print "No data found.\n";
-//    } else {
-//        var_dump($values);
-//        /*foreach ($values as $row) {
-//            // Print columns A and E, which correspond to indices 0 and 4.
-//            printf("%s, %s\n", $row[0], $row[4]);
-//        }*/
-//    }
-
-
     if (have_rows('participants', $event_id)):
         while (have_rows('participants', $event_id)) : the_row();
             $flag = false;
@@ -525,10 +487,10 @@ function my_action_callback()
                 "message" => $name . " " . $surname . " " . " ,you are succesfully registered.",
                 "email" => $email
             );
+
         endif;
-
-
     endif;
+
 
     wp_send_json($response);
 }
