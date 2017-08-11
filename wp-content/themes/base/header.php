@@ -14,22 +14,22 @@
 
             <!--LOGO-->
             <?php
-            $logo = get_field('logo');
+            $logo = get_field('logo', 'options');
             if ($logo): ?>
                 <img src="<?php echo $logo; ?>"/>
             <?php endif; ?>
 
             <!--SLOGAN-->
             <?php
-            $slogan = get_field('slogan');
+            $slogan = get_field('slogan', 'options');
             if ($slogan) : ?>
                 <h1><?php echo $slogan; ?></h1>
             <?php endif; ?>
 
             <!--TOPICS-->
-            <?php if (have_rows('topics')): ?>
+            <?php if (have_rows('topics', 'options')): ?>
                 <ul class="topics">
-                    <?php while (have_rows('topics')): the_row();
+                    <?php while (have_rows('topics', 'options')): the_row();
                         $topic_image = get_sub_field('topic_image');
                         $topic_title = get_sub_field('topic_title');
                         $topic_description = get_sub_field('topic_description');
@@ -45,9 +45,9 @@
             <?php endif; ?>
 
             <!--Social icons-->
-            <?php if (have_rows('header_social_icons')): ?>
+            <?php if (have_rows('header_social_icons', 'options')): ?>
                 <ul class="icons">
-                    <?php while (have_rows('header_social_icons')): the_row();
+                    <?php while (have_rows('header_social_icons', 'options')): the_row();
                         $header_social_image = get_sub_field('header_social_image');
                         $header_social_link = get_sub_field('header_social_link'); ?>
 
@@ -65,9 +65,9 @@
             <?php endif; ?>
 
             <!--CTA-->
-            <?php $header_cta_link = get_field('$header_cta_link');
+            <?php $header_cta_link = get_field('$header_cta_link', 'options');
             if ($header_cta_link) :
-                $header_cta_text = get_field('$header_cta_text');?>
+                $header_cta_text = get_field('$header_cta_text', 'options');?>
                 <a href="<?php echo $header_cta_link;?>"><?php echo $header_cta_text;?></a>
             <?php endif; ?>
 
