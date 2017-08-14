@@ -459,36 +459,34 @@ function my_action_callback()
     $surname = $_POST['surname'];
     $email = $_POST['email'];
     $event_id = $_POST['event_id'];
+    $flag = false;
 
-    if (have_rows('participants', $event_id)):
-        while (have_rows('participants', $event_id)) : the_row();
-            $flag = false;
-            $registered_email = get_sub_field('participant_email');
-            $response = $registered_email;
-            if ($email == $registered_email) :
-                $flag = true;
-                $response = array(
-                    "message" => "Participant with email " . $email . " has been registered already."
-                );
-                break;
-            endif;
-        endwhile;
 
-        if (!$flag) :
-            $participant_row = array(
-                'participant_name' => $name,
-                'participant_surname' => $surname,
-                'participant_email' => $email
-            );
-            add_row('participants', $participant_row, $event_id);
-            $event_plan = get_field("event_plan", $event_id);
-            wp_mail($email, "Event plan", "We have sent you event plan " . $event_plan['url']);
+    while (have_rows('participants', $event_id)) : the_row();
+
+        $registered_email = get_sub_field('participant_email');
+        if ($email == $registered_email) :
+            $flag = true;
             $response = array(
-                "message" => $name . " " . $surname . " " . " ,you are succesfully registered.",
-                "email" => $email
+                "message" => "Sorry, participant with email " . $email . " has been registered already."
             );
-
+            break;
         endif;
+    endwhile;
+
+    if (!$flag) :
+        $participant_row = array(
+            'participant_name' => $name,
+            'participant_surname' => $surname,
+            'participant_email' => $email
+        );
+        add_row('participants', $participant_row, $event_id);
+        $event_plan = get_field("event_plan", $event_id);
+        //wp_mail($email, "Event plan", "We have sent you event plan " . $event_plan['url']);
+        $response = array(
+            "message" => "Dear " . $name . " " . $surname . " ,you are succesfully registered. Here is event's plan " . "<a href=" . $event_plan['url'] . ">Download plan</a>"
+        );
+
     endif;
 
 

@@ -11,27 +11,13 @@
 	</div><!-- .entry-content -->
     <?php
 
-    $event_plan = get_field('event_plan');
+//    $event_plan = get_field('event_plan');
 
-    if( $event_plan ): ?>
-
-        <a href="<?php echo $event_plan['url']; ?>" target="_blank"><?php echo $event_plan['filename']; ?></a>
-
-    <?php endif; ?>
-
-    <?php
-    $registration_opening = get_field('registration_opening');
-    if ($registration_opening) :?>
-        <div class="registration">
-            <h2>Registration</h2>
-            <input class="surname" type="text" name="surname" placeholder="Surname"><br>
-            <input class="name" type="text" name="name" placeholder="Name"><br>
-            <input class="email" type="email" name="email" placeholder="Email"><br>
-            <input class="event_id" type="hidden" name="event_id" value="<?php the_ID();?>">
-            <input class="register" type="button" value="Register" name="register"><br>
-        </div>
-        <div class="message"></div>
-    <?php endif;?>
+//    if( $event_plan ): ?>
+<!---->
+<!--        <a href="--><?php //echo $event_plan['url']; ?><!--" target="_blank">--><?php //echo $event_plan['filename']; ?><!--</a>-->
+<!---->
+<!--    --><?php //endif; ?>
 
 	<footer class="entry-footer">
 		<?php edit_post_link( __( 'Edit', 'base' ), '<span class="edit-link">', '</span>' ); ?>
