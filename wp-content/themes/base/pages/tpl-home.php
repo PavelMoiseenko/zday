@@ -3,7 +3,6 @@
 <?php get_header(); ?>
 <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-
         <!--EVENT SECTION TITLE -->
         <?php
         $event_section_title = get_field('event_section_title');
@@ -53,9 +52,10 @@
 
             $posts = get_posts($args);
             foreach ($posts as $post) {
-                setup_postdata($post);
-                the_title();
-                $event_id = $post->ID;
+                setup_postdata($post);?>
+
+                <a href="<?php the_permalink();?>"><?php the_title();?></a>
+                <?php $event_id = $post->ID;
                 var_dump($event_id);
             }
 
@@ -157,44 +157,42 @@
 
 
         // Get the API client and construct the service object.
-        //            $client = getClient();
-        //            $service = new Google_Service_Sheets($client);
-        //
-        //            //// Prints the names and majors of students in a sample spreadsheet:
-        //            //// https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
-        //            $spreadsheetId = /*'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'*/'135RS03FkjkQsyJHV7AxWX6j1of2tcCO9036Vyp093rU';
-        //            $range = 'A2:B2';
-        //                        $response = $service->spreadsheets_values->get($spreadsheetId, $range);
-        //                        $values = $response->getValues();
-        //
-        //                        if (count($values) == 0) {
-        //                            print "No data found.\n";
-        //                        } else {
-        //                            var_dump($values);
-        //                            /*foreach ($values as $row) {
-        //                                // Print columns A and E, which correspond to indices 0 and 4.
-        //                                printf("%s, %s\n", $row[0], $row[4]);
-        //                            }*/
-        //                        }
-        //
+//                    $client = getClient();
+//                    $service = new Google_Service_Sheets($client);
+//
+//                    $spreadsheetId = /*'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'*/'135RS03FkjkQsyJHV7AxWX6j1of2tcCO9036Vyp093rU';
+//                    $range = 'A3:B3';
+//                    $optParams['dateTimeRenderOption'] = '';
+//                    $optParams['valueInputOption'] = 'ROWS';
 
-        //            $optParams = [];
-        //            $optParams['valueInputOption'] = 'ROWS';
+                  /*READING*/
+//                    $response = $service->spreadsheets_values->get($spreadsheetId, $range);
+//                    $values = $response->getValues();
+//
+//                    if (count($values) == 0) {
+//                        print "No data found.\n";
+//                    } else {
+//                        var_dump($values);
+//                        /*foreach ($values as $row) {
+//                            // Print columns A and E, which correspond to indices 0 and 4.
+//                            printf("%s, %s\n", $row[0], $row[1]);
+//                        }*/
+//                    }
 
-        //            $optParams = array(
-        //                'valueInputOption' => "ROWS"
-        //            );
-        //            // TODO: Assign values to desired properties of `requestBody`. All existing
-        //            // properties will be replaced:
-        //            $requestBody = new Google_Service_Sheets_ValueRange();
-        //
 
-        /*$requestBody->setMajorDimension("ROWS");
-        $requestBody->setRange("A3:B3");
-        $requestBody->setValues(array(
-               "HELLO", "HELLO"           ));*/
-        //var_dump($requestBody);
+        /*WRITING*/
+//      $requestBody = new Google_Service_Sheets_ValueRange();
+//
+//        //$requestBody->setMajorDimension("ROWS");
+//        $requestBody->setRange("A3:B3");
+//        $requestBody->setValues(array(
+//               "HELLO", "HELLO"
+//        ));
+//
+//        $response = $service->spreadsheets_values->update($spreadsheetId, $range, $requestBody);
 
+//        var_dump($requestBody);
+//         die(0;)
         /*
          *  "majorDimension": "ROWS",
           "range": "A3:B3",
@@ -207,7 +205,12 @@
         }*/
 
 
-        // $response = $service->spreadsheets_values->update($spreadsheetId, $range, $requestBody, $optParams);
+
+
+
+
+
+
 
 
         /*Output all events*/

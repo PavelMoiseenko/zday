@@ -78,10 +78,6 @@ function expandHomeDirectory($path)
 }
 
 
-
-
-
-
 require_once(get_template_directory() . '/classes/CustomWalkerNavMenu.php');
 
 define('TEMPLATE_DIRECTORY', get_template_directory());
@@ -460,10 +456,10 @@ function test_input($data){
  * AJAX Registration
  */
 
-add_action('wp_ajax_ajaxregister', 'my_action_callback');
-add_action('wp_ajax_nopriv_ajaxregister', 'my_action_callback');
+add_action('wp_ajax_ajaxregister', 'registration_callback');
+add_action('wp_ajax_nopriv_ajaxregister', 'registration_callback');
 
-function my_action_callback()
+function registration_callback()
 {
     check_ajax_referer('ajax-nonce', 'nonce');
 
@@ -481,7 +477,7 @@ function my_action_callback()
     }
     else{
         $name = test_input($_POST['name']);
-        if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+        if (!preg_match("/^[a-zA-Z ]*$/",$name)  || strlen($name)>20 ) {
             $nameErr = "Only letters and white space allowed";
         }
     }
@@ -491,7 +487,7 @@ function my_action_callback()
     }
     else{
         $surname = test_input($_POST['surname']);
-        if (!preg_match("/^[a-zA-Z ]*$/",$surname)) {
+        if (!preg_match("/^[a-zA-Z ]*$/",$surname) || strlen($surname)>20) {
             $surnameErr = "Only letters and white space allowed";
         }
     }
@@ -502,7 +498,7 @@ function my_action_callback()
     }
     else{
         $email = test_input($_POST['email']);
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email)>20) {
             $emailErr = "Invalid email format";
         }
     }
@@ -512,14 +508,14 @@ function my_action_callback()
     }
     else{
         $specialization = test_input($_POST['specialization']);
-        if (!preg_match("/^[a-zA-Z ]*$/",$specialization)) {
+        if (!preg_match("/^[a-zA-Z ]*$/",$specialization) || strlen($specialization)>20) {
             $specializationErr = "Only letters and white space allowed";
         }
     }
 
     $telephone = test_input($_POST['telephone']);
     if(!empty($telephone)){
-        if (!preg_match("/^[\d -]+$/",$telephone)) {
+        if (!preg_match("/^[\d -]+$/",$telephone) || strlen($telephone)>20) {
             $telephoneErr = "Invalid telephone format";
         }
     }
