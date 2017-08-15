@@ -95,11 +95,16 @@
         if ($is_registration_on['value'] === '1') :?>
             <div class="registration">
                 <h2>Registration</h2>
-                <input class="name" type="text" name="name" placeholder="Name *"/><br>
-                <input class="surname" type="text" name="surname" placeholder="Surname *"/><br>
-                <input class="email" type="email" name="email" placeholder="Email *"><br>
-                <input class="specialization" type="text" name="specialization" placeholder="Specialization *"><br>
-                <input class="telephone" type="tel" name="telephone" placeholder="Telephone"><br>
+                <input class="name" type="text" name="name" placeholder="Name *"/>
+                <span class="name-err"></span><br>
+                <input class="surname" type="text" name="surname" placeholder="Surname *"/>
+                <span class="surname-err"></span><br>
+                <input class="email" type="email" name="email" placeholder="Email *">
+                <span class="email-err"></span><br>
+                <input class="specialization" type="text" name="specialization" placeholder="Specialization *">
+                <span class="specialization-err"></span><br>
+                <input class="telephone" type="tel" name="telephone" placeholder="Telephone">
+                <span class="telephone-err"></span><br>
                 <input class="event_id" type="hidden" name="event_id" value="<?php echo $event_id; ?>">
                 <?php $registration_cta_text = get_field('registration_cta_text');?>
                 <input class="register" type="button" value="<?php echo $registration_cta_text;?>" name="register"><br>

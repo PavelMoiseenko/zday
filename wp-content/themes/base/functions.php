@@ -447,7 +447,18 @@ function create_speaker_type()
 add_action('init', 'create_speaker_type');
 
 /**
- * AJAX Registration*/
+ * Function to test input data from form
+ */
+function test_input($data){
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+/**
+ * AJAX Registration
+ */
 
 add_action('wp_ajax_ajaxregister', 'my_action_callback');
 add_action('wp_ajax_nopriv_ajaxregister', 'my_action_callback');
@@ -455,12 +466,78 @@ add_action('wp_ajax_nopriv_ajaxregister', 'my_action_callback');
 function my_action_callback()
 {
     check_ajax_referer('ajax-nonce', 'nonce');
-    $name = $_POST['name'];
-    $surname = $_POST['surname'];
-    $email = $_POST['email'];
+
+    $nameErr = '';
+    $surnameErr = '';
+    $emailErr = '';
+    $specializationErr = '';
+    $telephoneErr = '';
+    $message = '';
+    $telephone = '';
+
+
+    if(empty($_POST['name'])){
+        $nameErr = "Name is required";
+    }
+    else{
+        $name = test_input($_POST['name']);
+        if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+            $nameErr = "Only letters and white space allowed";
+        }
+    }
+
+    if(empty($_POST['surname'])){
+        $surnameErr = "Surname is required";
+    }
+    else{
+        $surname = test_input($_POST['surname']);
+        if (!preg_match("/^[a-zA-Z ]*$/",$surname)) {
+            $surnameErr = "Only letters and white space allowed";
+        }
+    }
+
+
+    if(empty($_POST['email'])){
+        $emailErr = "Email is required";
+    }
+    else{
+        $email = test_input($_POST['email']);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "Invalid email format";
+        }
+    }
+
+    if(empty($_POST['specialization'])){
+        $specializationErr = "Specialization is required";
+    }
+    else{
+        $specialization = test_input($_POST['specialization']);
+        if (!preg_match("/^[a-zA-Z ]*$/",$specialization)) {
+            $specializationErr = "Only letters and white space allowed";
+        }
+    }
+
+    $telephone = test_input($_POST['telephone']);
+    if(!empty($telephone)){
+        if (!preg_match("/^[\d -]+$/",$telephone)) {
+            $telephoneErr = "Invalid telephone format";
+        }
+    }
+
+    if($nameErr || $surnameErr || $emailErr || $specializationErr || $telephoneErr ){
+        $response = array(
+            'nameErr' => $nameErr,
+            'surnameErr' => $surnameErr,
+            'emailErr' => $emailErr,
+            'specializationErr' => $specializationErr,
+            'telephoneErr' => $telephoneErr,
+            'message' => $message
+        );
+        wp_send_json($response);
+    }
+
     $event_id = $_POST['event_id'];
     $flag = false;
-
 
     while (have_rows('participants', $event_id)) : the_row();
 
@@ -484,11 +561,15 @@ function my_action_callback()
         $event_plan = get_field("event_plan", $event_id);
         //wp_mail($email, "Event plan", "We have sent you event plan " . $event_plan['url']);
         $response = array(
+            'nameErr' => $nameErr,
+            'surnameErr' => $surnameErr,
+            'emailErr' => $emailErr,
+            'specializationErr' => $specializationErr,
+            'telephoneErr' => $telephoneErr,
             "message" => "Dear " . $name . " " . $surname . " ,you are succesfully registered. Here is event's plan " . "<a href=" . $event_plan['url'] . ">Download plan</a>"
         );
 
     endif;
-
 
     wp_send_json($response);
 }
