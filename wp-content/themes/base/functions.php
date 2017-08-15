@@ -569,3 +569,16 @@ function registration_callback()
 
     wp_send_json($response);
 }
+
+/**
+ * Redirect to front-page
+ */
+
+add_action( 'template_redirect', 'all_redirect_to_home' );
+
+function all_redirect_to_home() {
+    if( !is_404() && !is_admin() && !is_front_page() ) {
+        wp_redirect( home_url(), 301 );
+        exit;
+    }
+}
