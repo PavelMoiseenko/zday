@@ -551,7 +551,9 @@ function registration_callback()
         $participant_row = array(
             'participant_name' => $name,
             'participant_surname' => $surname,
-            'participant_email' => $email
+            'participant_email' => $email,
+            'participant_specialization' => $specialization,
+            'participant_telephone' => $telephone
         );
         add_row('participants', $participant_row, $event_id);
         $event_plan = get_field("event_plan", $event_id);
@@ -577,7 +579,7 @@ function registration_callback()
 add_action( 'template_redirect', 'all_redirect_to_home' );
 
 function all_redirect_to_home() {
-    if( !is_404() && !is_admin() && !is_front_page() ) {
+    if( !is_404() && !is_front_page() ) {
         wp_redirect( home_url(), 301 );
         exit;
     }

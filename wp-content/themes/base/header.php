@@ -36,7 +36,7 @@
                         ?>
 
                         <li class="topic">
-                            <?php echo $topic_image; ?>
+                            <img src="<?php echo $topic_image; ?>"/>
                             <?php echo $topic_title; ?>
                             <?php echo $topic_description; ?>
                         </li>
