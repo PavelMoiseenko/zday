@@ -21,8 +21,16 @@ button,
 input[type="submit"] {
 	transition: color .3s ease-out, background .3s ease-out, border-color .3s ease-out, opacity .3s ease-out;
 }
-h1 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	margin: 0 0 15px;
+	font-family: $font-play;
+	letter-spacing: 1px;
+	color: $color-title;
 }
 p {
 	margin: 0 0 15px;
@@ -30,6 +38,10 @@ p {
 strong,
 b {
 	font-weight: 700;
+}
+.btn-holder {
+	margin: 0 0 15px;
+	text-align: center;
 }
 .button {
 	min-width: 290px;
@@ -45,6 +57,7 @@ b {
 	display: inline-block;
 	vertical-align: top;
 	position: relative;
+	letter-spacing: 1px;
 	&:before,
 	&:after {
 		content: '';
@@ -91,7 +104,7 @@ b {
 }
 
 .container {
-	max-width: 1560px;
+	max-width: $container-width;
 	padding: 0 15px;
 	margin: 0 auto;
 	&.small-width {
@@ -108,5 +121,87 @@ b {
 	@include media(mobile) {
 		display: block;
 		height: auto;
+	}
+}
+.social-networks {
+	font-size: 0;
+	padding: 10px 6px;
+	#footer & {
+		flex: 1;
+		justify-content: center;
+	}
+	li {
+		display: inline-block;
+		vertical-align: top;
+		margin: 0 0 0 41px;
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+	a {
+		display: block;
+		width: 31px;
+		height: 31px;
+		line-height: 30px;
+		position: relative;
+		z-index: 2;
+		text-align: center;
+		&:before {
+			content: '';
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			border: 2px solid #afafaf;
+			background: #000;
+			transform: rotate(45deg);
+			z-index: -1;
+			box-sizing: border-box;
+			transition: border-color .4s ease-out;
+		}
+		&:hover {
+			.icon {
+				fill: $color-link;
+			}
+			&:before {
+				border-color: $color-link-opacity;
+			}
+		}
+	}
+	.icon {
+		fill: #fff;
+		display: inline-block;
+		vertical-align: middle;
+		width: 18px;
+		height: 18px;
+		transition: all .4s ease-out;
+	}
+	.visual & {
+		padding: 0;
+		position: absolute;
+		right: 49px;
+		top: 50%;
+		transform: translateY(-50%);
+		@include media(desktop) {
+			right: 10px;
+		}
+		li {
+			display: block;
+			margin: 0 0 28px;
+		}
+		a {
+			display: block;
+			width: auto;
+			height: auto;
+			line-height: 0;
+			&:before {
+				display: none;
+			}
+		}
+		.icon {
+			width: 24px;
+			height: 24px;
+		}
 	}
 }
