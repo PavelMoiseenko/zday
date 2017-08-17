@@ -1,0 +1,35 @@
+.registration {
+	overflow: hidden;
+}
+.form-holder {
+	position: relative;
+	z-index: 2;
+	min-height: 520px;
+	padding: 0 0 166px;
+	h2 {
+		margin: 0 0 94px;
+	}
+	&:before {
+		content: '';
+		position: absolute;
+		left: 50%;
+		top: 110px;
+		transform: translateX(-50%) rotate(45deg);
+		width: 600px;
+		height: 600px;
+		border: 2px solid rgba(25,121,176,.15);
+		z-index: -1;
+	}
+}
+.form-box {
+	background-color: $bg-dark;
+	max-width: 490px;
+	margin: 0 auto;
+	padding: 50px 100px;
+	min-height: 510px;
+	&:before,
+	&:after {
+		width: 100px;
+		height: 50px;
+	}
+}
