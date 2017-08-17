@@ -128,7 +128,8 @@ input {
 	&[type="search"],
 	&[type="email"],
 	&[type="tel"] { -webkit-appearance: none; }
-	&[type="search"] {
+	&[type="search"],
+	&[type="url"] {
 		&::-webkit-search-decoration,
 		&::-webkit-search-cancel-button,
 		&::-webkit-search-results-button,

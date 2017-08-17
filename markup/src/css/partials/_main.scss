@@ -14,8 +14,8 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 		position: relative;
-		color: #fff;
 		z-index: 2;
+		color: #fff;
 		&:before {
 			content: '';
 			position: absolute;
@@ -41,6 +41,14 @@
 				background-position: 50% 50%;
 				background-repeat: no-repeat;
 			}
+		}
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			color: #fff;
 		}
 	}
 }
