@@ -51,16 +51,30 @@
 			color: #fff;
 		}
 	}
+	&.striped {
+		&:before {
+			content: '';
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			z-index: -1;
+			background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAFUlEQVQYlWNgwANcXFz+jwRJBgYGAF4NDlmhpJXFAAAAAElFTkSuQmCC);
+			opacity: .01;
+		}
+	}
 }
 .img-triangles {
 	position: absolute;
-	max-width: 100%;
 	height: auto;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	z-index: -1;
-	max-height: 100%;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	img {
+		margin: auto;
+	}
 }
 .intro {
 	text-align: center;
