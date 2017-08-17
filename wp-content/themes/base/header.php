@@ -136,14 +136,8 @@
 
 
 
-    <!---->
-    <!--            <!--SLOGAN-->
-    <!--            --><?php
-    //            $slogan = get_field('slogan', 'options');
-    //            if ($slogan) : ?>
-    <!--                <h1>--><?php //echo $slogan; ?><!--</h1>-->
-    <!--            --><?php //endif; ?>
-    <!---->
+
+
     <!--            <!--TOPICS-->
 <!--                --><?php //if (have_rows('topics', 'options')): ?>
 <!--                    <ul class="topics">-->
@@ -181,38 +175,3 @@
     <!--                </ul>-->
     <!---->
     <!--            --><?php //endif; ?>
-    <!---->
-    <!--            <!--CTA-->
-<!--                --><?php //$header_cta_link = get_field('$header_cta_link', 'options');
-//                if ($header_cta_link) :
-//                    $header_cta_text = get_field('$header_cta_text', 'options');?>
-<!--                    <a href="--><?php //echo $header_cta_link;?><!--">--><?php //echo $header_cta_text;?><!--</a>-->
-<!--                --><?php //endif; ?>
-    <!---->
-    <!--        </div>-->
-    <!--    </header>-->
-    <!--    --><?php
-    //    $args = array(
-    //        'theme_location' => 'primary',
-    //        'menu' => '',
-    //        'container' => 'nav',
-    //        'container_class' => '',
-    //        'container_id' => '',
-    //        'menu_class' => 'main-menu',
-    //        'menu_id' => 'main-menu',
-    //        'echo' => true,
-    //        'fallback_cb' => 'wp_page_menu',
-    //        'before' => '',
-    //        'after' => '',
-    //        'link_before' => '',
-    //        'link_after' => '',
-    //        'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-    //        'depth' => 0,
-    //        'walker' => new CustomWalkerNavMenu
-    //    );
-    //    if (has_nav_menu('primary')) {
-    //        wp_nav_menu($args);
-    //    }
-    //    ?>
-    <!---->
-    <!--    <div id="content" class="site-content">-->
