@@ -81,6 +81,7 @@
 		padding: 153px 6% 30px;
 		font-size: 18px;
 		line-height: 1.22;
+		padding-top: 0 !important; /* remove after adding icons */
 		@include media(desktop) {
 			padding-left: 3%;
 			padding-right: 3%;
@@ -106,6 +107,7 @@
 			width: 98px;
 			height: 98px;
 			border: 1px solid #eee;
+			display: none !important; /* remove after adding icons */
 			@include media(tablet) {
 				width: 52px;
 				height: 52px;
