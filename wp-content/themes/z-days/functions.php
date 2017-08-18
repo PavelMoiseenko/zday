@@ -241,9 +241,9 @@ add_action( 'init', 'create_speaker_type' );
  * Function to test input data from form
  */
 function test_input( $data ) {
-//	$data = trim( $data );
-//	$data = stripslashes( $data );
-//	$data = htmlspecialchars( $data );
+	$data = trim( $data );
+	$data = stripslashes( $data );
+	$data = htmlspecialchars( $data );
 
 	return $data;
 }
@@ -266,7 +266,7 @@ function registration_callback() {
 	$message           = '';
 	$telephone         = '';
 
-    $regexPattern = '/[^А-Яа-я ]/';
+    $regexPattern = '/^[a-zA-Z ]*$/';
 	if ( empty( $_POST['name'] ) ) {
 		$nameErr = "Необходимо имя";
 	} else {
@@ -321,7 +321,7 @@ function registration_callback() {
 			'message'           => $message
 		);
 		print_r($_POST);
-		print_r($response);die;
+		print_r($response);
 		wp_send_json( $response );
 	}
 
