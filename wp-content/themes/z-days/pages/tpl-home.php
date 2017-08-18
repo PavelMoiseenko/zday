@@ -172,28 +172,28 @@
                         <form class="form" action="#" novalidate>
                             <div class="form-row">
                                 <div class="form-field">
-                                    <label for="name-field">Имя *</label>
+                                    <label for="name-field"><?php _e("Имя *", "zdays");?></label>
                                     <input class="name" type="text" id="name-field" name="nameField" required>
                                     <!--                                        <span class="name-err"></span>-->
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-field">
-                                    <label for="surname-field">Фамилия *</label>
+                                    <label for="surname-field"><?php _e("Фамилия *","zdays");?></label>
                                     <input class="surname" type="text" id="surname-field" name="surnameField" required>
                                     <!--                                        <span class="surname-err"></span>-->
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-field">
-                                    <label for="email-field">Email *</label>
+                                    <label for="email-field"><?php _e("Email *", "zdays");?></label>
                                     <input class="email" type="email" id="email-field" name="emailField" required>
                                     <!--                                        <span class="email-err"></span>-->
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-field">
-                                    <label for="specialization-field">Специализация *</label>
+                                    <label for="specialization-field"><?php _e("Специализация *", "zdays");?></label>
                                     <input class="specialization" type="text" id="specialization-field"
                                            name="specializationField" required>
                                     <!--                                        <span class="specialization-err"></span>-->
@@ -201,7 +201,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-field">
-                                    <label for="tel-field">Телефон</label>
+                                    <label for="tel-field"><?php _e("Телефон", "zdays");?></label>
                                     <input class="telephone" type="tel" id="tel-field" name="telField" required>
                                     <!--                                        <span class="telephone-err"></span>-->
                                 </div>
@@ -216,21 +216,21 @@
 							<?php endif; ?>
                         </form>
                         <div class="message-holder success-message">
-                            <h2>Ваша регистрация прошла успешно!</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p>
+                            <h2><?php _e("Ваша регистрация прошла успешно!", "zdays");?></h2>
+                            <p><?php _e("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.", "zdays");?></p>
 							<?php $event_plan = get_field( "event_plan", $event_id );
 							if ( $event_plan ) :?>
                                 <div class="btn-holder">
-                                    <a class="button" target="_blank" href="<?php echo $event_plan['url']; ?>">Скачать
-                                        план мероприятия</a>
+                                    <a class="button" target="_blank" href="<?php echo $event_plan['url']; ?>"><?php _e("Скачать
+                                        план мероприятия", "zdays");?></a>
                                 </div>
                             <?php endif; ?>
                         </div>
                     <?php else: ?>
                         <div class="message-holder info-message">
-                            <h2>Регистрация закрыта</h2>
-                            <p>Следите за нашими обновлениями</p>
+                            <h2><?php _e("Регистрация закрыта", "zdays");?></h2>
+                            <p><?php _e("Следите за нашими обновлениями", "zdays");?></p>
                         </div>
 					<?php endif; ?>
                 </div>

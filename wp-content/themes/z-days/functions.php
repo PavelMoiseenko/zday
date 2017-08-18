@@ -174,18 +174,18 @@ if ( ! class_exists( 'acf' ) && ! is_admin() ) {
 function create_event_type() {
 	register_post_type( 'event', array(
 			'labels'        => array(
-				'name'               => esc_html__( 'Events', 'zdays' ),
-				'singular_name'      => esc_html__( 'Event', 'zdays' ),
-				'add_new'            => esc_html__( 'Add New Event', 'zdays' ),
-				'add_new_item'       => esc_html__( 'Add Event', 'zdays' ),
-				'edit'               => esc_html__( 'Edit', 'zdays' ),
-				'edit_item'          => esc_html__( 'Edit Event', 'zdays' ),
-				'new_item'           => esc_html__( 'New Event', 'zdays' ),
-				'view'               => esc_html__( 'View', 'zdays' ),
-				'view_item'          => esc_html__( 'View Event', 'zdays' ),
-				'search_items'       => esc_html__( 'Search Event', 'zdays' ),
-				'not_found'          => esc_html__( 'No Events found', 'zdays' ),
-				'not_found_in_trash' => esc_html__( 'No Events found in Trash', 'zdays' )
+				'name'               => esc_html__( 'События', 'zdays' ),
+				'singular_name'      => esc_html__( 'Событие', 'zdays' ),
+				'add_new'            => esc_html__( 'Добавить новое', 'zdays' ),
+				'add_new_item'       => esc_html__( 'Добавить Событие', 'zdays' ),
+				'edit'               => esc_html__( 'Редактировать', 'zdays' ),
+				'edit_item'          => esc_html__( 'Редактировать Событие', 'zdays' ),
+				'new_item'           => esc_html__( 'Новое Событие', 'zdays' ),
+				'view'               => esc_html__( 'Просмотреть', 'zdays' ),
+				'view_item'          => esc_html__( 'Просмотреть Событие', 'zdays' ),
+				'search_items'       => esc_html__( 'Найти Событие', 'zdays' ),
+				'not_found'          => esc_html__( 'Событий не найдено', 'zdays' ),
+				'not_found_in_trash' => esc_html__( 'Событий в корзине не найдено', 'zdays' )
 			),
 			'public'        => true,
 			'has_archive'   => true,
@@ -206,18 +206,18 @@ add_action( 'init', 'create_event_type' );
 function create_speaker_type() {
 	register_post_type( 'speaker', array(
 			'labels'        => array(
-				'name'               => esc_html__( 'Speakers', 'zdays' ),
-				'singular_name'      => esc_html__( 'Speaker', 'zdays' ),
-				'add_new'            => esc_html__( 'Add New Speaker', 'zdays' ),
-				'add_new_item'       => esc_html__( 'Add Speaker', 'zdays' ),
-				'edit'               => esc_html__( 'Edit', 'zdays' ),
-				'edit_item'          => esc_html__( 'Edit Speaker', 'zdays' ),
-				'new_item'           => esc_html__( 'New Speaker', 'zdays' ),
-				'view'               => esc_html__( 'View', 'zdays' ),
-				'view_item'          => esc_html__( 'View Speaker', 'zdays' ),
-				'search_items'       => esc_html__( 'Search Speaker', 'zdays' ),
-				'not_found'          => esc_html__( 'No Speakers found', 'zdays' ),
-				'not_found_in_trash' => esc_html__( 'No Speakers found in Trash', 'base' )
+				'name'               => esc_html__( 'Спикеры', 'zdays' ),
+				'singular_name'      => esc_html__( 'Спикер', 'zdays' ),
+				'add_new'            => esc_html__( 'Добавить нового', 'zdays' ),
+				'add_new_item'       => esc_html__( 'Добавить Спикера', 'zdays' ),
+				'edit'               => esc_html__( 'Редактировать', 'zdays' ),
+				'edit_item'          => esc_html__( 'Редактировать Спикера', 'zdays' ),
+				'new_item'           => esc_html__( 'Новый Спикер', 'zdays' ),
+				'view'               => esc_html__( 'Просмотреть', 'zdays' ),
+				'view_item'          => esc_html__( 'Просмотреть Спикера', 'zdays' ),
+				'search_items'       => esc_html__( 'Найти Спикера', 'zdays' ),
+				'not_found'          => esc_html__( 'Спикеры не найдены', 'zdays' ),
+				'not_found_in_trash' => esc_html__( 'Не найдены спикеры в корзине', 'zdays' )
 			),
 			'public'        => true,
 			'has_archive'   => true,
@@ -262,46 +262,46 @@ function registration_callback() {
 
 
 	if ( empty( $_POST['name'] ) ) {
-		$nameErr = "Name is required";
+		$nameErr = "Необходимо имя";
 	} else {
 		$name = test_input( $_POST['name'] );
-		if ( ! preg_match( "/^[a-zA-Z ]*$/", $name ) || strlen( $name ) > 20 ) {
-			$nameErr = "Only letters and white space allowed";
+		if ( ! preg_match( "/^[а-яА-Я ]*$/", $name ) || strlen( $name ) > 20 ) {
+			$nameErr = "Только буквы и пробел";
 		}
 	}
 
 	if ( empty( $_POST['surname'] ) ) {
-		$surnameErr = "Surname is required";
+		$surnameErr = "Необходима фамилия";
 	} else {
 		$surname = test_input( $_POST['surname'] );
-		if ( ! preg_match( "/^[a-zA-Z ]*$/", $surname ) || strlen( $surname ) > 20 ) {
-			$surnameErr = "Only letters and white space allowed";
+		if ( ! preg_match( "/^[а-яА-Я ]*$/", $surname ) || strlen( $surname ) > 20 ) {
+			$surnameErr = "";
 		}
 	}
 
 
 	if ( empty( $_POST['email'] ) ) {
-		$emailErr = "Email is required";
+		$emailErr = "Необходим email";
 	} else {
 		$email = test_input( $_POST['email'] );
 		if ( ! filter_var( $email, FILTER_VALIDATE_EMAIL ) || strlen( $email ) > 20 ) {
-			$emailErr = "Invalid email format";
+			$emailErr = "Неверный формат";
 		}
 	}
 
 	if ( empty( $_POST['specialization'] ) ) {
-		$specializationErr = "Specialization is required";
+		$specializationErr = "Необходима специализация";
 	} else {
 		$specialization = test_input( $_POST['specialization'] );
-		if ( ! preg_match( "/^[a-zA-Z ]*$/", $specialization ) || strlen( $specialization ) > 20 ) {
-			$specializationErr = "Only letters and white space allowed";
+		if ( ! preg_match( "/^[а-яА-Я ]*$/", $specialization ) || strlen( $specialization ) > 20 ) {
+			$specializationErr = "Только буквы и пробел";
 		}
 	}
 
 	$telephone = test_input( $_POST['telephone'] );
 	if ( ! empty( $telephone ) ) {
 		if ( ! preg_match( "/^[\d -]+$/", $telephone ) || strlen( $telephone ) > 20 ) {
-			$telephoneErr = "Invalid telephone format";
+			$telephoneErr = "Неверный формат";
 		}
 	}
 
@@ -326,7 +326,7 @@ function registration_callback() {
 		if ( $email == $registered_email ) :
 			$flag     = true;
 			$response = array(
-				"messageErr" => "Sorry, participant with email " . $email . " has been registered already."
+				"messageErr" => "Sorry, participant with this email has been registered already."
 			);
 			break;
 		endif;
@@ -349,7 +349,7 @@ function registration_callback() {
 			'emailErr'          => $emailErr,
 			'specializationErr' => $specializationErr,
 			'telephoneErr'      => $telephoneErr,
-			"message"           => "Dear " . $name . " " . $surname . " ,you are succesfully registered. Here is event's plan " . "<a href=" . $event_plan['url'] . ">Download plan</a>"
+			"message"           => "You are succesfully registered."
 		);
 
 	endif;
