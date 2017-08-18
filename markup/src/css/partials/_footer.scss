@@ -10,6 +10,15 @@
 	.logo-holder {
 		width: 230px;
 		flex: 0 0 230px;
+		@include media(tablet) {
+			width: 166px;
+			flex: 0 0 166px;
+		}
+		@include media(mobile) {
+			width: 100%;
+			display: block;
+			text-align: center;
+		}
 	}
 	.zfort-logo {
 		max-width: 100%;
@@ -21,6 +30,11 @@
 		max-width: 70px;
 		display: block;
 		margin: 0 0 0 auto;
+		@include media(mobile) {
+			margin: 0;
+			display: inline-block;
+			vertical-align: top;
+		}
 		a {
 			display: block;
 		}
@@ -32,10 +46,16 @@
 	margin: 0 0 14px;
 	display: flex;
 	flex-wrap: wrap;
+	@include media(mobile) {
+		display: block;
+	}
 	.container {
 		width: 100%;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
+		@include media(mobile) {
+			display: block;
+		}
 	}
 }

@@ -10,6 +10,9 @@ body{
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
 	min-width: 320px;
+	@include media(tablet) {
+		font-size: 13px;
+	}
 }
 a{
 	color: $color-link;
@@ -60,6 +63,12 @@ b {
 	letter-spacing: 1px;
 	border: 0;
 	width: auto;
+	@include media(tablet) {
+		font-size: 13px;
+		height: 50px;
+		line-height: 50px;
+		min-width: 240px;
+	}
 	&:before,
 	&:after {
 		content: '';
@@ -131,11 +140,17 @@ b {
 	#footer & {
 		flex: 1;
 		justify-content: center;
+		@include media(mobile) {
+			margin: 0;
+		}
 	}
 	li {
 		display: inline-block;
 		vertical-align: top;
 		margin: 0 0 0 41px;
+		@include media(tablet) {
+			margin-left: 24px;
+		}
 		&:first-child {
 			margin-left: 0;
 		}
@@ -186,11 +201,20 @@ b {
 		top: 50%;
 		transform: translateY(-50%);
 		@include media(desktop) {
-			right: 10px;
+			right: 15px;
+		}
+		@include media(mobile) {
+			position: static;
+			font-size: 0;
 		}
 		li {
 			display: block;
 			margin: 0 0 28px;
+			@include media(mobile) {
+				display: inline-block;
+				vertical-align: middle;
+				margin: 0 15px 10px;
+			}
 		}
 		a {
 			display: block;

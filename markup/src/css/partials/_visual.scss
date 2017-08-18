@@ -7,12 +7,21 @@
 	position: relative;
 	z-index: 2;
 	@include media(desktop) {
-		padding: 0 44px;
+		padding: 0 50px;
+	}
+	@include media(mobile) {
+		padding: 0 15px 15px;
 	}
 	> .container {
 		position: relative;
 		z-index: 2;
 		padding: 50px 0 110px;
+		@include media(tablet) {
+			padding-bottom: 50px;
+		}
+		@include media(mobile) {
+			padding-bottom: 30px;
+		}
 		&:before {
 			content: '';
 			position: absolute;
@@ -27,17 +36,30 @@
 			z-index: -1;
 		}
 	}
+	.small-width {
+		padding: 0;
+	}
 	h1 {
 		font-size: 60px;
 		margin: 0 0 57px;
 		letter-spacing: 1px;
 		color: #fff;
+		@include media(tablet) {
+			font-size: 32px;
+			margin-bottom: 48px;
+		}
+		@include media(mobile) {
+			margin-bottom: 15px;
+		}
 	}
 	h2 {
 		font-size: 30px;
 		margin: 0 0 1px;
 		letter-spacing: 2px;
 		color: #fff;
+		@include media(tablet) {
+			font-size: 16px;
+		}
 	}
 	.btn-holder {
 		margin: 0 0 30px;
@@ -47,6 +69,10 @@
 	list-style: none;
 	font-size: 0;
 	margin: 0 0 38px;
+	@include media(tablet) {
+		margin-left: -7px;
+		margin-right: -7px;
+	}
 	li {
 		display: inline-block;
 		vertical-align: top;
@@ -55,6 +81,22 @@
 		padding: 153px 6% 30px;
 		font-size: 18px;
 		line-height: 1.22;
+		@include media(desktop) {
+			padding-left: 3%;
+			padding-right: 3%;
+		}
+		@include media(tablet) {
+			font-size: 14px;
+			padding-top: 107px;
+			padding-bottom: 15px;
+			padding-left: 7px;
+			padding-right: 7px;
+		}
+		@include media(mobile-small) {
+			padding-top: 70px;
+			width: 100%;
+			font-size: 15px;
+		}
 		&:before {
 			content: '';
 			position: absolute;
@@ -64,6 +106,15 @@
 			width: 98px;
 			height: 98px;
 			border: 1px solid #eee;
+			@include media(tablet) {
+				width: 52px;
+				height: 52px;
+			}
+			@include media(mobile-small) {
+				top: 10px;
+				width: 40px;
+				height: 40px;
+			}
 		}
 	}
 	p {
@@ -74,6 +125,9 @@
 	margin: 0 0 31px;
 	display: inline-block;
 	vertical-align: top;
+	@include media(mobile) {
+		max-width: 140px;
+	}
 	a {
 		display: block;
 	}
