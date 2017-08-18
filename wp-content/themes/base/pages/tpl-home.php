@@ -28,8 +28,16 @@
 
                 <?php
                 $date_now = date('Y-m-d H:i:s');
-                $posts = get_field('favorite_event');
                 $registration_cta_text = get_field('registration_cta_text');
+                $posts = get_field('favorite_event');
+                if($posts){
+                    $favorite_event_id = $posts[0]->ID;
+                    $favorite_event_start = get_field('start_date', $favorite_event_id);
+                    if($favorite_event_start < $date_now){
+                        $posts = false;
+                    }
+                }
+
                 if(!$posts):
                     $posts = get_posts(array(
                         'posts_per_page' => 1,
@@ -64,9 +72,16 @@
                         <article class="box with-logo">
                             <header class="heading">
                                 <div class="info">
-                                    <time datetime="2017-08-15T19:00">30.08.2017, 19:00</time>
-<!--                                    <time datetime="2017-08-15T19:00">--><?php //the_field('start_date');?><!--</time>-->
-                                    <address>г. Харьков, ул. Бучмы 1-Б, БЦ “Континент”, 3й этаж.</address>
+                                    <?php
+                                    $date = get_field('start_date', false, false);
+                                    if ($date) :
+                                        $date = new DateTime($date);?>
+                                        <time><?php echo $date->format('j.m.Y, G:i');?></time>
+                                    <?php endif;?>
+                                    <?php $address = get_field('address');
+                                    if($address) :?>
+                                        <address><?php echo $address;?></address>
+                                    <?php endif;?>
                                 </div>
                                 <h1><?php the_title();?></h1>
                             </header>
@@ -82,7 +97,7 @@
                             <?php
                             if($registration_cta_text) :?>
                             <div class="btn-holder">
-                                <a class="button" href="#"><?php echo $registration_cta_text;?></a>
+                                <a class="button" href="#section_registration"><?php echo $registration_cta_text;?></a>
                             </div>
                             <?php endif;?>
                         </article>
@@ -134,7 +149,7 @@
             </div>
         </section>
 
-        <section class="content-row striped registration">
+        <section class="content-row striped registration" id="section_registration">
             <img class="img-triangles"
                  src=<?php echo get_template_directory_uri() . "/assets/images/img-decor4.png"; ?> alt="image
                  description">
@@ -150,7 +165,7 @@
 
                     <?php $is_registration_on = get_field('is_registration_on');
                     if ($is_registration_on['value'] === '1'  && $post_registration_opening) :?>
-                        <div class="box with-logo form-box">
+                        <div  class="box with-logo form-box">
                             <form class="form" action="#" novalidate>
                                 <div class="form-row">
                                     <div class="form-field">
@@ -207,6 +222,7 @@
 
     </main>
 <?php get_footer(); ?>
+
 
 
 <!--                    if ($posts): ?>-->
