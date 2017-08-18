@@ -29,7 +29,7 @@ jQuery(document).ready(function($) {
                     $('.email-err').text(response.emailErr);
                     $('.specialization-err').text(response.specializationErr);
                     $('.telephone-err').text(response.telephoneErr);
-                    $('.message').html(response.message);
+                    $('.success-message').html(response.messageErr);
                 }
             });
 

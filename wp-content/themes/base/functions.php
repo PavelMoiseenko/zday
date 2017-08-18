@@ -542,7 +542,7 @@ function registration_callback()
         if ($email == $registered_email) :
             $flag = true;
             $response = array(
-                "message" => "Sorry, participant with email " . $email . " has been registered already."
+                "messageErr" => "Sorry, participant with email " . $email . " has been registered already."
             );
             break;
         endif;

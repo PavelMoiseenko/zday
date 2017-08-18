@@ -55,15 +55,17 @@
 </svg>
 <div id="wrapper">
     <section class="visual">
-        <img class="img-triangles"
-             src=<?php echo get_template_directory_uri() . "/assets/images/img-decor1.png"; ?> alt="image description">
+        <div class="img-triangles">
+            <img src=<?php echo get_template_directory_uri() . "/assets/images/img-decor1.png"; ?> alt="image
+                    description">
+        </div>
         <div class="container">
             <?php
             $logo = get_field('logo', 'options');
             $logo_link = get_field('logo_link', 'options');
             if ($logo_link): ?>
                 <strong class="logo">
-                    <a href="<?php echo $logo_link;?>">
+                    <a href="<?php echo $logo_link; ?>">
                         <img src="<?php echo $logo; ?>" alt="Z-day" width="250" height="261"/>
                     </a>
                 </strong>
@@ -79,23 +81,23 @@
             <?php if (have_rows('topics', 'options')): ?>
                 <div class="container small-width">
                     <ul class="list-visual">
-                    <?php while (have_rows('topics', 'options')): the_row();
-                        $topic_image = get_sub_field('topic_image');
-                        $topic_title = get_sub_field('topic_title');
-                        $topic_description = get_sub_field('topic_description');
-                        ?>
-                        <li class="topic">
-                            <h2><?php echo $topic_title; ?></h2>
-                            <p><?php echo $topic_description; ?></p>
-<!--                            <img src="--><?php //echo $topic_image; ?><!--"/>-->
-                        </li>
-                    <?php endwhile; ?>
+                        <?php while (have_rows('topics', 'options')): the_row();
+                            $topic_image = get_sub_field('topic_image');
+                            $topic_title = get_sub_field('topic_title');
+                            $topic_description = get_sub_field('topic_description');
+                            ?>
+                            <li class="topic">
+                                <h2><?php echo $topic_title; ?></h2>
+                                <p><?php echo $topic_description; ?></p>
+                                <!--                            <img src="--><?php //echo $topic_image; ?><!--"/>-->
+                            </li>
+                        <?php endwhile; ?>
                     </ul>
                     <?php $header_cta_link = get_field('header_cta_link', 'options');
                     if ($header_cta_link) :
-                        $header_cta_text = get_field('header_cta_text', 'options');?>
+                        $header_cta_text = get_field('header_cta_text', 'options'); ?>
                         <div class="btn-holder">
-                            <a class="button" href="<?php echo $header_cta_link;?>"><?php echo $header_cta_text;?></a>
+                            <a class="button" href="<?php echo $header_cta_link; ?>"><?php echo $header_cta_text; ?></a>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -132,46 +134,3 @@
             </li>
         </ul>
     </section>
-
-
-
-
-
-
-    <!--            <!--TOPICS-->
-<!--                --><?php //if (have_rows('topics', 'options')): ?>
-<!--                    <ul class="topics">-->
-<!--                        --><?php //while (have_rows('topics', 'options')): the_row();
-//                            $topic_image = get_sub_field('topic_image');
-//                            $topic_title = get_sub_field('topic_title');
-//                            $topic_description = get_sub_field('topic_description');
-//                            ?>
-<!--    -->
-<!--                            <li class="topic">-->
-<!--                                <img src="--><?php //echo $topic_image; ?><!--"/>-->
-<!--                                --><?php //echo $topic_title; ?>
-<!--                                --><?php //echo $topic_description; ?>
-<!--                            </li>-->
-<!--                        --><?php //endwhile; ?>
-<!--                    </ul>-->
-<!--                --><?php //endif; ?>
-    <!---->
-    <!--            <!--Social icons-->
-    <!--            --><?php //if (have_rows('header_social_icons', 'options')): ?>
-    <!--                <ul class="icons">-->
-    <!--                    --><?php //while (have_rows('header_social_icons', 'options')): the_row();
-    //                        $header_social_image = get_sub_field('header_social_image');
-    //                        $header_social_link = get_sub_field('header_social_link'); ?>
-    <!---->
-    <!--                        <li class="icon">-->
-    <!--                            --><?php //if ($header_social_link): ?>
-    <!--                                <a href="--><?php //echo $header_social_link; ?><!--">-->
-    <!--                                    <img src="--><?php //echo $header_social_image; ?><!--"/>-->
-    <!--                                </a>-->
-    <!--                            --><?php //endif; ?>
-    <!--                        </li>-->
-    <!---->
-    <!--                    --><?php //endwhile; ?>
-    <!--                </ul>-->
-    <!---->
-    <!--            --><?php //endif; ?>
