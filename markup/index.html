@@ -52,7 +52,9 @@
 	</svg>
 	<div id="wrapper">
 		<section class="visual">
-			<img class="img-triangles" src="build/images/img-decor1.png" alt="image description">
+			<div class="img-triangles">
+				<img src="build/images/img-decor1.png" alt="image description">
+			</div>
 			<div class="container">
 				<strong class="logo">
 					<a href="#">
@@ -105,7 +107,9 @@
 		</section>
 		<main id="main" class="clearfix">
 			<section class="content-row intro-holder">
-				<img class="img-triangles" src="build/images/img-decor2.png" alt="image description">
+				<div class="img-triangles">
+					<img src="build/images/img-decor2.png" alt="image description">
+				</div>
 				<div class="container small-width">
 					<div class="intro">
 						<h2>Что такое Z-Day?</h2>
@@ -140,7 +144,9 @@
 				</div>
 			</section>
 			<section class="content-row bg-custom with-logo">
-				<img class="img-triangles" src="build/images/img-decor3.png" alt="image description">
+				<div class="img-triangles">
+					<img src="build/images/img-decor3.png" alt="image description">
+				</div>
 				<div class="container small-width">
 					<h2>Спикеры</h2>
 					<ul class="thumb-list">
@@ -172,8 +178,12 @@
 				</div>
 			</section>
 			<section class="content-row striped registration">
-				<img class="img-triangles" src="build/images/img-decor4.png" alt="image description">
-				<img class="img-decor" src="build/images/git-cat.png" alt="git" width="390" height="520">
+				<div class="img-triangles">
+					<img src="build/images/img-decor4.png" alt="image description">
+				</div>
+				<div class="img-decor">
+					<img src="build/images/git-cat.png" alt="git" width="390" height="520">
+				</div>
 				<div class="container">
 					<div class="form-holder">
 						<h2>Регистрация</h2>
@@ -182,37 +192,48 @@
 								<div class="form-row">
 									<div class="form-field">
 										<label for="name-field">Имя *</label>
-										<input type="text" id="name-field">
+										<input type="text" id="name-field" name="nameField" required>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-field">
 										<label for="surname-field">Фамилия *</label>
-										<input type="text" id="surname-field">
+										<input type="text" id="surname-field" name="surnameField" required>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-field">
 										<label for="email-field">Email *</label>
-										<input type="email" id="email-field">
+										<input type="email" id="email-field" name="emailField" required>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-field">
 										<label for="specialization-field">Специализация *</label>
-										<input type="text" id="specialization-field">
+										<input type="text" id="specialization-field" name="specializationField" required>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-field">
 										<label for="tel-field">Телефон</label>
-										<input type="tel" id="tel-field">
+										<input type="tel" id="tel-field" name="telField">
 									</div>
 								</div>
 								<div class="btn-holder">
-									<a class="button" href="#">Зарегистрироваться</a>
+									<button class="button" type="submit">Зарегистрироваться</button>
 								</div>
 							</form>
+							<!-- <div class="message-holder info-message">
+								<h2>Регистрация закрыта</h2>
+								<p>Следите за нашими обновлениями</p>
+							</div> -->
+							<div class="message-holder success-message">
+								<h2>Ваша регистрация прошла успешно!</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								<div class="btn-holder">
+									<a class="button" href="#">Скачать план мероприятия</a>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
