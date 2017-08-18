@@ -58,6 +58,8 @@ b {
 	vertical-align: top;
 	position: relative;
 	letter-spacing: 1px;
+	border: 0;
+	width: auto;
 	&:before,
 	&:after {
 		content: '';

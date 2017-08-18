@@ -1,5 +1,35 @@
 jQuery(function() {
 	forms();
+	jQuery(".form").validate({
+		errorPlacement: function(error,element) {
+			return true;
+		},
+		rules: {
+			nameField: {
+				required: true
+			},
+			surnameField: {
+				required: true
+			},
+			emailField: {
+				required: true,
+				email: true
+			},
+			specializationField: {
+				required: true
+			},
+			telField: {
+				digits: true
+			}
+		},
+		submitHandler: function(form) {
+			var parent = jQuery('.form-box');
+
+			parent.addClass('success-form');
+			parent.find('.form').hide();
+			parent.find('.success-message').fadeIn('slow');
+		}
+	});
 });
 
 function forms(){
@@ -15,7 +45,7 @@ function forms(){
 		}
 	});
 
-	jQuery('form input, form select').each(function(){
+	jQuery('form input, form select, form textarea').each(function(){
 		jQuery(this).trigger('pageload');
 	});
 }
