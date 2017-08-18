@@ -196,11 +196,12 @@ if (!function_exists('base_scripts')) {
         wp_enqueue_style('all');
 
         // Register Scripts
-
+        wp_register_script('scripts', TEMPLATE_DIRECTORY_URI . '/assets/js/scripts.js', array('jquery'), false, true);
         wp_register_script('main', TEMPLATE_DIRECTORY_URI . '/assets/js/main.js', array('jquery'), false, true);
 
         // Enqueue Scripts
         wp_enqueue_script('jquery');
+        wp_enqueue_script('scripts');
         wp_enqueue_script('main');
         if (is_singular() && comments_open() && get_option('thread_comments')) {
             wp_enqueue_script('comment-reply');
@@ -541,7 +542,7 @@ function registration_callback()
         if ($email == $registered_email) :
             $flag = true;
             $response = array(
-                "message" => "Sorry, participant with email " . $email . " has been registered already."
+                "messageErr" => "Sorry, participant with email " . $email . " has been registered already."
             );
             break;
         endif;
