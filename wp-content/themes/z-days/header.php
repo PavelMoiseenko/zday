@@ -58,21 +58,23 @@
 					if ( $header_cta_link ) :
 						$header_cta_text = get_field( 'header_cta_text', 'options' ); ?>
                         <div class="btn-holder">
-                            <a class="button" href="<?php echo $header_cta_link; ?>"><?php echo $header_cta_text; ?></a>
+                            <a class="button" href="#main"><?php echo $header_cta_text; ?></a>
                         </div>
 					<?php endif; ?>
                 </div>
 			<?php endif; ?>
         </div>
-		<?php if ( have_rows( 'repeater_field_name' ) ): while ( have_rows( 'repeater_field_name' ) ) : the_row(); ?>
+		<?php if ( have_rows( 'header_social_icons', 'options' ) ): ?>
             <ul class="social-networks">
+            <?php while ( have_rows( 'header_social_icons', 'options' ) ) : the_row(); ?>
                 <li>
-                    <a href="<?php the_sub_field( 'sub_field_name' ); ?>">
-                        <svg class="icon <?php the_sub_field( 'sub_field_name' ); ?>">
-                            <use xlink:href="#<?php the_sub_field( 'sub_field_name' ); ?>"></use>
+                    <a href="<?php the_sub_field( 'header_social_link' ); ?>">
+                        <svg class="icon <?php the_sub_field( 'header_social_image' ); ?>">
+                            <use xlink:href="#<?php the_sub_field( 'header_social_image' ); ?>"></use>
                         </svg>
                     </a>
                 </li>
+		<?php endwhile;?>
             </ul>
-		<?php endwhile; endif; ?>
+		<?php endif; ?>
     </section>

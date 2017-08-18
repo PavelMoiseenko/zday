@@ -69,10 +69,16 @@ if ( ! function_exists( 'base_scripts' ) ) {
 /* ACF functions */
 //theme options tab in appearance
 if ( function_exists( 'acf_add_options_sub_page' ) ) {
-	acf_add_options_sub_page( array(
-		'title'  => __( 'Настройки темы', 'zdays' ),
-		'parent' => 'themes.php',
-	) );
+	acf_add_options_sub_page(
+	    array(
+        'page_title' 	=> __('Настройки темы', 'zdays'),
+        'menu_title'	=> __('Настройки темы', 'zdays'),
+        'menu_slug' 	=> 'acf-options-theme-settings',
+		'parent' => 'themes.php'
+	)
+    );
+
+
 }
 
 //acf theme functions placeholders
@@ -235,9 +241,9 @@ add_action( 'init', 'create_speaker_type' );
  * Function to test input data from form
  */
 function test_input( $data ) {
-	$data = trim( $data );
-	$data = stripslashes( $data );
-	$data = htmlspecialchars( $data );
+//	$data = trim( $data );
+//	$data = stripslashes( $data );
+//	$data = htmlspecialchars( $data );
 
 	return $data;
 }
@@ -260,12 +266,12 @@ function registration_callback() {
 	$message           = '';
 	$telephone         = '';
 
-
+    $regexPattern = '/[^А-Яа-я ]/';
 	if ( empty( $_POST['name'] ) ) {
 		$nameErr = "Необходимо имя";
 	} else {
 		$name = test_input( $_POST['name'] );
-		if ( ! preg_match( "/^[а-яА-Я ]*$/", $name ) || strlen( $name ) > 20 ) {
+		if ( ! preg_match( $regexPattern, $name ) || strlen( $name ) > 20 ) {
 			$nameErr = "Только буквы и пробел";
 		}
 	}
@@ -274,7 +280,7 @@ function registration_callback() {
 		$surnameErr = "Необходима фамилия";
 	} else {
 		$surname = test_input( $_POST['surname'] );
-		if ( ! preg_match( "/^[а-яА-Я ]*$/", $surname ) || strlen( $surname ) > 20 ) {
+		if ( ! preg_match( $regexPattern, $surname ) || strlen( $surname ) > 20 ) {
 			$surnameErr = "";
 		}
 	}
@@ -293,7 +299,7 @@ function registration_callback() {
 		$specializationErr = "Необходима специализация";
 	} else {
 		$specialization = test_input( $_POST['specialization'] );
-		if ( ! preg_match( "/^[а-яА-Я ]*$/", $specialization ) || strlen( $specialization ) > 20 ) {
+		if ( ! preg_match( $regexPattern, $specialization ) || strlen( $specialization ) > 20 ) {
 			$specializationErr = "Только буквы и пробел";
 		}
 	}
@@ -314,6 +320,8 @@ function registration_callback() {
 			'telephoneErr'      => $telephoneErr,
 			'message'           => $message
 		);
+		print_r($_POST);
+		print_r($response);die;
 		wp_send_json( $response );
 	}
 

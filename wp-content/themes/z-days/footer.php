@@ -15,36 +15,19 @@
                 </div>
 			<?php endif; ?>
 
-            <ul class="social-networks">
-                <li>
-                    <a href="#">
-                        <svg class="icon ico-facebook">
-                            <use xlink:href="#ico-facebook"></use>
-                        </svg>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <svg class="icon ico-twitter">
-                            <use xlink:href="#ico-twitter"></use>
-                        </svg>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <svg class="icon ico-instagram">
-                            <use xlink:href="#ico-instagram"></use>
-                        </svg>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <svg class="icon ico-linkedin">
-                            <use xlink:href="#ico-linkedin"></use>
-                        </svg>
-                    </a>
-                </li>
-            </ul>
+            <?php if ( have_rows( 'footer_social_icons', 'options' ) ): ?>
+                <ul class="social-networks">
+                    <?php while ( have_rows( 'footer_social_icons', 'options' ) ) : the_row(); ?>
+                        <li>
+                            <a href="<?php the_sub_field( 'footer_social_link' ); ?>">
+                                <svg class="icon <?php the_sub_field( 'footer_social_image' ); ?>">
+                                    <use xlink:href="#<?php the_sub_field( 'footer_social_image' ); ?>"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    <?php endwhile;?>
+                </ul>
+            <?php endif; ?>
 			<?php
 			$project_logo = get_field( 'project_logo', 'options' );
 			$project_link = get_field( 'project_link', 'options' );
