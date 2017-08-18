@@ -226,7 +226,7 @@
                                         план мероприятия</a>
                                 </div>
                             <?php endif; ?>
-                        </div>git
+                        </div>
                     <?php else: ?>
                         <div class="message-holder info-message">
                             <h2>Регистрация закрыта</h2>
