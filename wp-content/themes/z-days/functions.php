@@ -349,7 +349,34 @@ function registration_callback() {
 		);
 		add_row( 'participants', $participant_row, $event_id );
 		$event_plan = get_field( "event_plan", $event_id );
-		//wp_mail($email, "Event plan", "We have sent you event plan " . $event_plan['url']);
+		$event_object = get_post($event_id);
+		$event_title = $event_object->post_title;
+		$address = get_field( "address", $event_id );
+
+        $date = get_field( 'start_date', $event_id, false );
+        $date = new DateTime( $date );
+        $event_date = $date->format( 'j.m' );
+        $event_time = $date->format( 'G:i' );
+        $event_plan = get_field( "event_plan", $event_id );
+        $filedir = get_attached_file( $event_plan['ID']);
+
+
+        $subject = "Регистрация прошла успешно";
+		$message = "<p>Вы только что зарегистрировались на событие <a href='http://www.zday.apache.devplatform1.com' target='_blank'>\"ZDay\"</a>. Подтверждаем, что Ваша регистрация прошла успешно.</p>
+                    <p>Информация о событии:<br>
+                    Название: " . $event_title . "<br>
+                    Дата: " . $event_date . "<br>
+                    Время: " . $event_time . "<br>
+                    Место: " . $address . "<br>
+                    План мероприятия можно найти в attachment</p>";
+
+        $headers = array(
+            'content-type: text/html'
+        );
+        $attachments = $filedir;
+
+        wp_mail($email, $subject, $message, $headers, $attachments);
+
 		$response = array(
 			'nameErr'           => $nameErr,
 			'surnameErr'        => $surnameErr,

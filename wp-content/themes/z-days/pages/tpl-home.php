@@ -213,7 +213,8 @@
                                     <button class="button" type="submit"><?php echo $registration_cta_text; ?></button>
                                 </div>
                                 <div class="message"></div>
-							<?php endif; ?>
+							<?php endif;
+							$event_plan = get_field( "event_plan", $event_id ); ?>
                         </form>
                         <div class="message-holder success-message">
                             <?php $registration_success_title = get_field('registration_success_title');
