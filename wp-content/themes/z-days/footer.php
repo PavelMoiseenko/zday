@@ -7,7 +7,7 @@
 			if ( $company_link ) :?>
                 <div class="logo-holder">
                     <strong class="zfort-logo">
-                        <a href="<?php echo $company_link; ?>">
+                        <a href="<?php echo $company_link; ?>" target="_blank">
                             <img src="<?php echo $company_logo; ?>" alt="Friendly Technologies ZFORT GROUP" width="230"
                                  height="35">
                         </a>
@@ -19,7 +19,7 @@
                 <ul class="social-networks">
                     <?php while ( have_rows( 'footer_social_icons', 'options' ) ) : the_row(); ?>
                         <li>
-                            <a href="<?php the_sub_field( 'footer_social_link' ); ?>">
+                            <a href="<?php the_sub_field( 'footer_social_link' ); ?>" target="_blank">
                                 <svg class="icon <?php the_sub_field( 'footer_social_image' ); ?>">
                                     <use xlink:href="#<?php the_sub_field( 'footer_social_image' ); ?>"></use>
                                 </svg>
