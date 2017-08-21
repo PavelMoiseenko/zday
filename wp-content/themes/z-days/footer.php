@@ -34,7 +34,7 @@
 			if ( $project_link ) :?>
                 <div class="logo-holder">
                     <strong class="zday-logo">
-                        <a href="<?php echo $project_link; ?>">
+                        <a href="<?php echo $project_link; ?>" target="_blank">
                             <img src=<?php echo $project_logo; ?> alt="Z-day" width="250" height="261">
                         </a>
                     </strong>

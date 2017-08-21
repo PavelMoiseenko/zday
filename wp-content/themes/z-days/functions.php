@@ -266,12 +266,13 @@ function registration_callback() {
 	$message           = '';
 	$telephone         = '';
 
-    $regexPattern = '/^[a-zA-Z ]*$/';
+    //$regexPattern = '/^[a-zA-Z ]*$/';
+    $regexPattern = '/^([а-яА-ЯЁёa-zA-Z0-9_ ]+)$/u';
 	if ( empty( $_POST['name'] ) ) {
 		$nameErr = "Необходимо имя";
 	} else {
 		$name = test_input( $_POST['name'] );
-		if ( ! preg_match( $regexPattern, $name ) || strlen( $name ) > 20 ) {
+		if ( ! preg_match( $regexPattern, $name ) || strlen( $name ) > 30 ) {
 			$nameErr = "Только буквы и пробел";
 		}
 	}
@@ -280,8 +281,8 @@ function registration_callback() {
 		$surnameErr = "Необходима фамилия";
 	} else {
 		$surname = test_input( $_POST['surname'] );
-		if ( ! preg_match( $regexPattern, $surname ) || strlen( $surname ) > 20 ) {
-			$surnameErr = "";
+		if ( ! preg_match( $regexPattern, $surname ) || strlen( $surname ) > 30 ) {
+			$surnameErr = "Только буквы и пробел";
 		}
 	}
 
@@ -299,7 +300,7 @@ function registration_callback() {
 		$specializationErr = "Необходима специализация";
 	} else {
 		$specialization = test_input( $_POST['specialization'] );
-		if ( ! preg_match( $regexPattern, $specialization ) || strlen( $specialization ) > 20 ) {
+		if ( ! preg_match( $regexPattern, $specialization ) || strlen( $specialization ) > 30 ) {
 			$specializationErr = "Только буквы и пробел";
 		}
 	}
@@ -320,8 +321,6 @@ function registration_callback() {
 			'telephoneErr'      => $telephoneErr,
 			'message'           => $message
 		);
-		print_r($_POST);
-		print_r($response);
 		wp_send_json( $response );
 	}
 
