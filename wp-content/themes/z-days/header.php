@@ -30,7 +30,7 @@
 			$logo_link = get_field( 'logo_link', 'options' );
 			if ( $logo_link ): ?>
                 <strong class="logo">
-                    <a href="<?php echo $logo_link; ?>">
+                    <a href="<?php echo $logo_link; ?>" target="_blank">
                         <img src="<?php echo $logo; ?>" alt="Z-day" width="250" height="261"/>
                     </a>
                 </strong>

@@ -70,13 +70,13 @@ if ( ! function_exists( 'base_scripts' ) ) {
 //theme options tab in appearance
 if ( function_exists( 'acf_add_options_sub_page' ) ) {
 	acf_add_options_sub_page(
-	    array(
-        'page_title' 	=> __('Настройки темы', 'zdays'),
-        'menu_title'	=> __('Настройки темы', 'zdays'),
-        'menu_slug' 	=> 'acf-options-theme-settings',
-		'parent' => 'themes.php'
-	)
-    );
+		array(
+			'page_title' => __( 'Настройки темы', 'zdays' ),
+			'menu_title' => __( 'Настройки темы', 'zdays' ),
+			'menu_slug'  => 'acf-options-theme-settings',
+			'parent'     => 'themes.php'
+		)
+	);
 
 
 }
@@ -266,8 +266,8 @@ function registration_callback() {
 	$message           = '';
 	$telephone         = '';
 
-    //$regexPattern = '/^[a-zA-Z ]*$/';
-    $regexPattern = '/^([а-яА-ЯЁёa-zA-Z0-9_ ]+)$/u';
+	//$regexPattern = '/^[a-zA-Z ]*$/';
+	$regexPattern = '/^([а-яА-ЯЁёa-zA-Z0-9_ ]+)$/u';
 	if ( empty( $_POST['name'] ) ) {
 		$nameErr = "Необходимо имя";
 	} else {
@@ -348,21 +348,21 @@ function registration_callback() {
 			'participant_telephone'      => $telephone
 		);
 		add_row( 'participants', $participant_row, $event_id );
+		$event_plan   = get_field( "event_plan", $event_id );
+		$event_object = get_post( $event_id );
+		$event_title  = $event_object->post_title;
+		$address      = get_field( "address", $event_id );
+
+		$date       = get_field( 'start_date', $event_id, false );
+		$date       = new DateTime( $date );
+		$event_date = $date->format( 'j.m' );
+		$event_time = $date->format( 'G:i' );
 		$event_plan = get_field( "event_plan", $event_id );
-		$event_object = get_post($event_id);
-		$event_title = $event_object->post_title;
-		$address = get_field( "address", $event_id );
-
-        $date = get_field( 'start_date', $event_id, false );
-        $date = new DateTime( $date );
-        $event_date = $date->format( 'j.m' );
-        $event_time = $date->format( 'G:i' );
-        $event_plan = get_field( "event_plan", $event_id );
-        $filedir = get_attached_file( $event_plan['ID']);
+		$filedir    = get_attached_file( $event_plan['ID'] );
 
 
-        $subject = "Регистрация прошла успешно";
-		$message = "<p>Вы только что зарегистрировались на событие <a href='http://www.zday.apache.devplatform1.com' target='_blank'>\"ZDay\"</a>. Подтверждаем, что Ваша регистрация прошла успешно.</p>
+		$subject = "Регистрация прошла успешно";
+		$message = "<p>Вы только что зарегистрировались на событие <a href='http://www.zday.zfort.com.ua' target='_blank'>\"ZDay\"</a>. Подтверждаем, что Ваша регистрация прошла успешно.</p>
                     <p>Информация о событии:<br>
                     Название: " . $event_title . "<br>
                     Дата: " . $event_date . "<br>
@@ -370,12 +370,12 @@ function registration_callback() {
                     Место: " . $address . "<br>
                     План мероприятия можно найти в attachment</p>";
 
-        $headers = array(
-            'content-type: text/html'
-        );
-        $attachments = $filedir;
+		$headers     = array(
+			'content-type: text/html'
+		);
+		$attachments = $filedir;
 
-        wp_mail($email, $subject, $message, $headers, $attachments);
+		wp_mail( $email, $subject, $message, $headers, $attachments );
 
 		$response = array(
 			'nameErr'           => $nameErr,
@@ -403,3 +403,4 @@ function all_redirect_to_home() {
 		exit;
 	}
 }
+
