@@ -216,9 +216,14 @@
 							<?php endif; ?>
                         </form>
                         <div class="message-holder success-message">
-                            <h2><?php _e("Ваша регистрация прошла успешно!", "zdays");?></h2>
-                            <p><?php _e("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.", "zdays");?></p>
+                            <?php $registration_success_title = get_field('registration_success_title');
+                            if($registration_success_title) :?>
+                                <h2><?php echo $registration_success_title;?></h2>
+                            <?php endif;?>
+                            <?php $registration_success_description = get_field('registration_success_description');
+                            if($registration_success_description) :?>
+                                <p><?php echo $registration_success_description;?></p>
+                            <?php endif;?>
 							<?php $event_plan = get_field( "event_plan", $event_id );
 							if ( $event_plan ) :?>
                                 <div class="btn-holder">

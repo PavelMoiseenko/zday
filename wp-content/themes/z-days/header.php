@@ -68,7 +68,7 @@
             <ul class="social-networks">
             <?php while ( have_rows( 'header_social_icons', 'options' ) ) : the_row(); ?>
                 <li>
-                    <a href="<?php the_sub_field( 'header_social_link' ); ?>">
+                    <a href="<?php the_sub_field( 'header_social_link' ); ?>" target="_blank">
                         <svg class="icon <?php the_sub_field( 'header_social_image' ); ?>">
                             <use xlink:href="#<?php the_sub_field( 'header_social_image' ); ?>"></use>
                         </svg>
