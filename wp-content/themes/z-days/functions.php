@@ -267,12 +267,13 @@ function registration_callback() {
 	$telephone         = '';
 
 	//$regexPattern = '/^[a-zA-Z ]*$/';
-	$regexPattern = '/^([а-яА-ЯЁёa-zA-Z0-9_ ]+)$/u';
+	//$regexPattern = '/^([а-яА-ЯЁёa-zA-Z0-9_ ]+)$/u';
+	$regexPattern  = '//u';
 	if ( empty( $_POST['name'] ) ) {
 		$nameErr = "Необходимо имя";
 	} else {
 		$name = test_input( $_POST['name'] );
-		if ( ! preg_match( $regexPattern, $name ) || strlen( $name ) > 30 ) {
+		if ( ! preg_match( $regexPattern, $name ) /*|| strlen( $name ) > 30 */) {
 			$nameErr = "Только буквы и пробел";
 		}
 	}
@@ -281,7 +282,7 @@ function registration_callback() {
 		$surnameErr = "Необходима фамилия";
 	} else {
 		$surname = test_input( $_POST['surname'] );
-		if ( ! preg_match( $regexPattern, $surname ) || strlen( $surname ) > 30 ) {
+		if ( ! preg_match( $regexPattern, $surname ) /*|| strlen( $surname ) > 30*/ ) {
 			$surnameErr = "Только буквы и пробел";
 		}
 	}
@@ -291,7 +292,7 @@ function registration_callback() {
 		$emailErr = "Необходим email";
 	} else {
 		$email = test_input( $_POST['email'] );
-		if ( ! filter_var( $email, FILTER_VALIDATE_EMAIL ) || strlen( $email ) > 20 ) {
+		if ( ! filter_var( $email, FILTER_VALIDATE_EMAIL )) {
 			$emailErr = "Неверный формат";
 		}
 	}
@@ -300,14 +301,14 @@ function registration_callback() {
 		$specializationErr = "Необходима специализация";
 	} else {
 		$specialization = test_input( $_POST['specialization'] );
-		if ( ! preg_match( $regexPattern, $specialization ) || strlen( $specialization ) > 30 ) {
+		if ( ! preg_match( $regexPattern, $specialization ) /*|| strlen( $specialization ) > 30 */) {
 			$specializationErr = "Только буквы и пробел";
 		}
 	}
 
 	$telephone = test_input( $_POST['telephone'] );
 	if ( ! empty( $telephone ) ) {
-		if ( ! preg_match( "/^[\d -]+$/", $telephone ) || strlen( $telephone ) > 20 ) {
+		if ( ! preg_match( "/^[\d -]+$/", $telephone )/* || strlen( $telephone ) > 20*/ ) {
 			$telephoneErr = "Неверный формат";
 		}
 	}
