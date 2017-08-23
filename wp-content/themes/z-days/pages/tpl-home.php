@@ -202,7 +202,7 @@
                             <div class="form-row">
                                 <div class="form-field">
                                     <label for="tel-field"><?php _e("Телефон", "zdays");?></label>
-                                    <input class="telephone" type="tel" id="tel-field" name="telField" required>
+                                    <input class="telephone" type="tel" id="tel-field" name="telField">
                                     <!--                                        <span class="telephone-err"></span>-->
                                 </div>
                             </div>
@@ -214,7 +214,7 @@
                                 </div>
                                 <div class="message"></div>
 							<?php endif;
-							$event_plan = get_field( "event_plan", $event_id ); ?>
+							$event_plan = get_field( "event_plan", $event_id );?>
                         </form>
                         <div class="message-holder success-message">
                             <?php $registration_success_title = get_field('registration_success_title');
