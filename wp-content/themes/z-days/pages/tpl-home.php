@@ -169,7 +169,7 @@
                 <div class="box with-logo form-box">
 					<?php $is_registration_on = get_field( 'is_registration_on' );
 					if ( $is_registration_on['value'] === '1' && $post_registration_opening ) :?>
-                        <form class="form" action="#" novalidate>
+                        <form class="form" action="/"  method="post" novalidate>
                             <div class="form-row">
                                 <div class="form-field">
                                     <label for="name-field"><?php _e("Имя *", "zdays");?></label>
