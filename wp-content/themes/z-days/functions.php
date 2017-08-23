@@ -2,7 +2,7 @@
 define( 'TEMPLATE_DIRECTORY', get_template_directory() );
 define( 'TEMPLATE_DIRECTORY_URI', get_template_directory_uri() );
 define( 'STYLESHEET_URI', get_stylesheet_uri() );
-
+define('VERSION', '1.2');
 if ( ! function_exists( 'base_setup' ) ) {
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -38,14 +38,14 @@ if ( ! function_exists( 'base_scripts' ) ) {
 	function base_scripts() {
 
 		wp_register_style( 'main-stylesheet', STYLESHEET_URI );
-		wp_register_style( 'all', TEMPLATE_DIRECTORY_URI . '/assets/css/all.css' );
+		wp_register_style( 'all', TEMPLATE_DIRECTORY_URI . '/assets/css/all.css', false, VERSION );
 
 		// Enqueue Styles
 		wp_enqueue_style( 'main-stylesheet' );
 		wp_enqueue_style( 'all' );
 
 		// Register Scripts
-		wp_register_script( 'scripts', TEMPLATE_DIRECTORY_URI . '/assets/js/scripts.js', array( 'jquery' ), false, true );
+		wp_register_script( 'scripts', TEMPLATE_DIRECTORY_URI . '/assets/js/scripts.js', array( 'jquery' ), VERSION, true );
 		//wp_register_script( 'main', TEMPLATE_DIRECTORY_URI . '/assets/js/main.js', array( 'jquery' ), false, true );
 
 		// Enqueue Scripts
@@ -293,7 +293,7 @@ function registration_callback() {
 	} else {
 		$email = test_input( $_POST['email'] );
 		if ( ! filter_var( $email, FILTER_VALIDATE_EMAIL )) {
-			$emailErr = "Неверный формат";
+			$emailErr = "<p>Неверный формат email,<br> обновите страницу и попробуйте снова</p>";
 		}
 	}
 
@@ -309,7 +309,7 @@ function registration_callback() {
 	$telephone = test_input( $_POST['telephone'] );
 	if ( ! empty( $telephone ) ) {
 		if ( ! preg_match( "/^[\d -]+$/", $telephone )/* || strlen( $telephone ) > 20*/ ) {
-			$telephoneErr = "Неверный формат";
+			$telephoneErr = "Неверный формат</p>";
 		}
 	}
 
