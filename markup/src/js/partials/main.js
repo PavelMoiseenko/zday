@@ -1,33 +1,73 @@
 jQuery(function() {
-	forms();
-	initScroll();
-	jQuery(".form").validate({
-		errorPlacement: function(error,element) {
-			return true;
-		},
-		rules: {
-			nameField: {
-				required: true
-			},
-			surnameField: {
-				required: true
-			},
-			emailField: {
-				required: true,
-				email: true
-			},
-			specializationField: {
-				required: true
-			},
-			telField: {
-				digits: true
-			}
-		},
+    forms();
+    initScroll();
+    jQuery(".form").submit(function(e) {
+        e.preventDefault();
+    }).validate({
+        errorPlacement: function(error,element) {
+            return true;
+        },
+        rules: {
+            nameField: {
+                required: true
+            },
+            surnameField: {
+                required: true
+            },
+            emailField: {
+                required: true,
+                email: true
+            },
+            specializationField: {
+                required: true
+            },
+            telField: {
+                digits: true
+            }
+        },
         submitHandler: function(form) {
-            ajaxFormSubmit();
+
+            var action = 'ajaxregister',
+                surname = jQuery('.surname').val(),
+                name = jQuery('.name').val(),
+                email = jQuery('.email').val(),
+                specialization = jQuery('.specialization').val(),
+                telephone = jQuery('.telephone').val();
+            event_id = jQuery('.event_id').val();
+
+            jQuery.ajax({
+                type: 'POST',
+                url: objectName.ajaxurl,
+                data: {
+                    'action': action,
+                    'nonce': objectName.nonce,
+                    'surname': surname,
+                    'name': name,
+                    'email': email,
+                    'specialization': specialization,
+                    'telephone': telephone,
+                    'event_id': event_id
+                },
+                success: function (response) {
+                    jQuery('.name-err').text(response.nameErr);
+                    jQuery('.surname-err').text(response.surnameErr);
+                    jQuery('.email-err').text(response.emailErr);
+                    jQuery('.specialization-err').text(response.specializationErr);
+                    jQuery('.telephone-err').text(response.telephoneErr);
+                    var parent = jQuery('.form-box');
+                    if(response.messageErr){
+                        jQuery('.success-message').html(response.messageErr);
+                    }else{
+                        jQuery('.success-message').html(response.message);
+                    }
+                    parent.addClass('success-form');
+                    parent.find('.form').hide();
+                    parent.find('.success-message').fadeIn('slow');
+                }
+            });
         }
-	});
-	//var rellax = new Rellax('.img-triangles');
+    });
+    //var rellax = new Rellax('.img-triangles');
 });
 
 function forms(){
