@@ -6,8 +6,14 @@
 	z-index: 2;
 	min-height: 520px;
 	padding: 0 0 166px;
+	@include media(tablet) {
+		padding-bottom: 0;
+	}
 	h2 {
 		margin: 0 0 94px;
+		@include media(tablet) {
+			margin-bottom: 50px;
+		}
 	}
 	&:before {
 		content: '';
@@ -19,6 +25,12 @@
 		height: 600px;
 		border: 2px solid rgba(25,121,176,.1);
 		z-index: -1;
+		@include media(tablet) {
+			top: 0;
+		}
+		@include media(mobile) {
+			display: none;
+		}
 	}
 	.success-message {
 		display: none;
@@ -28,12 +40,18 @@
 		font-size: 24px;
 		color: #fff;
 		width: 100%;
+		@include media(tablet) {
+			font-size: 16px;
+		}
 		h2 {
 			color: #fff;
 			margin: 0 0 25px;
 			font-size: 36px;
 			font-family: $font-open-sans;
 			letter-spacing: 0;
+			@include media(tablet) {
+				font-size: 24px;
+			}
 		}
 		p {
 			margin-bottom: 7px;
@@ -54,6 +72,9 @@
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
+	@include media(tablet) {
+		margin: 0 auto;
+	}
 	&:before,
 	&:after {
 		width: 100px;
@@ -63,6 +84,7 @@
 .form {
 	max-width: 290px;
 	margin: 0 auto;
+	width: 100%;
 	.form-row {
 		padding: 0 0 20px;
 		&:last-child {
@@ -76,6 +98,9 @@
 			label {
 				top: 5px;
 				font-size: 12px;
+				@include media(tablet) {
+					font-size: 10px;
+				}
 			}
 		}
 	}
@@ -96,6 +121,9 @@
 		transition: all .3s ease-out;
 		font-family: inherit;
 		text-indent: 1px;
+		@include media(tablet) {
+			font-size: 12px;
+		}
 		&.valid {
 			border-color: #057b1a;
 		}
@@ -115,6 +143,9 @@
 		resize: none;
 		font-family: inherit;
 		text-indent: 1px;
+		@include media(tablet) {
+			font-size: 12px;
+		}
 		&.valid {
 			border-color: #057b1a;
 		}
@@ -137,5 +168,12 @@
 		overflow: hidden;
 		backface-visibility: hidden;
 		font-smoothing: antialiased !important;
+		@include media(tablet) {
+			font-size: 13px;
+		}
+	}
+	.button {
+		min-width: 0;
+		width: 100%;
 	}
 }

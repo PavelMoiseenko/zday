@@ -3,7 +3,7 @@
 var gulp = require('gulp'),
     watch = require('gulp-watch'),
     prefixer = require('gulp-autoprefixer'),
-    uglify = require('gulp-uglify'), // JavaScript compressor
+    uglify = require('gulp-uglify'),
     concat = require('gulp-concat'), // Concatenate files 
     sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
