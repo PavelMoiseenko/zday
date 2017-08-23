@@ -22,15 +22,9 @@ jQuery(function() {
 			telField: {
 				digits: true
 			}
-		},
-		submitHandler: function(form) {
-			var parent = jQuery('.form-box');
-
-			parent.addClass('success-form');
-			parent.find('.form').hide();
-			parent.find('.success-message').fadeIn('slow');
 		}
 	});
+	//var rellax = new Rellax('.img-triangles');
 });
 
 function forms(){
