@@ -425,7 +425,7 @@ function all_redirect_to_home() {
  * Function to change sender name*/
 
 function wpb_sender_name( $original_email_from ) {
-	return 'Zday';
+	return 'Zfort';
 }
 
 /**
