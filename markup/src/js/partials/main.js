@@ -22,7 +22,10 @@ jQuery(function() {
 			telField: {
 				digits: true
 			}
-		}
+		},
+        submitHandler: function(form) {
+            ajaxFormSubmit();
+        }
 	});
 	//var rellax = new Rellax('.img-triangles');
 });
@@ -51,5 +54,46 @@ function initScroll() {
 			scrollTop: jQuery( jQuery(this).attr('href') ).offset().top
 		}, 800);
 		return false;
+	});
+}
+
+function ajaxFormSubmit(){
+	var action = 'ajaxregister',
+		surname = $('.surname').val(),
+		name = $('.name').val(),
+		email = $('.email').val(),
+		specialization = $('.specialization').val(),
+		telephone = $('.telephone').val();
+		event_id = $('.event_id').val();
+
+	$.ajax({
+		type: 'POST',
+		url: objectName.ajaxurl,
+		data: {
+			'action': action,
+			'nonce': objectName.nonce,
+			'surname': surname,
+			'name': name,
+			'email': email,
+			'specialization': specialization,
+			'telephone': telephone,
+			'event_id': event_id
+		},
+		success: function (response) {
+			$('.name-err').text(response.nameErr);
+			$('.surname-err').text(response.surnameErr);
+			$('.email-err').text(response.emailErr);
+			$('.specialization-err').text(response.specializationErr);
+			$('.telephone-err').text(response.telephoneErr);
+			var parent = $('.form-box');
+			if(response.messageErr){
+				$('.success-message').html(response.messageErr);
+			}else{
+				$('.success-message').html(response.message);
+			}
+			parent.addClass('success-form');
+			parent.find('.form').hide();
+			parent.find('.success-message').fadeIn('slow');
+		}
 	});
 }
