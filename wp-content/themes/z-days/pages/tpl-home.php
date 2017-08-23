@@ -210,7 +210,7 @@
 							<?php $registration_cta_text = get_field( 'registration_cta_text' );
 							if ( $registration_cta_text ) :?>
                                 <div class="btn-holder register">
-                                    <button class="button" type="submit"><?php echo $registration_cta_text; ?></button>
+                                    <button class="button" type="button"><?php echo $registration_cta_text; ?></button>
                                 </div>
                                 <div class="message"></div>
 							<?php endif;

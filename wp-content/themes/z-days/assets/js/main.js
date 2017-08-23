@@ -15,7 +15,7 @@ jQuery(document).ready(function($) {
                 url: objectName.ajaxurl,
                 data: {
                     'action': action,
-                    'nonce': objecgtName.nonce,
+                    'nonce': objectName.nonce,
                     'surname': surname,
                     'name': name,
                     'email': email,
