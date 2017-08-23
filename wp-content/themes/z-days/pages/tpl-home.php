@@ -216,23 +216,7 @@
 							<?php endif;
 							$event_plan = get_field( "event_plan", $event_id );?>
                         </form>
-                        <div class="message-holder success-message">
-                            <?php $registration_success_title = get_field('registration_success_title');
-                            if($registration_success_title) :?>
-                                <h2><?php echo $registration_success_title;?></h2>
-                            <?php endif;?>
-                            <?php $registration_success_description = get_field('registration_success_description');
-                            if($registration_success_description) :?>
-                                <p><?php echo $registration_success_description;?></p>
-                            <?php endif;?>
-							<?php $event_plan = get_field( "event_plan", $event_id );
-							if ( $event_plan ) :?>
-                                <div class="btn-holder">
-                                    <a class="button" target="_blank" href="<?php echo $event_plan['url']; ?>"><?php _e("Скачать
-                                        план мероприятия", "zdays");?></a>
-                                </div>
-                            <?php endif; ?>
-                        </div>
+                        <div class="message-holder success-message"></div>
                     <?php else: ?>
                         <div class="message-holder info-message">
                             <h2><?php _e("Регистрация закрыта", "zdays");?></h2>

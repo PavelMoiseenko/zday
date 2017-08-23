@@ -334,7 +334,7 @@ function registration_callback() {
 		if ( $email == $registered_email ) :
 			$flag     = true;
 			$response = array(
-				"messageErr" => "Sorry, participant with this email has been registered already."
+				"messageErr" => "Извините, участник с таким email уже зарегистрирован."
 			);
 			break;
 		endif;
@@ -377,14 +377,29 @@ function registration_callback() {
 		$attachments = $filedir;
 
 		wp_mail( $email, $subject, $message, $headers, $attachments );
-
+		$successMessage = '';
+		$registration_success_title = get_field('registration_success_title', get_option( 'page_on_front' ));
+        if($registration_success_title) {
+	        $successMessage .= '<h2>'.$registration_success_title.'</h2>';
+        }
+		$registration_success_description = get_field('registration_success_description', get_option( 'page_on_front' ));
+		if($registration_success_title) {
+			$successMessage .= '<p>'.$registration_success_description.'</p>';
+		}
+        $event_plan = get_field( "event_plan", $event_id );
+		if($event_plan['url']) {
+			$successMessage .= '<div class="btn-holder">
+				<a class="button" target="_blank" href="'.$event_plan['url'].'">'
+                   .__("Скачать план мероприятия", "zdays").
+               '</a></div>';
+		}
 		$response = array(
 			'nameErr'           => $nameErr,
 			'surnameErr'        => $surnameErr,
 			'emailErr'          => $emailErr,
 			'specializationErr' => $specializationErr,
 			'telephoneErr'      => $telephoneErr,
-			"message"           => "You are succesfully registered."
+			"message"           => $successMessage
 		);
 
 	endif;
