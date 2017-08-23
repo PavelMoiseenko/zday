@@ -15,7 +15,7 @@ jQuery(document).ready(function($) {
                 url: objectName.ajaxurl,
                 data: {
                     'action': action,
-                    'nonce': objecgtName.nonce,
+                    'nonce': objectName.nonce,
                     'surname': surname,
                     'name': name,
                     'email': email,
@@ -29,14 +29,7 @@ jQuery(document).ready(function($) {
                     $('.email-err').text(response.emailErr);
                     $('.specialization-err').text(response.specializationErr);
                     $('.telephone-err').text(response.telephoneErr);
-
-                    if(response.messageErr.length > 1){
-                        var parent = $('.form-box');
-                        $('.success-message').html(response.messageErr);
-                    }
-                    parent.addClass('success-form');
-                    parent.find('.form').hide();
-                    parent.find('.success-message').fadeIn('slow');
+                    $('.success-message').html(response.messageErr);
                 }
             });
 
