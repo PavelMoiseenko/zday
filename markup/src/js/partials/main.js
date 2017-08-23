@@ -23,11 +23,11 @@ jQuery(function() {
 			}
 		},
 		submitHandler: function(form) {
-			var parent = jQuery('.form-box');
+			// var parent = jQuery('.form-box');
 
-			parent.addClass('success-form');
-			parent.find('.form').hide();
-			parent.find('.success-message').fadeIn('slow');
+			// parent.addClass('success-form');
+			// parent.find('.form').hide();
+			// parent.find('.success-message').fadeIn('slow');
 		}
 	});
 });
