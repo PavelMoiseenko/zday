@@ -420,3 +420,15 @@ function all_redirect_to_home() {
 	}
 }
 
+
+/**
+ * Function to change sender name*/
+
+function wpb_sender_name( $original_email_from ) {
+	return 'Zday';
+}
+
+/**
+ * Hooking up our functions to WordPress filters*/
+
+add_filter( 'wp_mail_from_name', 'wpb_sender_name' );
