@@ -57,7 +57,9 @@ jQuery(function() {
                     var parent = jQuery('.form-box');
                     if(response.messageErr){
                         jQuery('.success-message').html(response.messageErr);
-                    }else{
+                    }else if(response.emailErr){
+                        jQuery('.success-message').html(response.emailErr);
+					}else{
                         jQuery('.success-message').html(response.message);
                     }
                     parent.addClass('success-form');
