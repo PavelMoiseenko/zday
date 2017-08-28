@@ -2,7 +2,7 @@
 define( 'TEMPLATE_DIRECTORY', get_template_directory() );
 define( 'TEMPLATE_DIRECTORY_URI', get_template_directory_uri() );
 define( 'STYLESHEET_URI', get_stylesheet_uri() );
-define('VERSION', '1.2');
+define( 'VERSION', '1.2' );
 if ( ! function_exists( 'base_setup' ) ) {
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -48,10 +48,12 @@ if ( ! function_exists( 'base_scripts' ) ) {
 
 		wp_register_script( 'jquery-last', TEMPLATE_DIRECTORY_URI . '/assets/js/jQuery.min.js', false, false, true );
 		wp_register_script( 'scripts', TEMPLATE_DIRECTORY_URI . '/assets/js/scripts.js', array( 'jquery-last' ), VERSION, true );
+		wp_register_script( 'popup', TEMPLATE_DIRECTORY_URI . '/assets/js/popup.js', array( 'jquery-last' ), VERSION, true );
 		//wp_deregister_script('jquery');
 		// Enqueue Scripts
 		wp_enqueue_script( 'jquery-last' );
 		wp_enqueue_script( 'scripts' );
+		wp_enqueue_script( 'popup' );
 		//wp_enqueue_script( 'main' );
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
@@ -66,7 +68,6 @@ if ( ! function_exists( 'base_scripts' ) ) {
 
 	add_action( 'wp_enqueue_scripts', 'base_scripts' );
 }
-
 
 
 /* ACF functions */
@@ -271,12 +272,12 @@ function registration_callback() {
 
 	//$regexPattern = '/^[a-zA-Z ]*$/';
 	//$regexPattern = '/^([а-яА-ЯЁёa-zA-Z0-9_ ]+)$/u';
-	$regexPattern  = '//u';
+	$regexPattern = '//u';
 	if ( empty( $_POST['name'] ) ) {
 		$nameErr = "Необходимо имя";
 	} else {
 		$name = test_input( $_POST['name'] );
-		if ( ! preg_match( $regexPattern, $name ) /*|| strlen( $name ) > 30 */) {
+		if ( ! preg_match( $regexPattern, $name ) /*|| strlen( $name ) > 30 */ ) {
 			$nameErr = "Только буквы и пробел";
 		}
 	}
@@ -295,7 +296,7 @@ function registration_callback() {
 		$emailErr = "Необходим email";
 	} else {
 		$email = test_input( $_POST['email'] );
-		if ( ! filter_var( $email, FILTER_VALIDATE_EMAIL )) {
+		if ( ! filter_var( $email, FILTER_VALIDATE_EMAIL ) ) {
 			$emailErr = "<p>Неверный формат email,<br> обновите страницу и попробуйте снова</p>";
 		}
 	}
@@ -304,7 +305,7 @@ function registration_callback() {
 		$specializationErr = "Необходима специализация";
 	} else {
 		$specialization = test_input( $_POST['specialization'] );
-		if ( ! preg_match( $regexPattern, $specialization ) /*|| strlen( $specialization ) > 30 */) {
+		if ( ! preg_match( $regexPattern, $specialization ) /*|| strlen( $specialization ) > 30 */ ) {
 			$specializationErr = "Только буквы и пробел";
 		}
 	}
@@ -380,21 +381,21 @@ function registration_callback() {
 		$attachments = $filedir;
 
 		wp_mail( $email, $subject, $message, $headers, $attachments );
-		$successMessage = '';
-		$registration_success_title = get_field('registration_success_title', get_option( 'page_on_front' ));
-        if($registration_success_title) {
-	        $successMessage .= '<h2>'.$registration_success_title.'</h2>';
-        }
-		$registration_success_description = get_field('registration_success_description', get_option( 'page_on_front' ));
-		if($registration_success_title) {
-			$successMessage .= '<p>'.$registration_success_description.'</p>';
+		$successMessage             = '';
+		$registration_success_title = get_field( 'registration_success_title', get_option( 'page_on_front' ) );
+		if ( $registration_success_title ) {
+			$successMessage .= '<h2>' . $registration_success_title . '</h2>';
 		}
-        $event_plan = get_field( "event_plan", $event_id );
-		if($event_plan['url']) {
+		$registration_success_description = get_field( 'registration_success_description', get_option( 'page_on_front' ) );
+		if ( $registration_success_title ) {
+			$successMessage .= '<p>' . $registration_success_description . '</p>';
+		}
+		$event_plan = get_field( "event_plan", $event_id );
+		if ( $event_plan['url'] ) {
 			$successMessage .= '<div class="btn-holder">
-				<a class="button" target="_blank" href="'.$event_plan['url'].'">'
-                   .__("Скачать план мероприятия", "zdays").
-               '</a></div>';
+				<a class="button" target="_blank" href="' . $event_plan['url'] . '">'
+			                   . __( "Скачать план мероприятия", "zdays" ) .
+			                   '</a></div>';
 		}
 		$response = array(
 			'nameErr'           => $nameErr,
@@ -409,6 +410,53 @@ function registration_callback() {
 
 	wp_send_json( $response );
 }
+
+/**
+ * Handler AJAX for popup
+ */
+add_action( 'wp_ajax_popup', 'popup_callback' );
+add_action( 'wp_ajax_nopriv_popup', 'popup_callback' );
+
+function popup_callback() {
+	check_ajax_referer( 'ajax-nonce', 'nonce' );
+
+	$event_id = '';
+
+	if ( !empty( $_POST['event_id'] ) ) {
+		$event_id = $_POST['event_id'];
+	}
+
+	$event_object  = get_post($event_id);
+	$event_title   = $event_object->post_title;
+	$event_content = $event_object->post_content;
+	$event_image_url = get_the_post_thumbnail_url($event_id);
+
+	$speakers = get_field('speaker', $event_id);
+	$event_speakers_title = [];
+	$event_speakers_position = [];
+	if($speakers) :
+			foreach ($speakers as $speaker):
+				$speaker_ID = $speaker->ID;
+				$speaker_position = get_field('speaker_position', $speaker_ID);
+				$speaker_title = $speaker->post_title;
+				array_push($event_speakers_title, $speaker_title);
+				array_push($event_speakers_position, $speaker_position);
+			endforeach;
+	endif;
+
+
+	$response = array(
+		'event_title'   => $event_title,
+		'event_content' => $event_content,
+		'event_image_url' => $event_image_url,
+		'event_speakers_title' => $event_speakers_title,
+		'event_speakers_position' => $event_speakers_position
+	);
+
+	wp_send_json( $response );
+
+}
+
 
 /**
  * Redirect to front-page

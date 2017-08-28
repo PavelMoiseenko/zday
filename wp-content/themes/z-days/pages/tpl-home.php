@@ -293,8 +293,8 @@
                         <article class="event swiper-slide">
                             <div class="image">
                                 <?php the_post_thumbnail(array(490, 300), array('alt'=>"image description"));?>
-                                <div class="link-holder">
-                                    <a class="link-more" href="#"><?php _e('Подробнее', 'zdays');?></a>
+                                <div class="link-holder" data-id="<?php echo $event_id;?>" >
+                                    <span class="link-more"><?php _e('Подробнее', 'zdays');?></span>
                                 </div>
                             </div>
                             <h3><?php the_title();?></h3>
