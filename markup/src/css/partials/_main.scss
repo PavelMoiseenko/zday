@@ -412,6 +412,7 @@
 			font-smoothing: antialiased;
 			position: relative;
 			z-index: 3;
+			cursor: pointer;
 			&:hover {
 				color: $color-link;
 			}
@@ -628,10 +629,18 @@
 		letter-spacing: 0;
 	}
 }
-.link-close {
+.pop-close {
 	position: absolute;
 	right: 10px;
 	top: 10px;
+	background: url("../images/ico-close.png") 50% 50% no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+	width: 13px;
+	height: 13px;
+	font-size: 0;
+	cursor: pointer;
+
 	&:hover {
 		.ico-close {
 			fill: $color-link;

@@ -13,11 +13,11 @@ var gulp = require('gulp'),
 
 var path = {
     build: {
-        jquery: '../wp-content/themes/z-days/js/',
-        js: '../wp-content/themes/z-days/js/',
+        jquery: '../wp-content/themes/z-days/assets/js/',
+        js: '../wp-content/themes/z-days/assets/js/',
         css: '../wp-content/themes/z-days/assets/css/',
-        img: '../wp-content/themes/z-days/images/',
-        fonts: '../wp-content/themes/z-days/fonts/'
+        img: '../wp-content/themes/z-days/assets/images/',
+        fonts: '../wp-content/themes/z-days/assets/fonts/'
     },
     src: {
         jquery: 'src/js/*.js',
