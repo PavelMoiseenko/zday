@@ -1,6 +1,7 @@
 jQuery(function() {
 	forms();
 	initScroll();
+	mobileHover();
 	jQuery(".form").validate({
 		errorPlacement: function(error,element) {
 			return true;
@@ -23,11 +24,53 @@ jQuery(function() {
 				digits: true
 			}
 		},
-        submitHandler: function(form) {
-            ajaxFormSubmit();
-        }
+		submitHandler: function(form) {
+			ajaxFormSubmit();
+		}
 	});
-	//var rellax = new Rellax('.img-triangles');
+	var rellax = new Rellax('.img-triangles .layer');
+
+	var wow = new WOW();
+	wow.init();
+
+	WOW.prototype.addBox = function(element){
+		this.boxes.push(element);
+	};
+
+	jQuery('.wow').on('scrollSpy:exit', function() {
+		jQuery(this).css({
+			'visibility': 'hidden',
+			'animation-name': 'none'
+		}).removeClass('animated');
+		wow.addBox(this);
+	}).scrollSpy();
+
+	var mySwiper = new Swiper ('.slider', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        nextButton: '.next',
+        prevButton: '.prev',
+        breakpoints: {
+        	1024: {
+        		slidesPerView: 3,
+        		spaceBetween: 15
+        	},
+            767: {
+                slidesPerView: 2,
+                spaceBetween: 15
+            },
+            500: {
+                slidesPerView: 1,
+                spaceBetween: 0
+            }
+        }
+    });
+
+	var swiper_slidecount = mySwiper.slides.length - 3;
+	if (swiper_slidecount < 1) {
+		jQuery('.slider-holder').addClass('no-pagination');
+		jQuery('.prev, .next').remove();
+	}
 });
 
 function forms(){
@@ -95,5 +138,13 @@ function ajaxFormSubmit(){
 			parent.find('.form').hide();
 			parent.find('.success-message').fadeIn('slow');
 		}
+	});
+}
+
+function mobileHover() {
+	jQuery('*').on('touchstart', function () {
+		jQuery(this).addClass('hover');
+	}).on('touchend', function () {
+		jQuery(this).removeClass('hover');
 	});
 }
