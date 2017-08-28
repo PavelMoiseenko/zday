@@ -45,11 +45,12 @@ if ( ! function_exists( 'base_scripts' ) ) {
 		wp_enqueue_style( 'all' );
 
 		// Register Scripts
-		wp_register_script( 'scripts', TEMPLATE_DIRECTORY_URI . '/assets/js/scripts.js', array( 'jquery' ), VERSION, true );
-		//wp_register_script( 'main', TEMPLATE_DIRECTORY_URI . '/assets/js/main.js', array( 'jquery' ), false, true );
 
+		wp_register_script( 'jquery-last', TEMPLATE_DIRECTORY_URI . '/assets/js/jQuery.min.js', false, false, true );
+		wp_register_script( 'scripts', TEMPLATE_DIRECTORY_URI . '/assets/js/scripts.js', array( 'jquery-last' ), VERSION, true );
+		//wp_deregister_script('jquery');
 		// Enqueue Scripts
-		wp_enqueue_script( 'jquery' );
+		wp_enqueue_script( 'jquery-last' );
 		wp_enqueue_script( 'scripts' );
 		//wp_enqueue_script( 'main' );
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -65,6 +66,8 @@ if ( ! function_exists( 'base_scripts' ) ) {
 
 	add_action( 'wp_enqueue_scripts', 'base_scripts' );
 }
+
+
 
 /* ACF functions */
 //theme options tab in appearance
