@@ -108,6 +108,7 @@ b {
 	width: 100%;
 	table-layout: fixed;
 	position: relative;
+	overflow-x: hidden;
 	@include media(mobile) {
 		display: block;
 		height: auto;
@@ -230,4 +231,7 @@ b {
 			height: 24px;
 		}
 	}
+}
+.wow {
+	visibility: hidden;
 }
