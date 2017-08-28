@@ -48,9 +48,12 @@ if ( ! function_exists( 'base_scripts' ) ) {
 
 		wp_register_script( 'jquery-last', TEMPLATE_DIRECTORY_URI . '/assets/js/jQuery.min.js', false, false, true );
 		wp_register_script( 'scripts', TEMPLATE_DIRECTORY_URI . '/assets/js/scripts.js', array( 'jquery-last' ), VERSION, true );
+<<<<<<< HEAD
 		wp_register_script( 'popup', TEMPLATE_DIRECTORY_URI . '/assets/js/popup.js', array( 'jquery-last' ), VERSION, true );
 		wp_register_script( 'share', TEMPLATE_DIRECTORY_URI . '/assets/js/share.js', array( 'jquery-last' ), VERSION, true );
 
+=======
+>>>>>>> dee4c6a55f009ded904353f62a5749a46679b45f
 		//wp_deregister_script('jquery');
 		// Enqueue Scripts
 		wp_enqueue_script( 'jquery-last' );

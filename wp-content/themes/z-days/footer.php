@@ -54,7 +54,7 @@
 </div>
 <div class="popup-holder">
     <div class="popup" id="popup1">
-        <a class="link-close" href="#"><svg class="icon ico-close"><use xlink:href="#ico-close"></use></svg></a>
+        <span class="pop-close">X</span>
         <div class="popup-content clearfix">
             <div class="popup-visual">
                 <div class="image">
