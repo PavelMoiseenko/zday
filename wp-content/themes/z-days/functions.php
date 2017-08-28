@@ -49,11 +49,14 @@ if ( ! function_exists( 'base_scripts' ) ) {
 		wp_register_script( 'jquery-last', TEMPLATE_DIRECTORY_URI . '/assets/js/jQuery.min.js', false, false, true );
 		wp_register_script( 'scripts', TEMPLATE_DIRECTORY_URI . '/assets/js/scripts.js', array( 'jquery-last' ), VERSION, true );
 		wp_register_script( 'popup', TEMPLATE_DIRECTORY_URI . '/assets/js/popup.js', array( 'jquery-last' ), VERSION, true );
+		wp_register_script( 'share', TEMPLATE_DIRECTORY_URI . '/assets/js/share.js', array( 'jquery-last' ), VERSION, true );
+
 		//wp_deregister_script('jquery');
 		// Enqueue Scripts
 		wp_enqueue_script( 'jquery-last' );
 		wp_enqueue_script( 'scripts' );
 		wp_enqueue_script( 'popup' );
+		wp_enqueue_script( 'share' );
 		//wp_enqueue_script( 'main' );
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );

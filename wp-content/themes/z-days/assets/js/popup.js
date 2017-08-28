@@ -22,7 +22,7 @@ jQuery(document).ready(function($) {
                var speakers_string = 'Спикеры: ';
                for (var i=0; i<response.event_speakers_title.length; i++){
 
-                   speakers_string += response.event_speakers_title[i]+ " (" + response.event_speakers_position[i] + ")" ;
+                   speakers_string += response.event_speakers_title[i]+ " (" + response.event_speakers_position[i] + ") " ;
                }
                $("#speakers-string").text(speakers_string);
 

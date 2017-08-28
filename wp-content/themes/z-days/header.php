@@ -44,7 +44,7 @@
     <ul class="social-networks side" data-wow-duration="1.5s" data-wow-delay="0.5s">
         <?php while ( have_rows( 'header_social_icons', 'options' ) ) : the_row(); ?>
             <li>
-                <a href="<?php the_sub_field( 'header_social_link' ); ?>" target="_blank">
+                <a href="<?php the_sub_field( 'header_social_link' ) . the_permalink(); ?>"  class="customer share" target="_blank">
                     <svg class="icon <?php the_sub_field( 'header_social_image' ); ?>">
                         <use xlink:href="#<?php the_sub_field( 'header_social_image' ); ?>"></use>
                     </svg>
