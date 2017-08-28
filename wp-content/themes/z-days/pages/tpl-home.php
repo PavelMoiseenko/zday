@@ -21,8 +21,8 @@
 			$event_section_title       = get_field( 'event_section_title' );
 			$event_section_description = get_field( 'event_section_description' );
 			if ( $event_section_title ) :?>
-                <h2 class="wow fadeIn" data-wow-duration="1.3s"><?php echo $event_section_title; ?></h2>
-                <div class="intro fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.15s">
+                <h2 class="" data-wow-duration="1.3s"><?php echo $event_section_title; ?></h2>
+                <div class="intro " data-wow-duration="1.3s" data-wow-delay="0.15s">
 					<?php if ( $event_section_description ) : ?>
                         <p><?php echo $event_section_description; ?></p>
 					<?php endif; ?>
@@ -32,7 +32,7 @@
 			<?php
 			$event_caption = get_field( 'event_caption' );
 			if ( $event_caption ) :?>
-                <h2 class="wow fadeIn" data-wow-duration="1.3s"><?php echo $event_caption; ?></h2>
+                <h2 class="" data-wow-duration="1.3s"><?php echo $event_caption; ?></h2>
 			<?php endif; ?>
 
 			<?php
@@ -79,7 +79,7 @@
 					$event_id                  = $post->ID;
 					$post_registration_opening = get_field( 'registration_opening', $event_id ); ?>
                     <article class="box with-logo">
-                        <header class="heading wow fadeIn" data-wow-duration="1.3s" data-wow-delay="0.15s">
+                        <header class="heading" data-wow-duration="1.3s" data-wow-delay="0.15s">
                             <div class="info">
 								<?php
 								$date = get_field( 'start_date', false, false );
@@ -99,7 +99,7 @@
                                 <img src=<?php echo get_template_directory_uri() . "/assets/images/git-cat.png"; ?> alt="git"
                                      width="390" height="520">
                             </div>
-                            <div class="description wow fadeIn" data-wow-duration="1.3s" data-wow-delay="0.15s">
+                            <div class="description" data-wow-duration="1.3s" data-wow-delay="0.15s">
 								<?php the_content(); ?>
                             </div>
                         </div>
@@ -133,7 +133,7 @@
 			<?php
 			$speaker_section_title = get_field( 'speaker_section_title' );
 			if ( $speaker_section_title ) :?>
-                <h2 class="wow fadeIn" data-wow-duration="1.3s"><?php echo $speaker_section_title; ?></h2>
+                <h2 class="" data-wow-duration="1.3s"><?php echo $speaker_section_title; ?></h2>
 			<?php endif; ?>
 
 			<?php $speakers = get_field( 'speaker', $event_id );
@@ -141,7 +141,7 @@
                 <ul class="thumb-list">
 					<?php foreach ( $speakers as $post ): ?>
 						<?php setup_postdata( $post ); ?>
-                        <li class="fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.15s">
+                        <li class="" data-wow-duration="1.3s" data-wow-delay="0.15s">
                             <div class="thumb">
 								<?php the_post_thumbnail( array( 360, 350 ), array( 'alt' => 'image description' ) ); ?>
                             </div>
@@ -180,7 +180,7 @@
                      description">
             </div>
         </div>
-        <div class="img-decor wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.15s">
+        <div class="img-decor" data-wow-duration="1s" data-wow-delay="0.15s">
             <img src=<?php echo get_template_directory_uri() . "/assets/images/git-cat.png"; ?> alt="git" width="390"
                  height="520">
         </div>
@@ -188,7 +188,7 @@
             <div class="form-holder">
 				<?php $registration_title = get_field( 'registration_title' );
 				if ( $registration_title ) :?>
-                    <h2 class="wow fadeIn" data-wow-duration="1.3s"><?php echo $registration_title; ?></h2>
+                    <h2 class="" data-wow-duration="1.3s"><?php echo $registration_title; ?></h2>
 				<?php endif; ?>
                 <div class="box with-logo form-box">
 					<?php $is_registration_on = get_field( 'is_registration_on' );
@@ -282,7 +282,7 @@
         <div class="container">
             <?php $recent_events_title = get_field('recent_events_title');
             if($recent_events_title) :?>
-                <h2 class="wow fadeIn" data-wow-duration="1.3s"><?php echo $recent_events_title;?></h2>
+                <h2 data-wow-duration="1.3s"><?php echo $recent_events_title;?></h2>
             <?php endif;?>
 			<div class="slider-holder">
                 <div class="slider swiper-container">
@@ -331,9 +331,9 @@
                 <!-- Show if events more than 6 -->
                 <?php $recent_events_cta_text = get_field('recent_events_cta_text');
                 if($recent_events_cta_text) :?>
-                <div class="btn-holder wow fadeIn" data-wow-duration="1.3s" data-wow-delay="0.15s">
-					<a class="button" href="#"><?php echo $recent_events_cta_text;?></a>
-				</div>
+<!--                <div class="btn-holder wow fadeIn" data-wow-duration="1.3s" data-wow-delay="0.15s">-->
+<!--					<a class="button" href="#">--><?php //echo $recent_events_cta_text;?><!--</a>-->
+<!--				</div>-->
                 <?php endif;?>
 	        <?php endif; ?>
         </div>
