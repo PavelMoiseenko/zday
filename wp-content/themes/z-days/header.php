@@ -40,7 +40,19 @@
 			c0.397,0.396,0.936,0.62,1.498,0.62s1.1-0.224,1.497-0.62l38.374-38.374l38.374,38.374c0.397,0.396,0.937,0.62,1.498,0.62
 			s1.101-0.224,1.498-0.62l5.473-5.476c0.826-0.827,0.826-2.167,0-2.994L55.931,47.463z"/>
 </symbol>
-
+<?php if ( have_rows( 'header_social_icons', 'options' ) ): ?>
+    <ul class="social-networks side" data-wow-duration="1.5s" data-wow-delay="0.5s">
+        <?php while ( have_rows( 'header_social_icons', 'options' ) ) : the_row(); ?>
+            <li>
+                <a href="<?php the_sub_field( 'header_social_link' ); ?>" target="_blank">
+                    <svg class="icon <?php the_sub_field( 'header_social_image' ); ?>">
+                        <use xlink:href="#<?php the_sub_field( 'header_social_image' ); ?>"></use>
+                    </svg>
+                </a>
+            </li>
+        <?php endwhile;?>
+    </ul>
+<?php endif; ?>
 <div id="wrapper">
     <section class="visual">
         <div class="img-triangles">
@@ -91,17 +103,4 @@
                 </div>
 			<?php endif; ?>
         </div>
-		<?php if ( have_rows( 'header_social_icons', 'options' ) ): ?>
-            <ul class="social-networks wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.5s">
-            <?php while ( have_rows( 'header_social_icons', 'options' ) ) : the_row(); ?>
-                <li>
-                    <a href="<?php the_sub_field( 'header_social_link' ); ?>" target="_blank">
-                        <svg class="icon <?php the_sub_field( 'header_social_image' ); ?>">
-                            <use xlink:href="#<?php the_sub_field( 'header_social_image' ); ?>"></use>
-                        </svg>
-                    </a>
-                </li>
-		<?php endwhile;?>
-            </ul>
-		<?php endif; ?>
     </section>

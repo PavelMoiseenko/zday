@@ -227,7 +227,7 @@
 			}
 			@include media(mobile) {
 				display: none;
-			} 
+			}
 		}
 		.description {
 			overflow: hidden;
@@ -508,9 +508,8 @@
     touch-action: pan-x;
 }
 .swiper-arrows {
-	text-align: center;
 	position: absolute;
-	text-align: right;
+	text-align: left;
 	top: -25px;
 	right: 0;
 	left: 0;
@@ -520,7 +519,7 @@
 	}
 	@include media(mobile-small) {
 		text-align: center;
-	} 
+	}
 	.next,
 	.prev {
 		display: inline-block;
@@ -531,6 +530,15 @@
 		height: 50px;
 		cursor: pointer;
 		transition: opacity .4s ease-out;
+		background: url("../images/arrow.svg") 50% 50% no-repeat / 20px 19px;
+
+		&.prev {
+			transform: rotate(180deg);;
+		}
+
+		svg {
+			display: none;
+		}
 		@include media(mobile-small) {
 			margin: 0 5px;
 		}
@@ -558,6 +566,9 @@
 			transition: border-color .4s ease-out;
 		}
 	}
+	.next {
+
+	}
 	svg {
 		fill: #fff;
 		position: absolute;
@@ -570,28 +581,46 @@
 	}
 }
 /*popup*/
-.popup {
-	background: #fff;
-	padding: 44px 30px 30px;
+.popup-holder {
 	position: relative;
+	z-index: 99;
+	&.active {
+		&:before {
+			content: '';
+			position: fixed;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			width: 100vw;
+			height: 100vh;
+			background: rgba(0,0,0,.5);
+		}
+	}
+}
+.popup {
+	background: #0f2128;
+	padding: 44px 30px 30px;
 	width: 90%;
+	max-height: 90vh;
 	margin: 15px 0;
 	max-width: 1330px;
-	position: absolute;
+	position: fixed;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 9999;
-	color: #484848;
+	color: #fff;
 	line-height: 1.2;
 	display: none;
+	overflow-y: auto;
 	.heading {
-		color: #000;
+		color: #6ab2c0;
 		font-size: 18px;
 		padding: 0 0 33px;
 	}
 	h2 {
-		color: #1a323f;
+		color: #fff;
 		font-size: 24px;
 		font-family: $font-open-sans;
 		font-weight: bold;
@@ -618,9 +647,15 @@
 }
 .popup-visual {
 	float: right;
-	width: 59%;
+	max-width: 59%;
 	margin: 0 0 0 30px;
 	padding: 6px 0 0;
+
+	@include media(tablet) {
+		float: none;
+		margin: 0 0 30px;
+		max-width: 100%;
+	}
 	.image {
 		position: relative;
 		&:before,
@@ -643,8 +678,9 @@
 			right: 0;
 		}
 		img {
-			max-width: none;
-			width: 100%;
+			max-width: 100%;
+			margin: 0 auto;
+			display: block;
 		}
 	}
 }
