@@ -1,20 +1,25 @@
 <?php
 get_header(); ?>
-<div id="primary" class="content-area">
-    <main id="main" class="site-main" role="main">
-
-        <section class="error-404 not-found">
-            <header class="page-header">
-                <h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'zdays' ); ?></h1>
-            </header><!-- .page-header -->
-
-            <div class="page-content">
-                <p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'zdays' ); ?></p>
-
-				<?php get_search_form(); ?>
-            </div><!-- .page-content -->
-        </section><!-- .error-404 -->
-
-    </main><!-- .site-main -->
-</div><!-- .content-area -->
+<section class="visual">
+	<?php
+	$logo      = get_field( 'logo', 'options' );
+	$logo_link = get_field( 'logo_link', 'options' );
+	if ( $logo_link ): ?>
+        <strong class="logo">
+            <a href="<?php echo $logo_link; ?>" target="_blank">
+                <img src="<?php echo $logo; ?>" alt="Z-day" width="250" height="261"/>
+            </a>
+        </strong>
+	<?php endif; ?>
+</section>
+<main id="main" class="clearfix">
+    <section class="content-row intro-holder">
+        <div class="container small-width">
+            <h2 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'zdays' ); ?></h2>
+            <div class="intro">
+                <p><?php _e( 'It looks like nothing was found at this location.', 'zdays' ); ?></p>
+            </div>
+        </div>
+    </section>
+</main>
 <?php get_footer(); ?>

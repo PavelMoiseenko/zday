@@ -1,6 +1,6 @@
 <footer id="footer" class="clearfix">
     <div class="footer-holder">
-        <div class="container wow fadeIn" data-wow-duration="1.3s">
+        <div class="container <?php is_front_page()? 'wow fadeIn': '';?>" data-wow-duration="1.3s">
 			<?php
 			$company_logo = get_field( 'company_logo', 'options' );
 			$company_link = get_field( 'company_link', 'options' );

@@ -54,20 +54,17 @@ if ( ! function_exists( 'base_scripts' ) ) {
 
 		//wp_deregister_script('jquery');
 		// Enqueue Scripts
-		wp_enqueue_script( 'jquery-last' );
-		wp_enqueue_script( 'scripts' );
-		wp_enqueue_script( 'popup' );
-		wp_enqueue_script( 'share' );
-		//wp_enqueue_script( 'main' );
-		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-			wp_enqueue_script( 'comment-reply' );
-		};
-
-		//Localizate Scripts
-		wp_localize_script( 'scripts', 'objectName', array(
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
-			'nonce'   => wp_create_nonce( 'ajax-nonce' ),
-		) );
+		if(!is_404()){
+			wp_enqueue_script( 'jquery-last' );
+			wp_enqueue_script( 'scripts' );
+			wp_enqueue_script( 'popup' );
+			wp_enqueue_script( 'share' );
+			//Localizate Scripts
+			wp_localize_script( 'scripts', 'objectName', array(
+				'ajaxurl' => admin_url( 'admin-ajax.php' ),
+				'nonce'   => wp_create_nonce( 'ajax-nonce' ),
+			) );
+		}
 	}
 
 	add_action( 'wp_enqueue_scripts', 'base_scripts' );
