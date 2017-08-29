@@ -59,9 +59,9 @@
 <div id="wrapper">
     <section class="visual">
         <div class="img-triangles">
-<!--            <div class="layer" data-rellax-speed="50">-->
-<!--                <img class="wow fadeInDown" data-wow-duration="1.5s" src=--><?php //echo get_template_directory_uri() . "/assets/images/img-decor1-1.png";?><!-- alt="image description">-->
-<!--            </div>-->
+            <div class="layer" data-rellax-speed="50">
+                <img class="wow fadeInDown" data-wow-duration="1.5s" src=<?php echo get_template_directory_uri() . "/assets/images/img-decor1-1.png";?> alt="image description">
+            </div>
             <div class="layer" data-rellax-speed="4">
                 <img class="wow fadeInDown" data-wow-duration="1.5s" src=<?php echo get_template_directory_uri() . "/assets/images/img-decor1-2.png";?> alt="image description">
             </div>
