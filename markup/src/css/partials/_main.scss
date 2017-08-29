@@ -532,18 +532,18 @@
 		height: 50px;
 		cursor: pointer;
 		transition: opacity .4s ease-out;
-		background-image: url("../images/arrow.svg");
+		/*background-image: url("../images/arrow.svg");
 		background-repeat: no-repeat;
 		background-position: 50% 50%;
-		background-size: 20px 19px;
+		background-size: 20px 19px;*/
 
-		&.prev {
+		/*&.prev {
 			transform: rotate(180deg);;
 		}
 
 		svg {
 			display: none;
-		}
+		}*/
 		@include media(mobile-small) {
 			margin: 0 5px;
 		}
@@ -661,7 +661,7 @@
 .popup-visual {
 	float: right;
 	max-width: 59%;
-	margin: 0 0 0 30px;
+	margin: 0 0 30px 30px;
 	padding: 6px 0 0;
 
 	@include media(tablet) {

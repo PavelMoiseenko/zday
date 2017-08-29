@@ -21,6 +21,7 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+<svg style="display: none;">
 <?php get_template_part( 'inc/global/svg-socials' ) ?>
 <symbol id="ico-prev" viewBox="0 0 32.635 32.635">
     <path d="M32.135,16.817H0.5c-0.276,0-0.5-0.224-0.5-0.5s0.224-0.5,0.5-0.5h31.635c0.276,0,0.5,0.224,0.5,0.5
@@ -43,6 +44,7 @@
 			c0.397,0.396,0.936,0.62,1.498,0.62s1.1-0.224,1.497-0.62l38.374-38.374l38.374,38.374c0.397,0.396,0.937,0.62,1.498,0.62
 			s1.101-0.224,1.498-0.62l5.473-5.476c0.826-0.827,0.826-2.167,0-2.994L55.931,47.463z"/>
 </symbol>
+</svg>
 <?php if ( have_rows( 'header_social_icons', 'options' )  && is_front_page()): ?>
     <ul class="social-networks side" data-wow-duration="1.5s" data-wow-delay="0.5s">
         <?php while ( have_rows( 'header_social_icons', 'options' ) ) : the_row(); ?>

@@ -15,9 +15,9 @@ get_header(); ?>
 <main id="main" class="clearfix">
     <section class="content-row intro-holder">
         <div class="container small-width">
-            <h2 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'zdays' ); ?></h2>
+            <h2 class="page-title"><?php _e( 'Страница не найдена.', 'zdays' ); ?></h2>
             <div class="intro">
-                <p><?php _e( 'It looks like nothing was found at this location.', 'zdays' ); ?></p>
+                <a href="<?php echo get_home_url();?>"><?php _e( 'Вернуться на главную.', 'zdays' ); ?></a>
             </div>
         </div>
     </section>
