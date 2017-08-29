@@ -27,6 +27,8 @@ jQuery(function() {
         },
         submitHandler: function(form) {
 
+        	jQuery('.form').find('.button').addClass('disabled');
+
             var action = 'ajaxregister',
                 surname = jQuery('.surname').val(),
                 name = jQuery('.name').val(),

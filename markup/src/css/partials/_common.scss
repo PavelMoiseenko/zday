@@ -206,11 +206,14 @@ b {
 		transform: translateY(-50%);
 		z-index: 20;
 		@include media(desktop) {
-			right: 15px;
+			right: 30px;
 		}
 		@include media(mobile) {
 			position: static;
 			font-size: 0;
+			transform: none;
+			padding: 25px 0 0;
+			text-align: center;
 		}
 		li {
 			display: block;
@@ -218,7 +221,7 @@ b {
 			@include media(mobile) {
 				display: inline-block;
 				vertical-align: middle;
-				margin: 0 15px 10px;
+				margin: 0 20px 10px;
 			}
 		}
 		a {
