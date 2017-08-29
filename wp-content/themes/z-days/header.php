@@ -57,10 +57,9 @@
         <animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite"/>
         <animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite"/>
     </circle>
-</svg>
 </symbol>
 </svg>
-<?php if ( have_rows( 'header_social_icons', 'options' ) ): ?>
+<?php if ( have_rows( 'header_social_icons', 'options' )  && is_front_page()): ?>
     <ul class="social-networks side" data-wow-duration="1.5s" data-wow-delay="0.5s">
         <?php while ( have_rows( 'header_social_icons', 'options' ) ) : the_row(); ?>
             <li>
@@ -74,6 +73,7 @@
     </ul>
 <?php endif; ?>
 <div id="wrapper">
+    <?php if(is_front_page()):?>
     <section class="visual">
         <div class="img-triangles">
             <div class="layer" data-rellax-speed="50">
@@ -123,4 +123,9 @@
                 </div>
 			<?php endif; ?>
         </div>
+<<<<<<< HEAD
     </section>
+=======
+    </section>
+    <?php endif;?>
+>>>>>>> b0cf6ac404cf82737c5698878328d5b7e20dcfcc
