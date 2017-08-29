@@ -87,6 +87,7 @@
 	max-width: $container-width;
 	width: 100%;
 	transform: translateX(-50%);
+	overflow: hidden;
 	@include media(mobile) {
 		display: none;
 	}
