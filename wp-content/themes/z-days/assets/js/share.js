@@ -16,7 +16,6 @@
 
     $(document).ready(function ($) {
         $('.customer.share').on("click", function (e) {
-            alert('dfd');
             $(this).customerPopup(e);
         });
 
