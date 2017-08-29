@@ -16,6 +16,7 @@
     <?php $page_thumbnail = get_field('logo', 'options');?>
     <meta property="og:image" content="<?php echo $page_thumbnail; ?>"/>
     <meta property="og:image:secure_url" content="<?php echo $page_thumbnail; ?>" />
+    <meta name="twitter:image:src" content="<?php echo $page_thumbnail; ?>">
     <link rel="shortcut icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Play:700" rel="stylesheet">
 	<?php wp_head(); ?>
@@ -59,9 +60,9 @@
 <div id="wrapper">
     <section class="visual">
         <div class="img-triangles">
-<!--            <div class="layer" data-rellax-speed="50">-->
-<!--                <img class="wow fadeInDown" data-wow-duration="1.5s" src=--><?php //echo get_template_directory_uri() . "/assets/images/img-decor1-1.png";?><!-- alt="image description">-->
-<!--            </div>-->
+            <div class="layer" data-rellax-speed="50">
+                <img class="wow fadeInDown" data-wow-duration="1.5s" src=<?php echo get_template_directory_uri() . "/assets/images/img-decor1-1.png";?> alt="image description">
+            </div>
             <div class="layer" data-rellax-speed="4">
                 <img class="wow fadeInDown" data-wow-duration="1.5s" src=<?php echo get_template_directory_uri() . "/assets/images/img-decor1-2.png";?> alt="image description">
             </div>
