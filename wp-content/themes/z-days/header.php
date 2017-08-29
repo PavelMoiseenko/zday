@@ -123,9 +123,5 @@
                 </div>
 			<?php endif; ?>
         </div>
-<<<<<<< HEAD
-    </section>
-=======
     </section>
     <?php endif;?>
->>>>>>> b0cf6ac404cf82737c5698878328d5b7e20dcfcc
