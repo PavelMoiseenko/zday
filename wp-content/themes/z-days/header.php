@@ -13,6 +13,8 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="robots" content="noindex, nofollow"><!--  Replace with content="index, follow"> when site goes live -->
+    <?php $page_thumbnail = get_field('logo', 'options');?>
+    <meta property="og:image" content="<?php echo $page_thumbnail; ?>"/>
     <link rel="shortcut icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Play:700" rel="stylesheet">
 	<?php wp_head(); ?>
