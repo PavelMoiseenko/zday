@@ -161,6 +161,7 @@ function initPopup(){
     jQuery('.link-holder').on('click', function (e) {
         e.preventDefault();
         jQuery('.popup-holder').addClass('active');
+        jQuery('.ico-loader').show();
         var action = 'popup',
             event_id = jQuery(this).attr('data-id');
 
@@ -173,6 +174,7 @@ function initPopup(){
                 'event_id': event_id
             },
             success: function (response) {
+            	jQuery('.ico-loader').hide();
                 jQuery('#popup1').css({'display': 'block'});
                 jQuery("#popup1 .heading h2").text(response.event_title);
                 jQuery("#popup1 .popup-description").html(response.event_content);

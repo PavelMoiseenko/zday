@@ -53,6 +53,7 @@
 </footer>
 </div>
 <div class="popup-holder">
+    <svg class="icon ico-loader"><use xlink:href="#loader"></use></svg>
     <div class="popup" id="popup1">
         <span class="pop-close">X</span>
         <div class="popup-content clearfix">

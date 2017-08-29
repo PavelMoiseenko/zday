@@ -532,18 +532,6 @@
 		height: 50px;
 		cursor: pointer;
 		transition: opacity .4s ease-out;
-		/*background-image: url("../images/arrow.svg");
-		background-repeat: no-repeat;
-		background-position: 50% 50%;
-		background-size: 20px 19px;*/
-
-		/*&.prev {
-			transform: rotate(180deg);;
-		}
-
-		svg {
-			display: none;
-		}*/
 		@include media(mobile-small) {
 			margin: 0 5px;
 		}
@@ -571,9 +559,6 @@
 			transition: border-color .4s ease-out;
 		}
 	}
-	.next {
-
-	}
 	svg {
 		fill: #fff;
 		position: absolute;
@@ -586,6 +571,16 @@
 	}
 }
 /*popup*/
+.ico-loader {
+	width: 60px;
+	height: 60px;
+	display: none;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 9999;
+}
 .popup-holder {
 	position: relative;
 	z-index: 99;
