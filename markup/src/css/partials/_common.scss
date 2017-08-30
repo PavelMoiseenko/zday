@@ -109,10 +109,6 @@ b {
 	table-layout: fixed;
 	position: relative;
 	overflow-x: hidden;
-	@include media(mobile) {
-		display: block;
-		height: auto;
-	}
 }
 
 .container {
@@ -130,10 +126,6 @@ b {
 	height: 100%;
 	position: relative;
 	z-index: 1;
-	@include media(mobile) {
-		display: block;
-		height: auto;
-	}
 }
 .social-networks {
 	font-size: 0;

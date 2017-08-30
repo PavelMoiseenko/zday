@@ -1,6 +1,7 @@
 jQuery(function() {
     forms();
     initScroll();
+    initPopup();
     jQuery(".form").submit(function(e) {
         e.preventDefault();
     }).validate({
@@ -111,16 +112,13 @@ jQuery(function() {
         }
     });
 
-	var swiper_slidecount = mySwiper.slides.length - 3;
-	if (swiper_slidecount < 1) {
-		jQuery('.slider-holder').addClass('no-pagination');
-		jQuery('.prev, .next').remove();
-	}
-});
+    var swiper_slidecount = mySwiper.slides.length - 3;
 
-jQuery('document').ready(function(){
-    initPopup();
-})
+    if (swiper_slidecount < 1 ) {
+        jQuery('.slider-holder').addClass('no-pagination');
+        jQuery('.prev, .next').remove();
+    }
+});
 
 function forms(){
 	jQuery('form').on('focus pageload', 'input[type="text"], input[type="email"], input[type="number"], input[type="tel"], input[type="password"], textarea', function(){
@@ -186,6 +184,41 @@ function initPopup(){
                 }
                 jQuery("#speakers-string").text(speakers_string);
 
+                var galleryTop = new Swiper('.gallery-top', {
+                    observer: true,
+                    observeParents: true,
+                    preloadImages: false,
+                    lazyLoading: true,
+                    nextButton: '.swiper-next',
+                    prevButton: '.swiper-prev',
+                });
+                var galleryThumbs = new Swiper('.gallery-thumbs', {
+                    spaceBetween: 30,
+                    slidesPerView: 3,
+                    slideToClickedSlide: true,
+                    centeredSlides: true,
+                    centerMode: true,
+                    focusOnSelect: true,
+                    observer: true,
+                    observeParents: true,
+                    preloadImages: false,
+                    lazyLoading: true,
+                    breakpoints: {
+                        1024: {
+                            slidesPerView: 2,
+                            spaceBetween: 10
+                        }
+                    }
+                });
+
+                galleryTop.params.control = galleryThumbs;
+                galleryThumbs.params.control = galleryTop;
+
+                var swiperThumb_slidecount = galleryThumbs.slides.length - 3;
+                if (swiperThumb_slidecount < 1 ) {
+                    jQuery('.slider-holder').addClass('no-pagination');
+                    jQuery('.swiper-prev, .swiper-next').remove();
+                }
             }
         });
 

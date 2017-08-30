@@ -105,8 +105,8 @@ gulp.task('watch', function(){
     gulp.watch(path.watch.style, ['style:build']);
     gulp.watch(path.watch.img, ['image:build']);
     gulp.watch(path.watch.fonts, ['fonts:build']);
-    gulp.watch(path.watch.js, ['jquery:build']); 
-    gulp.watch(path.watch.js, ['js:build']);    
+    gulp.watch(path.watch.js, ['jquery:build']);
+    gulp.watch(path.watch.js, ['js:build']);   
 });
 
 gulp.task('default', ['build', 'watch']);

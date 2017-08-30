@@ -57,9 +57,54 @@
     <div class="popup" id="popup1">
         <span class="pop-close">X</span>
         <div class="popup-content clearfix">
-            <div class="popup-visual">
-                <div class="image">
-                    <img src="" alt="image-description" width="750" height="600">
+            <div class="popup-visual slider-holder">
+                <div class="gallery-top swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">                                        
+                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
+                        </div>
+                        <div class="swiper-slide">
+                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
+                        </div>
+                        <div class="swiper-slide">
+                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
+                        </div>
+                        <div class="swiper-slide">
+                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
+                        </div>
+                        <div class="swiper-slide">
+                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
+                        </div>
+                        <div class="swiper-slide">
+                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
+                        </div>
+                    </div>
+                    <div class="swiper-arrows">
+                        <span class="swiper-prev"><svg class="ico-prev"><use xlink:href="#ico-prev"></use></svg></span>
+                        <span class="swiper-next"><svg class="ico-next"><use xlink:href="#ico-next"></use></svg></span>
+                    </div>
+                </div>
+                <div class="swiper-container gallery-thumbs">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">                                        
+                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
+                        </div>
+                        <div class="swiper-slide">
+                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
+                        </div>
+                        <div class="swiper-slide">
+                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
+                        </div>
+                        <div class="swiper-slide">
+                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
+                        </div>
+                        <div class="swiper-slide">
+                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
+                        </div>
+                        <div class="swiper-slide">
+                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="popup-desc">
