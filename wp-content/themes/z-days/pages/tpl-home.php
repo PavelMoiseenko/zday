@@ -289,33 +289,37 @@
                     <section class="events swiper-wrapper">
 						<?php foreach ( $posts as $post ): ?>
 						<?php setup_postdata( $post );
-						$event_id = $post->ID; ?>
-                        <article class="event swiper-slide">
-                            <div class="image">
-                                <?php the_post_thumbnail(array(490, 300), array('alt'=>"image description"));?>
-                                <div class="link-holder" data-id="<?php echo $event_id;?>" >
-                                    <span class="link-more"><?php _e('Подробнее', 'zdays');?></span>
-                                </div>
-                            </div>
-                            <h3><?php the_title();?></h3>
-                            <?php $speakers = get_field('speaker', $event_id);
-                            $number_speakers = count($speakers);
-                            $i = 1;
-                            if($speakers) : ?>
-                            <p>Спикеры:
-                                <?php foreach ($speakers as $speaker): ?>
+						$event_id = $post->ID;
+						$featured_image_archive_event = get_the_post_thumbnail_url($event_id);
+						if($featured_image_archive_event) :?>
+                            <article class="event swiper-slide">
+                                <div class="image">
                                     <?php
-                                    $speaker_ID = $speaker->ID;
-                                    $speaker_position = get_field('speaker_position', $speaker_ID);
-                                    echo $speaker->post_title . " (" . $speaker_position . ")";
-                                    if ($i !== $number_speakers) :
-                                        echo ", ";
-                                    endif;
-                                    $i++;
-                                endforeach;?>
-                            </p>
-                            <?php endif;?>
-                        </article>
+                                    the_post_thumbnail(array(490, 300), array('alt'=>"image description"));?>
+                                    <div class="link-holder" data-id="<?php echo $event_id;?>" >
+                                        <span class="link-more"><?php _e('Подробнее', 'zdays');?></span>
+                                    </div>
+                                </div>
+                                <h3><?php the_title();?></h3>
+                                <?php $speakers = get_field('speaker', $event_id);
+                                $number_speakers = count($speakers);
+                                $i = 1;
+                                if($speakers) : ?>
+                                <p>Спикеры:
+                                    <?php foreach ($speakers as $speaker): ?>
+                                        <?php
+                                        $speaker_ID = $speaker->ID;
+                                        $speaker_position = get_field('speaker_position', $speaker_ID);
+                                        echo $speaker->post_title . " (" . $speaker_position . ")";
+                                        if ($i !== $number_speakers) :
+                                            echo ", ";
+                                        endif;
+                                        $i++;
+                                    endforeach;?>
+                                </p>
+                                <?php endif;?>
+                            </article>
+                        <?php endif;?>
                         <?php endforeach; ?>
 						<?php wp_reset_postdata(); ?>
                     </section>
