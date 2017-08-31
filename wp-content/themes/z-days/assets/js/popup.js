@@ -27,11 +27,12 @@ jQuery(document).ready(function($) {
                    speakers_string += response.event_speakers_title[i]+ " (" + response.event_speakers_position[i] + ") " ;
                }
                $("#speakers-string").text(speakers_string);
-                console.log(response.images);
                if (response.images){
+                   $('.top-picture').html('');
+                   $('.bottom-picture').html('');
                    for(var i=0; i < response.images.length; i++){
-                       $('.top-picture').html("<div class=\"swiper-slide\"><img data-src='" +response.images[i]+ "' class=\"swiper-lazy\"></div>");
-                       $('.bottom-picture').html("<div class=\"swiper-slide\"><img data-src='" +response.images[i] +"' class=\"swiper-lazy\"></div>");
+                       $('.top-picture').append("<div class=\"swiper-slide\"><img data-src='" +response.images[i]+ "' class=\"swiper-lazy\"></div>");
+                       $('.bottom-picture').append("<div class=\"swiper-slide\"><img data-src='" +response.images[i] +"' class=\"swiper-lazy\"></div>");
                    }
                    var galleryTop = new Swiper('.gallery-top', {
                        observer: true,
