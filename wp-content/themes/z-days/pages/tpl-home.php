@@ -29,11 +29,6 @@
                 </div>
 			<?php endif; ?>
 
-			<?php
-			$event_caption = get_field( 'event_caption' );
-			if ( $event_caption ) :?>
-                <h2 class="" data-wow-duration="1.3s"><?php echo $event_caption; ?></h2>
-			<?php endif; ?>
 
 			<?php
 			$date_now              = date( 'Y-m-d H:i:s' );
@@ -73,7 +68,12 @@
 				) );
 			endif;
 
-			if ( $posts ): ?>
+			if ( $posts ):
+				$event_caption = get_field( 'event_caption' );
+				if ( $event_caption ) :?>
+                    <h2 class="" data-wow-duration="1.3s"><?php echo $event_caption; ?></h2>
+				<?php endif;?>
+
 				<?php foreach ( $posts as $post ): ?>
 					<?php setup_postdata( $post );
 					$event_id                  = $post->ID;
@@ -115,7 +115,7 @@
 			<?php endif; ?>
         </div>
     </section>
-
+    <?php if ( $posts ): ?>
     <section class="content-row bg-custom with-logo">
         <div class="img-triangles">
             <div class="layer" data-rellax-speed="12" data-rellax-percentage="0.5">
@@ -253,7 +253,7 @@
             </div>
         </div>
     </section>
-
+    <?php endif; ?>
     <?php $posts = get_posts( array(
 	    'numberposts' => -1,
 	    'post_type'      => 'event',

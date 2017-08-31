@@ -59,25 +59,8 @@
         <div class="popup-content clearfix">
             <div class="popup-visual slider-holder">
                 <div class="gallery-top swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">                                        
-                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
-                        </div>
-                        <div class="swiper-slide">
-                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
-                        </div>
-                        <div class="swiper-slide">
-                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
-                        </div>
-                        <div class="swiper-slide">
-                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
-                        </div>
-                        <div class="swiper-slide">
-                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
-                        </div>
-                        <div class="swiper-slide">
-                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
-                        </div>
+                    <div class="swiper-wrapper top-picture">
+
                     </div>
                     <div class="swiper-arrows">
                         <span class="swiper-prev"><svg class="ico-prev"><use xlink:href="#ico-prev"></use></svg></span>
@@ -85,25 +68,7 @@
                     </div>
                 </div>
                 <div class="swiper-container gallery-thumbs">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">                                        
-                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
-                        </div>
-                        <div class="swiper-slide">
-                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
-                        </div>
-                        <div class="swiper-slide">
-                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
-                        </div>
-                        <div class="swiper-slide">
-                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
-                        </div>
-                        <div class="swiper-slide">
-                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
-                        </div>
-                        <div class="swiper-slide">
-                            <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">
-                        </div>
+                    <div class="swiper-wrapper bottom-picture">
                     </div>
                 </div>
             </div>

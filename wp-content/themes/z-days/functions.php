@@ -54,7 +54,7 @@ if ( ! function_exists( 'base_scripts' ) ) {
 
 		//wp_deregister_script('jquery');
 		// Enqueue Scripts
-		if(!is_404()){
+		if ( ! is_404() ) {
 			wp_enqueue_script( 'jquery-last' );
 			wp_enqueue_script( 'scripts' );
 			wp_enqueue_script( 'popup' );
@@ -423,35 +423,48 @@ function popup_callback() {
 
 	$event_id = '';
 
-	if ( !empty( $_POST['event_id'] ) ) {
+	if ( ! empty( $_POST['event_id'] ) ) {
 		$event_id = $_POST['event_id'];
 	}
 
-	$event_object  = get_post($event_id);
-	$event_title   = $event_object->post_title;
-	$event_content = $event_object->post_content;
-	$event_image_url = get_the_post_thumbnail_url($event_id);
+	$event_object    = get_post( $event_id );
+	$event_title     = $event_object->post_title;
+	$event_content   = $event_object->post_content;
+	$event_image_url = get_the_post_thumbnail_url( $event_id );
 
-	$speakers = get_field('speaker', $event_id);
-	$event_speakers_title = [];
+	$images_gallery = get_field( 'event_gallery', $event_id);
+	$images = [];
+	if ( $images_gallery ) :
+		foreach ( $images_gallery as $item ) :
+			array_push($images,  $item['url'] );
+		endforeach;
+		else:
+			array_push($images,  get_the_post_thumbnail_url($event_id) );
+		endif;
+	//var_dump($event_gallery);
+
+
+	$speakers                = get_field( 'speaker', $event_id );
+	$event_speakers_title    = [];
 	$event_speakers_position = [];
-	if($speakers) :
-			foreach ($speakers as $speaker):
-				$speaker_ID = $speaker->ID;
-				$speaker_position = get_field('speaker_position', $speaker_ID);
-				$speaker_title = $speaker->post_title;
-				array_push($event_speakers_title, $speaker_title);
-				array_push($event_speakers_position, $speaker_position);
-			endforeach;
+	if ( $speakers ) :
+		foreach ( $speakers as $speaker ):
+			$speaker_ID       = $speaker->ID;
+			$speaker_position = get_field( 'speaker_position', $speaker_ID );
+			$speaker_title    = $speaker->post_title;
+			array_push( $event_speakers_title, $speaker_title );
+			array_push( $event_speakers_position, $speaker_position );
+		endforeach;
 	endif;
 
 
 	$response = array(
-		'event_title'   => $event_title,
-		'event_content' => $event_content,
-		'event_image_url' => $event_image_url,
-		'event_speakers_title' => $event_speakers_title,
-		'event_speakers_position' => $event_speakers_position
+		'event_title'             => $event_title,
+		'event_content'           => $event_content,
+		'event_image_url'         => $event_image_url,
+		'event_speakers_title'    => $event_speakers_title,
+		'event_speakers_position' => $event_speakers_position,
+		'images'                  => $images
 	);
 
 	wp_send_json( $response );
