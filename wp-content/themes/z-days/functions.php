@@ -3,6 +3,8 @@ define( 'TEMPLATE_DIRECTORY', get_template_directory() );
 define( 'TEMPLATE_DIRECTORY_URI', get_template_directory_uri() );
 define( 'STYLESHEET_URI', get_stylesheet_uri() );
 define( 'VERSION', '1.3' );
+date_default_timezone_set('Etc/GMT-3');
+
 if ( ! function_exists( 'base_setup' ) ) {
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.

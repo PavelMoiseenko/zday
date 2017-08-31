@@ -18,7 +18,7 @@
     <meta property="og:image:secure_url" content="<?php echo $page_thumbnail; ?>" />
     <link rel="shortcut icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Play:700" rel="stylesheet">
-	<?php wp_head(); ?>
+    <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 <svg style="display: none;">
