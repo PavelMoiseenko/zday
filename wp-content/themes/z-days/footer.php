@@ -60,7 +60,6 @@
             <div class="popup-visual slider-holder">
                 <div class="gallery-top swiper-container">
                     <div class="swiper-wrapper top-picture">
-
                     </div>
                     <div class="swiper-arrows">
                         <span class="swiper-prev"><svg class="ico-prev"><use xlink:href="#ico-prev"></use></svg></span>
