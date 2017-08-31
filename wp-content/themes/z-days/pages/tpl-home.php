@@ -32,6 +32,7 @@
 
 			<?php
 			$date_now              = date( 'Y-m-d H:i:s' );
+			var_dump($date_now );
 			$registration_cta_text = get_field( 'registration_cta_text' );
 			$posts                 = get_field( 'favorite_event' );
 			if ( $posts ) {
