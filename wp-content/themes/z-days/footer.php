@@ -58,7 +58,7 @@
         <span class="pop-close">X</span>
         <div class="popup-content clearfix">
             <div class="popup-visual slider-holder">
-                <div class="gallery-top swiper-container">
+                <div class="gallery-top image swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">                                        
                             <img data-src="http://zday.novikova.leopard.devplatform1.com/wp-content/themes/z-days/assets/images/git-cat.png" class="swiper-lazy">

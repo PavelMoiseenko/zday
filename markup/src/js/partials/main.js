@@ -1,7 +1,6 @@
 jQuery(function() {
     forms();
     initScroll();
-    initPopup();
     jQuery(".form").submit(function(e) {
         e.preventDefault();
     }).validate({
@@ -153,82 +152,4 @@ function mobileHover() {
 	}).on('touchend', function () {
 		jQuery(this).removeClass('hover');
 	});
-}
-
-function initPopup(){
-    jQuery('.link-holder').on('click', function (e) {
-        e.preventDefault();
-        jQuery('.popup-holder').addClass('active');
-        jQuery('.ico-loader').show();
-        var action = 'popup',
-            event_id = jQuery(this).attr('data-id');
-
-        jQuery.ajax({
-            type: 'POST',
-            url: objectName.ajaxurl,
-            data: {
-                'action': action,
-                'nonce': objectName.nonce,
-                'event_id': event_id
-            },
-            success: function (response) {
-            	jQuery('.ico-loader').hide();
-                jQuery('#popup1').css({'display': 'block'});
-                jQuery("#popup1 .heading h2").text(response.event_title);
-                jQuery("#popup1 .popup-description").html(response.event_content);
-                jQuery("#popup1 .image img").attr("src", response.event_image_url);
-                var speakers_string = 'Спикеры: ';
-                for (var i = 0; i < response.event_speakers_title.length; i++) {
-
-                    speakers_string += response.event_speakers_title[i] + " (" + response.event_speakers_position[i] + ")";
-                }
-                jQuery("#speakers-string").text(speakers_string);
-
-                var galleryTop = new Swiper('.gallery-top', {
-                    observer: true,
-                    observeParents: true,
-                    preloadImages: false,
-                    lazyLoading: true,
-                    nextButton: '.swiper-next',
-                    prevButton: '.swiper-prev',
-                });
-                var galleryThumbs = new Swiper('.gallery-thumbs', {
-                    spaceBetween: 30,
-                    slidesPerView: 3,
-                    slideToClickedSlide: true,
-                    centeredSlides: true,
-                    centerMode: true,
-                    focusOnSelect: true,
-                    observer: true,
-                    observeParents: true,
-                    preloadImages: false,
-                    lazyLoading: true,
-                    breakpoints: {
-                        1024: {
-                            slidesPerView: 2,
-                            spaceBetween: 10
-                        }
-                    }
-                });
-
-                galleryTop.params.control = galleryThumbs;
-                galleryThumbs.params.control = galleryTop;
-
-                var swiperThumb_slidecount = galleryThumbs.slides.length - 3;
-                if (swiperThumb_slidecount < 1 ) {
-                    jQuery('.slider-holder').addClass('no-pagination');
-                    jQuery('.swiper-prev, .swiper-next').remove();
-                }
-            }
-        });
-
-    });
-
-    jQuery('.pop-close').on('click', function(e){
-        e.preventDefault();
-
-
-        jQuery(this).closest('.popup').fadeOut();
-        jQuery('.popup-holder').removeClass('active');
-    })
 }
