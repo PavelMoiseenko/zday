@@ -40,7 +40,7 @@ jQuery(document).ready(function($) {
                        preloadImages: false,
                        lazyLoading: true,
                        nextButton: '.swiper-next',
-                       prevButton: '.swiper-prev',
+                       prevButton: '.swiper-prev'
                    });
 
                    var galleryThumbs = new Swiper('.gallery-thumbs', {
