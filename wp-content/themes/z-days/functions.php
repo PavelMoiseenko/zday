@@ -182,6 +182,13 @@ if ( ! class_exists( 'acf' ) && ! is_admin() ) {
 }
 
 /**
+ * Add image size for popup slider images
+ */
+
+add_image_size('popup-slide-size', 750, 600,true );
+add_image_size('popup-thumb-size', 230, 200, true );
+
+/**
  * Register custom post-type EVENT
  */
 function create_event_type() {
@@ -435,14 +442,18 @@ function popup_callback() {
 	$event_image_url = get_the_post_thumbnail_url( $event_id );
 
 	$images_gallery = get_field( 'event_gallery', $event_id);
-	$images = [];
+	$images_slide = [];
+	$images_thumb = [];
+
 	if ( $images_gallery ) :
 		foreach ( $images_gallery as $item ) :
-			array_push($images,  $item['url'] );
+			array_push($images_slide,  $item['sizes']['popup-slide-size']);
+			array_push($images_thumb,  $item['sizes']['popup-thumb-size']);
 		endforeach;
-		else:
-			array_push($images,  get_the_post_thumbnail_url($event_id) );
-		endif;
+	else:
+		array_push($images_slide,  get_the_post_thumbnail_url($event_id, 'popup-slide-size') );
+		array_push($images_thumb,  get_the_post_thumbnail_url($event_id, 'popup-thumb-size') );
+	endif;
 	//var_dump($event_gallery);
 
 
@@ -466,7 +477,8 @@ function popup_callback() {
 		'event_image_url'         => $event_image_url,
 		'event_speakers_title'    => $event_speakers_title,
 		'event_speakers_position' => $event_speakers_position,
-		'images'                  => $images
+		'images_slide'            => $images_slide,
+		'images_thumb'            => $images_thumb
 	);
 
 	wp_send_json( $response );

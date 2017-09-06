@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <meta name="robots" content="noindex, nofollow"><!--  Replace with content="index, follow"> when site goes live -->
+    <meta name="robots" content="index, follow">header
     <?php $page_thumbnail = get_field('logo', 'options');?>
     <meta property="og:image" content="<?php echo $page_thumbnail; ?>"/>
     <meta property="og:image:secure_url" content="<?php echo $page_thumbnail; ?>" />

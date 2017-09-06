@@ -27,13 +27,15 @@ jQuery(document).ready(function($) {
                    speakers_string += response.event_speakers_title[i]+ " (" + response.event_speakers_position[i] + ") " ;
                }
                $("#speakers-string").text(speakers_string);
-               if (response.images){
+               if (response.images_slide.length){
                    $('.top-picture').html('');
                    $('.bottom-picture').html('');
-                   for(var i=0; i < response.images.length; i++){
-                       $('.top-picture').append("<div class=\"swiper-slide\"><img data-src='" +response.images[i]+ "' class=\"swiper-lazy\"></div>");
-                       $('.bottom-picture').append("<div class=\"swiper-slide\"><img data-src='" +response.images[i] +"' class=\"swiper-lazy\"></div>");
-                   }
+
+                       for (var i = 0; i < response.images_slide.length; i++) {
+                           $('.top-picture').append("<div class=\"swiper-slide\"><img data-src='" + response.images_slide[i] + "' class=\"swiper-lazy\"></div>");
+                           $('.bottom-picture').append("<div class=\"swiper-slide\"><img data-src='" + response.images_thumb[i] + "' class=\"swiper-lazy\"></div>");
+                       }
+
                    var galleryTop = new Swiper('.gallery-top', {
                        observer: true,
                        observeParents: true,
