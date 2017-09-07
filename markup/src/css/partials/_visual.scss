@@ -78,7 +78,7 @@
 		vertical-align: top;
 		position: relative;
 		width: 33.33%;
-		padding: 153px 6% 30px;
+		padding: 153px 3% 30px;
 		font-size: 18px;
 		line-height: 1.22;
 		padding-top: 0 !important; /* remove after adding icons */
@@ -93,7 +93,7 @@
 			padding-left: 7px;
 			padding-right: 7px;
 		}
-		@include media(mobile-small) {
+		@include media(mobile) {
 			padding-top: 70px;
 			width: 100%;
 			font-size: 15px;

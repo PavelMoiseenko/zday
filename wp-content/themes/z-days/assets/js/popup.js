@@ -42,7 +42,7 @@ jQuery(document).ready(function($) {
                        preloadImages: false,
                        lazyLoading: true,
                        nextButton: '.swiper-next',
-                       prevButton: '.swiper-prev'
+                       prevButton: '.swiper-prev',
                    });
 
                    var galleryThumbs = new Swiper('.gallery-thumbs', {
@@ -65,7 +65,7 @@ jQuery(document).ready(function($) {
                    });
                    galleryTop.params.control = galleryThumbs;
                    galleryThumbs.params.control = galleryTop;
-                   if (i <= 3 ) {
+                   if (i <= 1 ) {
                        jQuery('.swiper-prev, .swiper-next').remove();
                    }
                }

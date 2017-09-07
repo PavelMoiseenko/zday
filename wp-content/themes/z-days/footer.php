@@ -61,13 +61,15 @@
                 <div class="gallery-top swiper-container">
                     <div class="swiper-wrapper top-picture">
                     </div>
-                    <div class="swiper-arrows">
-                        <span class="swiper-prev"><svg class="ico-prev"><use xlink:href="#ico-prev"></use></svg></span>
-                        <span class="swiper-next"><svg class="ico-next"><use xlink:href="#ico-next"></use></svg></span>
-                    </div>
                 </div>
-                <div class="swiper-container gallery-thumbs">
-                    <div class="swiper-wrapper bottom-picture">
+                <div class="thumb-holder">
+                    <div class="swiper-container gallery-thumbs">
+                        <div class="swiper-wrapper bottom-picture">
+                        </div>
+                        <div class="swiper-arrows">
+                            <span class="swiper-prev"><svg class="ico-prev"><use xlink:href="#ico-prev"></use></svg></span>
+                            <span class="swiper-next"><svg class="ico-next"><use xlink:href="#ico-next"></use></svg></span>
+                        </div>
                     </div>
                 </div>
             </div>
