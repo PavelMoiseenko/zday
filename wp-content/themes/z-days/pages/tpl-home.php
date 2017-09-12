@@ -96,8 +96,8 @@
                         </header>
                         <div class="desc-holder clearfix">
                             <div class="image wow fadeIn" data-wow-duration="1.3s" data-wow-delay="0.15s">
-                                <img src=<?php echo get_template_directory_uri() . "/assets/images/git-cat.png"; ?> alt="git"
-                                     width="390" height="520">
+                                <img src=<?php echo get_template_directory_uri() . "/assets/images/img-robot.png"; ?> alt="image description"
+                                     width="362" height="455">
                             </div>
                             <div class="description" data-wow-duration="1.3s" data-wow-delay="0.15s">
 								<?php the_content(); ?>
@@ -181,7 +181,7 @@
             </div>
         </div>
         <div class="img-decor" data-wow-duration="1s" data-wow-delay="0.15s">
-            <img src=<?php echo get_template_directory_uri() . "/assets/images/git-cat.png"; ?> alt="git" width="390"
+            <img src=<?php echo get_template_directory_uri() . "/assets/images/img-robot.png"; ?> alt="image description" width="390"
                  height="520">
         </div>
         <div class="container">
