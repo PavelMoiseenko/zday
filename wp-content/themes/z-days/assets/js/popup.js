@@ -32,8 +32,8 @@ jQuery(document).ready(function($) {
                    $('.bottom-picture').html('');
 
                        for (var i = 0; i < response.images_slide.length; i++) {
-                           $('.top-picture').append("<div class=\"swiper-slide\"><img data-src='" + response.images_slide[i] + "' class=\"swiper-lazy\"></div>");
-                           $('.bottom-picture').append("<div class=\"swiper-slide\"><img data-src='" + response.images_thumb[i] + "' class=\"swiper-lazy\"></div>");
+                           $('.top-picture').append("<div class=\"swiper-slide\"><img data-src='" + response.images_slide[i] + "' class=\"swiper-lazy\"><svg class=\"icon ico-loader swiper-lazy-preloader\"><use xlink:href=\"#loader\"></use></svg></div>");
+                           $('.bottom-picture').append("<div class=\"swiper-slide\"><img data-src='" + response.images_thumb[i] + "' class=\"swiper-lazy\"><svg class=\"icon ico-loader swiper-lazy-preloader\"><use xlink:href=\"#loader\"></use></svg></div>");
                        }
 
                    var galleryTop = new Swiper('.gallery-top', {
@@ -42,7 +42,7 @@ jQuery(document).ready(function($) {
                        preloadImages: false,
                        lazyLoading: true,
                        nextButton: '.swiper-next',
-                       prevButton: '.swiper-prev',
+                       prevButton: '.swiper-prev'
                    });
 
                    var galleryThumbs = new Swiper('.gallery-thumbs', {
