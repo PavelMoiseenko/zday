@@ -1,45 +1,51 @@
 <footer id="footer" class="clearfix">
     <div class="footer-holder">
-        <div class="container <?php is_front_page()? 'wow fadeIn': '';?>" data-wow-duration="1.3s">
-			<?php
-			$company_logo = get_field( 'company_logo', 'options' );
-			$company_link = get_field( 'company_link', 'options' );
-			if ( $company_link ) :?>
-                <div class="logo-holder">
-                    <strong class="zfort-logo">
-                        <a href="<?php echo $company_link; ?>" target="_blank">
-                            <img src="<?php echo $company_logo; ?>" alt="Friendly Technologies ZFORT GROUP" width="230"
-                                 height="35">
-                        </a>
-                    </strong>
-                </div>
-			<?php endif; ?>
-
-            <?php if ( have_rows( 'footer_social_icons', 'options' ) ): ?>
-                <ul class="social-networks">
-                    <?php while ( have_rows( 'footer_social_icons', 'options' ) ) : the_row(); ?>
-                        <li>
-                            <a href="<?php the_sub_field( 'footer_social_link' ); ?>" target="_blank">
-                                <svg class="icon <?php the_sub_field( 'footer_social_image' ); ?>">
-                                    <use xlink:href="#<?php the_sub_field( 'footer_social_image' ); ?>"></use>
-                                </svg>
+        <div class="contact-info">
+            <h2>Связаться с нами можно по адресу:</h2>
+            <p><a href="mailto:&#122;&#100;&#097;&#121;&#064;&#122;&#102;&#111;&#114;&#116;&#046;&#099;&#111;&#109;">&#122;&#100;&#097;&#121;&#064;&#122;&#102;&#111;&#114;&#116;&#046;&#099;&#111;&#109;</a></p>
+        </div>
+        <div class="footer-area">
+            <div class="container <?php is_front_page()? 'wow fadeIn': '';?>" data-wow-duration="1.3s">
+                <?php
+                $company_logo = get_field( 'company_logo', 'options' );
+                $company_link = get_field( 'company_link', 'options' );
+                if ( $company_link ) :?>
+                    <div class="logo-holder">
+                        <strong class="zfort-logo">
+                            <a href="<?php echo $company_link; ?>" target="_blank">
+                                <img src="<?php echo $company_logo; ?>" alt="Friendly Technologies ZFORT GROUP" width="230"
+                                     height="35">
                             </a>
-                        </li>
-                    <?php endwhile;?>
-                </ul>
-            <?php endif; ?>
-			<?php
-			$project_logo = get_field( 'project_logo', 'options' );
-			$project_link = get_field( 'project_link', 'options' );
-			if ( $project_link ) :?>
-                <div class="logo-holder">
-                    <strong class="zday-logo">
-                        <a href="<?php echo $project_link; ?>" target="_blank">
-                            <img src=<?php echo $project_logo; ?> alt="Z-day" width="250" height="261">
-                        </a>
-                    </strong>
-                </div>
-			<?php endif; ?>
+                        </strong>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ( have_rows( 'footer_social_icons', 'options' ) ): ?>
+                    <ul class="social-networks">
+                        <?php while ( have_rows( 'footer_social_icons', 'options' ) ) : the_row(); ?>
+                            <li>
+                                <a href="<?php the_sub_field( 'footer_social_link' ); ?>" target="_blank">
+                                    <svg class="icon <?php the_sub_field( 'footer_social_image' ); ?>">
+                                        <use xlink:href="#<?php the_sub_field( 'footer_social_image' ); ?>"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                        <?php endwhile;?>
+                    </ul>
+                <?php endif; ?>
+                <?php
+                $project_logo = get_field( 'project_logo', 'options' );
+                $project_link = get_field( 'project_link', 'options' );
+                if ( $project_link ) :?>
+                    <div class="logo-holder">
+                        <strong class="zday-logo">
+                            <a href="<?php echo $project_link; ?>" target="_blank">
+                                <img src=<?php echo $project_logo; ?> alt="Z-day" width="250" height="261">
+                            </a>
+                        </strong>
+                    </div>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 

@@ -44,10 +44,12 @@
 	background: #162d36;
 	padding: 14px 0;
 	margin: 0 0 14px;
-	display: flex;
-	flex-wrap: wrap;
-	@include media(mobile) {
-		display: block;
+	.footer-area {
+		display: flex;
+		flex-wrap: wrap;
+		@include media(mobile) {
+			display: block;
+		}
 	}
 	.container {
 		width: 100%;
@@ -56,6 +58,38 @@
 		align-items: center;
 		@include media(mobile) {
 			display: block;
+		}
+	}
+	.contact-info {
+		font-size: 40px;
+		font-family: $font-play;
+		padding: 15px 0;
+		h2 {
+			font-size: 40px;
+			color: #fff;
+		}
+		a {
+			padding: 0 0 4px;
+			display: inline-block;
+			vertical-align: top;
+			position: relative;
+			&:before {
+				content: '';
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				bottom: 0;
+				height: 2px;
+				width: 0;
+				background: $color-link;
+				transition: all .35s ease-out;
+			}
+			&:hover {
+				color: $color-link;
+				&:before {
+					width: 100%;
+				}
+			}
 		}
 	}
 }
