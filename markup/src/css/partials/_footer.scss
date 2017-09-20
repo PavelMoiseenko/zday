@@ -61,17 +61,17 @@
 		}
 	}
 	.contact-info {
-		font-size: 40px;
+		font-size: 30px;
 		font-family: $font-play;
 		padding: 15px;
 		@include media(tablet) {
-			font-size: 21px;
+			font-size: 20px;
 		}
 		h2 {
-			font-size: 40px;
+			font-size: 30px;
 			color: #fff;
 			@include media(tablet) {
-				font-size: 21px;
+				font-size: 20px;
 			}
 		}
 		a {
