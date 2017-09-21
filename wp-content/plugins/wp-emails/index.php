@@ -10,6 +10,7 @@ define('EMAIL_PLUGIN_URL', plugins_url( 'wp-emails' ) );
 
 include EMAIL_PLUGIN_DIR . '/inc/send-email.php';
 
+
 add_filter( 'wp_mail_from_name', 'vortal_wp_mail_from_name' );
 function vortal_wp_mail_from_name( $email_from ) {
 	return 'MyeSupport';

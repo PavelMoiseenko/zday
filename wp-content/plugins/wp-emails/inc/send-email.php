@@ -14,10 +14,11 @@ if ( !function_exists( 'send_email_template' ) ) {
 
 function get_shortcodes_list(){
 	return array(
-		'activation_link',
-		'site_link',
-		'user_email',
-		'pdf_link'
+		'title',
+		'content',
+		'address',
+		'start_date',
+		'start_time'
 	);
 }
 
@@ -27,7 +28,8 @@ function get_email_message($data, $message = ''){
 			$message = str_replace('['.$key.']', $value, $message);
 		}
 	}
-	$message  = str_replace('[image_path]', get_image_path(), $message);
+
+	$message = str_replace('[image_path]', get_site_url().'/wp-content/plugins/wp-emails/email-templates/images/', $message);
 	return $message;
 }
 
@@ -41,33 +43,14 @@ function get_email_template($type){
 
 function get_emails_templates(){
 	return array(
-		'confirm_account'    => array(
-			'subject' => 'Confirm your Account',
-			'content' => EMAIL_PLUGIN_DIR . 'email-templates/confirm-account.html'
-		),
-		'welcome'   => array(
-			'subject' => 'Welcome to Arthritis Australia',
-			'content' => EMAIL_PLUGIN_DIR . 'email-templates/welcome.html'
-		),
-		'reset_pass' => array(
-			'subject' => 'Your password was changed',
-			'content' => EMAIL_PLUGIN_DIR . 'email-templates/.html'
-		),
-		'profile'    => array(
-			'subject' => 'Your profile updated',
-			'content' => EMAIL_PLUGIN_DIR . 'email-templates/.html'
-		),
-		'register'    => array(
-			'subject' => 'Thank you for registering for myeSupport',
-			'content' => EMAIL_PLUGIN_DIR . 'email-templates/.html'
-		),
-		'list'    => array(
-			'subject' => 'Autoresponder',
-			'content' => EMAIL_PLUGIN_DIR . 'email-templates/.html'
-		),
+		'reminder'    => array(
+			'subject' => 'Zday soon',
+			'content' => EMAIL_PLUGIN_DIR . 'email-templates/reminder.html'
+		)
 	);
 }
 
 function get_image_path(){
 	return get_site_url().'/wp-content/plugins/wp-emails/email-templates/images/';
 }
+
