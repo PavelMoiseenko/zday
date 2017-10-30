@@ -2,8 +2,8 @@
 define( 'TEMPLATE_DIRECTORY', get_template_directory() );
 define( 'TEMPLATE_DIRECTORY_URI', get_template_directory_uri() );
 define( 'STYLESHEET_URI', get_stylesheet_uri() );
-define( 'VERSION', '1.5' );
-date_default_timezone_set('Etc/GMT-3');
+define( 'VERSION', '1.6' );
+date_default_timezone_set( 'Etc/GMT-3' );
 
 if ( ! function_exists( 'base_setup' ) ) {
 	/**
@@ -182,6 +182,13 @@ if ( ! class_exists( 'acf' ) && ! is_admin() ) {
 }
 
 /**
+ * Add image size for popup slider images
+ */
+
+add_image_size( 'popup-slide-size', 750, 600, true );
+add_image_size( 'popup-thumb-size', 230, 200, true );
+
+/**
  * Register custom post-type EVENT
  */
 function create_event_type() {
@@ -356,10 +363,11 @@ function registration_callback() {
 			'participant_telephone'      => $telephone
 		);
 		add_row( 'participants', $participant_row, $event_id );
-		$event_plan   = get_field( "event_plan", $event_id );
-		$event_object = get_post( $event_id );
-		$event_title  = $event_object->post_title;
-		$address      = get_field( "address", $event_id );
+		$event_plan    = get_field( "event_plan", $event_id );
+		$event_object  = get_post( $event_id );
+		$event_title   = $event_object->post_title;
+		$event_content = $event_object->post_content;
+		$address       = get_field( "address", $event_id );
 
 		$date       = get_field( 'start_date', $event_id, false );
 		$date       = new DateTime( $date );
@@ -370,13 +378,20 @@ function registration_callback() {
 
 
 		$subject = "Регистрация прошла успешно";
-		$message = "<p>Вы только что зарегистрировались на событие <a href='http://www.zday.zfort.com.ua' target='_blank'>\"ZDay\"</a>. Подтверждаем, что Ваша регистрация прошла успешно.</p>
-                    <p>Информация о событии:<br>
-                    Название: " . $event_title . "<br>
-                    Дата: " . $event_date . "<br>
-                    Время: " . $event_time . "<br>
-                    Место: " . $address . "<br>
-                    План мероприятия можно найти в attachment</p>";
+
+		$path_to_emailregistr = TEMPLATE_DIRECTORY_URI . "/emailregistr.php";
+		$message              = file_get_contents( $path_to_emailregistr );
+
+		$shortcodes = array(
+			'[title]'      => $event_title,
+			'[content]'    => $event_content,
+			'[start_date]' => $event_date,
+			'[start_time]' => $event_time,
+			'[image_path]' => TEMPLATE_DIRECTORY_URI . "/assets/images/"
+		);
+		foreach ( $shortcodes as $key => $value ) {
+			$message = str_replace( $key, $value, $message );
+		}
 
 		$headers     = array(
 			'content-type: text/html'
@@ -434,15 +449,19 @@ function popup_callback() {
 	$event_content   = $event_object->post_content;
 	$event_image_url = get_the_post_thumbnail_url( $event_id );
 
-	$images_gallery = get_field( 'event_gallery', $event_id);
-	$images = [];
+	$images_gallery = get_field( 'event_gallery', $event_id );
+	$images_slide   = [];
+	$images_thumb   = [];
+
 	if ( $images_gallery ) :
 		foreach ( $images_gallery as $item ) :
-			array_push($images,  $item['url'] );
+			array_push( $images_slide, $item['sizes']['popup-slide-size'] );
+			array_push( $images_thumb, $item['sizes']['popup-thumb-size'] );
 		endforeach;
-		else:
-			array_push($images,  get_the_post_thumbnail_url($event_id) );
-		endif;
+	else:
+		array_push( $images_slide, get_the_post_thumbnail_url( $event_id, 'popup-slide-size' ) );
+		array_push( $images_thumb, get_the_post_thumbnail_url( $event_id, 'popup-thumb-size' ) );
+	endif;
 	//var_dump($event_gallery);
 
 
@@ -466,7 +485,8 @@ function popup_callback() {
 		'event_image_url'         => $event_image_url,
 		'event_speakers_title'    => $event_speakers_title,
 		'event_speakers_position' => $event_speakers_position,
-		'images'                  => $images
+		'images_slide'            => $images_slide,
+		'images_thumb'            => $images_thumb
 	);
 
 	wp_send_json( $response );

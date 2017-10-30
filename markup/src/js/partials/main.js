@@ -111,7 +111,7 @@ jQuery(function() {
         }
     });
 
-    var swiper_slidecount = mySwiper.slides.length - 3;
+    var swiper_slidecount = mySwiper.slides.length - 1;
 
     if (swiper_slidecount < 1 ) {
         jQuery('.slider-holder').addClass('no-pagination');

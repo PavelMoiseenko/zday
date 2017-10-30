@@ -486,6 +486,10 @@
 	width: 100%;
 	height: 100%;
 	position: relative;
+	.ico-loader {
+		position: absolute;
+		display: block !important;
+	}
 }
 /* Auto Height */
 .swiper-container-autoheight, .swiper-container-autoheight .swiper-slide {
@@ -518,13 +522,25 @@
 		width: 100%;
 		max-width: none;
 	}
+	.swiper-wrapper {
+		align-items: center;
+	}
+}
+.thumb-holder {
+	position: relative;
+	padding: 0 60px;
+	@include media(tablet) {
+		padding: 0;
+	}
 }
 .gallery-thumbs {
+	position: static;
 	.swiper-wrapper {
 		margin-left: calc(-33.33% - 10px);
 		justify-content: flex-start;
+		align-items: center;
 		@include media(tablet) {
-			margin-left: calc(-25% - 3px);
+			margin-left: calc(-25% - 2px);
 		}
 	}
 	.swiper-slide {
@@ -548,6 +564,13 @@
 	z-index: 10;
 	.gallery-top & {
 		position: static;
+	}
+	.gallery-thumbs & {
+		position: static;
+		padding: 20px 0 0;
+		@include media(tablet) {
+			text-align: center;
+		}
 	}
 	@include media(tablet) {
 		top: -10px;
@@ -597,16 +620,24 @@
 	.swiper-next,
 	.swiper-prev {
 		top: 50%;
-		left: 5px;
+		transform: translateY(-50%);
+		left: 0;
 		position: absolute;
 		z-index: 2;
+		margin: 0;
+		@include media(tablet) {
+			position: relative;
+			top: 0;
+			transform: none;
+			margin: 0 5px;
+		}
 		&:before {
-			border-color: #212323;
+			border-color: #fff;
 		}
 	}
 	.swiper-next {
 		left: auto;
-		right: 5px;
+		right: 0;
 	}
 	svg {
 		fill: #fff;
@@ -617,12 +648,7 @@
 		width: 20px;
 		height: 19px;
 		transition: all .4s ease-out;
-		.gallery-top & {
-			fill: #212323;
-		}
 	}
-}
-.swiper-lazy-preloader {
 }
 /*popup*/
 .ico-loader {
@@ -668,6 +694,10 @@
 	line-height: 1.2;
 	display: none;
 	overflow-y: auto;
+	@include media(tablet) {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
 	.heading {
 		color: #6ab2c0;
 		font-size: 18px;
@@ -718,9 +748,12 @@
 	}
 	@include media(tablet) {
 		float: none;
-		margin: 0 auto 30px;
+		margin: 0 auto 20px;
 		max-width: 100%;
-		max-width: 400px;
+		max-width: 388px;
+	}
+	@include media(mobile-small) {
+		max-width: 240px;
 	}
 	.image {
 		position: relative;
