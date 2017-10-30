@@ -2,7 +2,7 @@
 define( 'TEMPLATE_DIRECTORY', get_template_directory() );
 define( 'TEMPLATE_DIRECTORY_URI', get_template_directory_uri() );
 define( 'STYLESHEET_URI', get_stylesheet_uri() );
-define( 'VERSION', '1.5' );
+define( 'VERSION', '1.6' );
 date_default_timezone_set( 'Etc/GMT-3' );
 
 if ( ! function_exists( 'base_setup' ) ) {
