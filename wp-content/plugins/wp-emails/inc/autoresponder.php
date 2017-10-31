@@ -1,6 +1,10 @@
 <?php
+//For stage
+//$path = $_SERVER['DOCUMENT_ROOT'];
 
-$path = $_SERVER['DOCUMENT_ROOT'];
+//For livesite
+$path = '../../../..';
+
 
 include_once $path . '/wp-config.php';
 include_once $path . '/wp-load.php';
