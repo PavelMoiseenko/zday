@@ -34,8 +34,13 @@ jQuery(function() {
                 name = jQuery('.name').val(),
                 email = jQuery('.email').val(),
                 specialization = jQuery('.specialization').val(),
-                telephone = jQuery('.telephone').val();
-            event_id = jQuery('.event_id').val();
+                telephone = jQuery('.telephone').val(),
+                event_id = jQuery('.event_id').val(),
+                q_1 = $('input[name="question_1"]').val(),
+                q_2 = $('input[name="question_2"]').val(),
+                q_3 = $('input[name="question_3"]').val(),
+                q_4 = $('input[name="question_4"]').val(),
+                q_5 = $('input[name="question_5"]').val();
 
             jQuery.ajax({
                 type: 'POST',
@@ -48,7 +53,12 @@ jQuery(function() {
                     'email': email,
                     'specialization': specialization,
                     'telephone': telephone,
-                    'event_id': event_id
+                    'event_id': event_id,
+                    'question_1': q_1,
+                    'question_2': q_2,
+                    'question_3': q_3,
+                    'question_4': q_4,
+                    'question_5': q_5
                 },
                 success: function (response) {
                     jQuery('.name-err').text(response.nameErr);
@@ -117,6 +127,7 @@ jQuery(function() {
         jQuery('.slider-holder').addClass('no-pagination');
         jQuery('.prev, .next').remove();
     }
+
 });
 
 function forms(){
