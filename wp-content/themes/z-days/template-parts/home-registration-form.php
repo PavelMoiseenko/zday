@@ -39,33 +39,38 @@
     
     <!-- // Question fields //-->
     <div class="form-row">
+        <span><?php _e("Расставьте самые дорогие валюты по капитализации в порядке убывания: Ethereum; BitcoinCash; Bitcoin; Ripple."); ?></span>
         <div class="form-field">
-            <span><?php _e("Расставьте самые дорогие валюты по капитализации в порядке убывания: Ethereum; BitcoinCash; Bitcoin; Ripple."); ?></span>
-            <input class="question" type="text" name="question_1" required>
+            <label for="question_1"><?php _e("Ответ *", "zdays"); ?></label>
+            <input id="question_1" class="question" type="text" name="question_1" required>
         </div>
     </div>
     <div class="form-row">
+        <span><?php _e("Какой самый популярный язык программирования для написания контрактов Ethereum: NET; Java; JavaScript; PHP; C++ ?"); ?></span>
         <div class="form-field">
-            <span><?php _e("Какой самый популярный язык программирования для написания контрактов Ethereum: NET; Java; JavaScript; PHP; C++ ?"); ?></span>
-            <input class="question" type="text" name="question_2" required>
+            <label for="question_2"><?php _e("Ответ *", "zdays"); ?></label>
+            <input id="question_2" class="question" type="text" name="question_2" required>
         </div>
     </div>
     <div class="form-row">
+        <span><?php _e("Какая из валют не имеет контрактов: NEO; Ripple; Ethereum; Dash?"); ?></span>
         <div class="form-field">
-            <span><?php _e("Какая из валют не имеет контрактов: NEO; Ripple; Ethereum; Dash?"); ?></span>
-            <input class="question" type="text" name="question_3" required>
+            <label for="question_3"><?php _e("Ответ *", "zdays"); ?></label>
+            <input id="question_3" class="question" type="text" name="question_3" required>
         </div>
     </div>
     <div class="form-row">
+        <span><?php _e("Выберите самую бессмысленную валюту: IOTA; NEO; Ripple; Doge?"); ?></span>
         <div class="form-field">
-            <span><?php _e("Выберите самую бессмысленную валюту: IOTA; NEO; Ripple; Doge?"); ?></span>
-            <input class="question" type="text" name="question_4" required>
+            <label for="question_4"><?php _e("Ответ *", "zdays"); ?></label>
+            <input id="question_4" class="question" type="text" name="question_4" required>
         </div>
     </div>
     <div class="form-row">
+        <span><?php _e("Продлите смысловой ряд: BlockChain, Torrent, ... ?"); ?></span>
         <div class="form-field">
-            <span><?php _e("Продлите смысловой ряд: BlockChain, Torrent, ... ?"); ?></span>
-            <input class="question" type="text" name="question_5" required>
+            <label for="question_5"><?php _e("Ответ *", "zdays"); ?></label>
+            <input id="question_5" class="question" type="text" name="question_5" required>
         </div>
     </div>
     
