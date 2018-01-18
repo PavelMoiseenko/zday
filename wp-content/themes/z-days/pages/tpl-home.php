@@ -193,7 +193,8 @@
                 <div class="box with-logo form-box">
 					<?php $is_registration_on = get_field( 'is_registration_on' );
 					if ( $is_registration_on['value'] === '1' && $post_registration_opening ) :
-                                            get_template_part('template-parts/home', 'registration-form');
+                                            // Registration form
+                                            include_once(get_template_directory() . '/template-parts/home-registration-form.php');
                                         else: ?>
                         <div class="message-holder info-message" class="wow fadeIn" data-wow-duration="1.3s"
                              data-wow-delay="0.15s">
