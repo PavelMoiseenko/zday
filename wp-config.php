@@ -27,10 +27,10 @@ if (file_exists(dirname(__FILE__) . '/wp-config.local.php')) {
     define('DB_NAME', 'zday');
 
     /** MySQL database username */
-    define('DB_USER', 'moiseenko');
+    define('DB_USER', 'staging');
 
     /** MySQL database password */
-    define('DB_PASSWORD', 'a1z0c');
+    define('DB_PASSWORD', 'jxtymlkbyysqgfhjkm');
 
     /** MySQL hostname */
     define('DB_HOST', 'rabbit57.zfort.net');
