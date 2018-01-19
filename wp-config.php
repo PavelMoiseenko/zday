@@ -30,6 +30,7 @@ if (file_exists(dirname(__FILE__) . '/wp-config.local.php')) {
     define('DB_NAME', 'zfort_zday');
 
     /** MySQL database username */
+
     define('DB_USER', 'zday');
 
     /** MySQL database password */
