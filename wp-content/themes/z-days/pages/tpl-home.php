@@ -85,7 +85,7 @@
 								$date = get_field( 'start_date', false, false );
 								if ( $date ) :
 									$date = new DateTime( $date ); ?>
-                                    <time><?php echo $date->format( 'j.m.Y, G:i' ); ?></time>
+                                   <time><?php echo $date->format( 'j.m.Y, G:i' ); ?></time>
 								<?php endif; ?>
 								<?php $address = get_field( 'address' );
 								if ( $address ) :?>
@@ -96,7 +96,7 @@
                         </header>
                         <div class="desc-holder clearfix">
                             <div class="image wow fadeIn" data-wow-duration="1.3s" data-wow-delay="0.15s">
-                                <img src=<?php echo get_template_directory_uri() . "/assets/images/yii-logo.png"; ?> alt="image description"
+                                <img src=<?php echo get_template_directory_uri() . "/assets/images/net.png"; ?> alt="image description"
                                      width="362" height="455">
                             </div>
                             <div class="description" data-wow-duration="1.3s" data-wow-delay="0.15s">
@@ -181,7 +181,7 @@
             </div>
         </div>
         <div class="img-decor" data-wow-duration="1s" data-wow-delay="0.15s">
-            <img src=<?php echo get_template_directory_uri() . "/assets/images/yii-logo.png"; ?> alt="image description" width="390"
+            <img src=<?php echo get_template_directory_uri() . "/assets/images/net.png"; ?> alt="image description" width="390"
                  height="520">
         </div>
         <div class="container">

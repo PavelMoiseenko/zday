@@ -46,7 +46,7 @@
                                 <td style="font:16px Arial, Helvetica, sans-serif; line-height:26px; color:#fff; padding-bottom:15px;">
                                     <b>Добрый день!</b> <br /><br />
                                     Вы зарегистрировались на образовательное мероприятие «ZDay», которое состоится [start_date] в [start_time]. В этот раз поговорим об [title]<br /><br />
-                                    [content]
+                                    <span style="font:16px Arial, Helvetica, sans-serif; line-height:26px; color:#fff;">[content]</span>
                                 </td>
                             </tr>
                             <tr>

@@ -1,6 +1,7 @@
 <?php
 
-$path = $_SERVER['DOCUMENT_ROOT'];
+//$path = $_SERVER['DOCUMENT_ROOT'];
+$path = '/var/www/zday.zfort.com.ua';
 
 include_once $path . '/wp-config.php';
 include_once $path . '/wp-load.php';
