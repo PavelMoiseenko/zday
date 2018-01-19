@@ -1,24 +1,23 @@
+<?php $fields = get_field('registration_form_extra_fields', $event_id); ?>
+
 <form class="wow fadeIn form" data-wow-duration="1.3s" data-wow-delay="0.15s" action="/"
       method="post" novalidate>
     <div class="form-row">
         <div class="form-field">
             <label for="name-field"><?php _e("Имя *", "zdays"); ?></label>
             <input class="name" type="text" id="name-field" name="nameField" required>
-            <!--                                        <span class="name-err"></span>-->
         </div>
     </div>
     <div class="form-row">
         <div class="form-field">
             <label for="surname-field"><?php _e("Фамилия *", "zdays"); ?></label>
             <input class="surname" type="text" id="surname-field" name="surnameField" required>
-            <!--                                        <span class="surname-err"></span>-->
         </div>
     </div>
     <div class="form-row">
         <div class="form-field">
             <label for="email-field"><?php _e("Email *", "zdays"); ?></label>
             <input class="email" type="email" id="email-field" name="emailField" required>
-            <!--                                        <span class="email-err"></span>-->
         </div>
     </div>
     <div class="form-row">
@@ -26,54 +25,29 @@
             <label for="specialization-field"><?php _e("Специализация *", "zdays"); ?></label>
             <input class="specialization" type="text" id="specialization-field"
                    name="specializationField" required>
-            <!--                                        <span class="specialization-err"></span>-->
         </div>
     </div>
     <div class="form-row">
         <div class="form-field">
             <label for="tel-field"><?php _e("Телефон", "zdays"); ?></label>
             <input class="telephone" type="tel" id="tel-field" name="telField">
-            <!--                                        <span class="telephone-err"></span>-->
         </div>
     </div>
-    
-    <!-- // Question fields //-->
-    <div class="form-row">
-        <span><?php _e("Расставьте самые дорогие валюты по капитализации в порядке убывания: Ethereum; BitcoinCash; Bitcoin; Ripple."); ?></span>
-        <div class="form-field">
-            <label for="question_1"><?php _e("Ответ *", "zdays"); ?></label>
-            <input id="question_1" class="question" type="text" name="question_1" required>
-        </div>
-    </div>
-    <div class="form-row">
-        <span><?php _e("Какой самый популярный язык программирования для написания контрактов Ethereum: NET; Java; JavaScript; PHP; C++ ?"); ?></span>
-        <div class="form-field">
-            <label for="question_2"><?php _e("Ответ *", "zdays"); ?></label>
-            <input id="question_2" class="question" type="text" name="question_2" required>
-        </div>
-    </div>
-    <div class="form-row">
-        <span><?php _e("Какая из валют не имеет контрактов: NEO; Ripple; Ethereum; Dash?"); ?></span>
-        <div class="form-field">
-            <label for="question_3"><?php _e("Ответ *", "zdays"); ?></label>
-            <input id="question_3" class="question" type="text" name="question_3" required>
-        </div>
-    </div>
-    <div class="form-row">
-        <span><?php _e("Выберите самую бессмысленную валюту: IOTA; NEO; Ripple; Doge?"); ?></span>
-        <div class="form-field">
-            <label for="question_4"><?php _e("Ответ *", "zdays"); ?></label>
-            <input id="question_4" class="question" type="text" name="question_4" required>
-        </div>
-    </div>
-    <div class="form-row">
-        <span><?php _e("Продлите смысловой ряд: BlockChain, Torrent, ... ?"); ?></span>
-        <div class="form-field">
-            <label for="question_5"><?php _e("Ответ *", "zdays"); ?></label>
-            <input id="question_5" class="question" type="text" name="question_5" required>
-        </div>
-    </div>
-    
+        
+    <?php if( $fields !== null && is_array($fields) ) :
+        foreach ($fields as $key=>$field) :
+            $n = $key + 1;
+            extract($field); ?>
+            <div class="form-row">
+            <?php if( $text ) : ?><span><?php _e($text, "zdays"); ?></span><?php endif; ?>
+            <div class="form-field">
+                <label for="question_<?php echo $n; ?>"><?php _e($placeholder, "zdays"); ?></label>
+                <input id="question_<?php echo $n; ?>" class="question" type="text" 
+                       name="question_<?php echo $n; ?>" <?php echo $required ? 'required' : '';?>>
+            </div>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>   
     
     <input class="event_id" type="hidden" name="event_id" value="<?php echo $event_id; ?>">
     <?php $registration_cta_text = get_field('registration_cta_text');
