@@ -22,18 +22,22 @@ if (file_exists(dirname(__FILE__) . '/wp-config.local.php')) {
     include (dirname(__FILE__) . '/wp-config.local.php');
 } else {
 
+    define('WP_HOME', 'http://www.zday.zfort.com.ua');
+    define('WP_SITEURL', 'http://www.zday.zfort.com.ua');
+	
 // ** MySQL settings - You can get this info from your web host ** //
     /** The name of the database for WordPress */
-    define('DB_NAME', 'zday');
+    define('DB_NAME', 'zfort_zday');
 
     /** MySQL database username */
-    define('DB_USER', 'staging');
+
+    define('DB_USER', 'zday');
 
     /** MySQL database password */
-    define('DB_PASSWORD', 'jxtymlkbyysqgfhjkm');
+    define('DB_PASSWORD', 'rMeC3F6dug8Zv');
 
     /** MySQL hostname */
-    define('DB_HOST', 'rabbit57.zfort.net');
+    define('DB_HOST', 'localhost');
 
     /** Database Charset to use in creating database tables. */
     define('DB_CHARSET', 'utf8');
