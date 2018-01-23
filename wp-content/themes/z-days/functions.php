@@ -370,6 +370,7 @@ function registration_callback() {
 			'participant_email'          => $email,
 			'participant_specialization' => $specialization,
 			'participant_telephone'      => $telephone,
+			'participant_reg_date'      => date("m.d.y H:i"),
                         // hardcoded questions
                         'participant_question_1'      => $question_1,
                         'participant_question_2'      => $question_2,
