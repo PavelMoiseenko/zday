@@ -535,3 +535,18 @@ function wpb_sender_name( $original_email_from ) {
  * Hooking up our functions to WordPress filters*/
 
 add_filter( 'wp_mail_from_name', 'wpb_sender_name' );
+
+
+/**
+ * Custom JS in admin area
+ * 
+ * @global obj $post
+ * @param string $hook
+ */
+function add_custom_admin_scripts( $hook ) {
+    global $post;
+    if ( $hook == 'post.php' && $post->post_type === 'event' ) {
+        wp_enqueue_script(  'ps_admin_edit_post', get_stylesheet_directory_uri().'/assets/js/admin/edit_post.js' );
+    }
+}
+add_action( 'admin_enqueue_scripts', 'add_custom_admin_scripts', 10, 1 );
