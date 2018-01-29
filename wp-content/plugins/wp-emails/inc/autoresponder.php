@@ -8,7 +8,7 @@ $path = '../../../..';
 
 //$path = $_SERVER['DOCUMENT_ROOT'];
 //$path = '/var/www/zday.zfort.com.ua';
-=======
+
 
 
 include_once $path . '/wp-config.php';
